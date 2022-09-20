@@ -14,7 +14,7 @@ public class ActivityVO {
         return activityTitle;
     }
 
-    public String getActivityDiscription() {
+    public String getActivityDescription() {
         return activityDescription;
     }
 
@@ -26,8 +26,8 @@ public class ActivityVO {
         this.activityTitle = activityTitle;
     }
 
-    public void setActivityDiscription(String activityDiscription) {
-        this.activityDescription = activityDiscription;
+    public void setActivityDescription(String activityDescription) {
+        this.activityDescription = activityDescription;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ActivityVO {
         return "ActivityVO{" +
                 "activityNum=" + activityNum +
                 ", activityTitle='" + activityTitle + '\'' +
-                ", activityDiscription='" + activityDescription + '\'' +
+                ", activityDescription='" + activityDescription + '\'' +
                 '}';
     }
 }
