@@ -11,6 +11,6 @@
     <title>Golfzon</title>
   </head>
   <body>
-  $END$
+    This is Main.jsp
   </body>
 </html>
