@@ -29,11 +29,11 @@
             <version>1.1.1</version>
         </dependency>
 
-        <!--mysql dependency 바꿔주기 oracle 말고 -->
+
         <dependency>
-            <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>11.2.0.4</version>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>3.0.7</version>
         </dependency>
         <!--파일 업로드 dependency-->
         <dependency>
