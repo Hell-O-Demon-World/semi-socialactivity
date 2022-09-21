@@ -6,9 +6,7 @@ import java.sql.*;
 import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
-    private Connection conn;
-    private PreparedStatement pstmt;
-    private ResultSet rs;
+
     public UserDAOImpl() {
         try {
             Class.forName(MariaDB.DRIVER_NAME);
