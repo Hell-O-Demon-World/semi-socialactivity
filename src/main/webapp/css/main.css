@@ -108,7 +108,8 @@ li a:hover {
   box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);
   width: 100%;
   height: 250px;
-  transition: 0.1s;
+  transition: 0.4s;
+  transition: 0.3s;
 }
 
 select {
@@ -117,16 +118,14 @@ select {
   border-radius: 10px;
   margin: 0 15px;
   padding: 10px;
-  background: #fff;
+  background: #a2e9c7;
 }
 select option {
   background: #fff;
 }
+
 #dropDown .optional.hide {
   height: 0;
-  transition: 0.5s;
-}
-#dropDown .optional.hide div {
   display: none;
 }
 

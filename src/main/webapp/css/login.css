@@ -6,9 +6,7 @@
   text-decoration: none;
   box-sizing: border-box;
 }
-input {
-  background: transparent;
-}
+
 #loginForm {
   display: flex;
   justify-content: center;
@@ -134,7 +132,7 @@ input {
 .form-box .form form h3 {
   font-size: 1.5em;
   color: #333;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
   font-weight: 500;
 }
 
@@ -171,7 +169,6 @@ input {
   background: #fff;
   margin-left: 0;
 }
-
 .form-box .form form input[type="submit"] {
   background: #03a9f4;
   border: none;
@@ -189,19 +186,10 @@ input {
 #loginForm .form-box.active .sign-up-form input[type="submit"] {
   background: #f43648;
 }
-
 #loginForm .form-box .form form .forgot {
   color: #333;
 }
 
 #loginForm .box.sign-in {
   top: 0;
-}
-
-/* 유효성 검증 메시지 */
-#signupMsg,
-#signinMsg {
-  font-size: 0.8rem;
-  color: #b50f20;
-  font-weight: 600;
 }
