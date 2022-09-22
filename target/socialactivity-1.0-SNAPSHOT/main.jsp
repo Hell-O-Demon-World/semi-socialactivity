@@ -109,7 +109,7 @@
     </div>
     <div class="form-box">
       <div class="form sign-in-form">
-        <form action="/login.do" method="get">
+        <form action="/login" method="post">
           <h3>Sign In</h3>
           <input type="text" placeholder="userID" name="userID" />
           <input type="password" placeholder="Password" name="password" />
@@ -121,7 +121,7 @@
         </form>
       </div>
       <div class="form sign-up-form">
-        <form action="sign-up.do" method="get">
+        <form action="signup" method="post">
           <h3>Sign Up</h3>
           <input
                   type="text"
@@ -131,7 +131,7 @@
           <input type="text" name="userID" placeholder="user ID(11자리)" />
           <input
                   type="password"
-                  name="userPw"
+                  name="userPW"
                   placeholder="userPW(11자리)"
           />
           <div class="location2">

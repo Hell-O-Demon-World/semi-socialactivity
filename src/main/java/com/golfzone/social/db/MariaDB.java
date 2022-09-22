@@ -7,4 +7,5 @@ public interface MariaDB {
     String PASSWORD = "root1234";
     String USER_SELECT_ALL = "select * from user";
     String USER_FIND_BY_USER = "select * from user where user_id = ";
+    String USER_INSERT = "insert into user(user_name, user_id, user_pw, user_location, user_age, user_sex, user_tier, user_score) values";
 }
