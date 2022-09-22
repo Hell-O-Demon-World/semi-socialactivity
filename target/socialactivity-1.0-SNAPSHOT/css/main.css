@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+nav {
+  background: #0082e6;
+  height: 80px;
+  width: 100%;
+}
+a.logo {
+  color: #fff;
+  font-size: 35px;
+  line-height: 80px;
+  padding: 0 100px;
+  font-weight: bold;
+}
+nav ul {
+  float: right;
+  margin-right: 90px;
+}
+
+nav ul li {
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 20px;
+}
+nav ul li a {
+  color: #fff;
+  font-size: 17px;
+  text-transform: uppercase;
+  padding: 7px 13px;
+  border-radius: 3px;
+}
+
+li a:hover {
+  background-color: #1b9bff;
+  font-size: 19px;
+  transition: 0.5s;
+}
+
+/* Search Dropdown */
+#dropDown {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 500px;
+}
+
+#dropDown .search-name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background: #fff;
+  border: none;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+.search-name input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 30px;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  z-index: 2;
+}
+.search-name .chevron-icon {
+  position: absolute;
+  top: 10px;
+  font-size: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 3;
+}
+.search-name input:focus {
+  outline: none;
+}
+
+#dropDown .optional {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  height: 250px;
+  transition: 0.4s;
+  transition: 0.3s;
+}
+
+select {
+  height: 40px;
+  width: 150px;
+  border-radius: 10px;
+  margin: 0 15px;
+  padding: 10px;
+  background: #a2e9c7;
+}
+select option {
+  background: #fff;
+}
+
+#dropDown .optional.hide {
+  height: 0;
+  display: none;
+}
+
+#dropDown .optional div {
+  padding-top: 20px;
+  padding-left: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* submitForm */
+#submitFormBtn {
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  top: 200px;
+  padding: 5px 0;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#submitFormBtn:hover {
+  background: #089651;
+  font-weight: 600;
+  padding: 10px 0;
+}
+
+/* clubIntro */
+/* clubIntro section - 임시*/
+#clubIntro {
+  float: left;
+  width: 70%;
+}
+
+#loginForm {
+  float: right;
+  width: 30%;
+}
