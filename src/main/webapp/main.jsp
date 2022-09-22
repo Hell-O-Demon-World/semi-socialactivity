@@ -115,13 +115,13 @@
           <input type="password" placeholder="Password" name="password" />
           <input type="submit" value="Login" />
           <a href="#" class="forgot">Forgot Password</a>
-          <%if ( msg.equals("회원가입이 필요합니다.")){%>
+          <%if ( msg == "회원가입이 필요합니다."){%>
             <p><%=msg%></p>
           <%}%>
         </form>
       </div>
       <div class="form sign-up-form">
-        <form action="" method="post">
+        <form action="sign-up.do" method="get">
           <h3>Sign Up</h3>
           <input
                   type="text"
