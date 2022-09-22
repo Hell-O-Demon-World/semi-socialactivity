@@ -1,3 +1,4 @@
+<%@ page import="com.golfzone.social.user.UserVO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <head>
@@ -9,6 +10,7 @@
   <title>Tech Club</title>
 </head>
 <body>
+<% String msg = (String) request.getAttribute("resultMsg"); %>
 <section id="navBar">
   <nav id="mainNav">
     <a href="#" class="logo">Logo</a>
@@ -107,12 +109,15 @@
     </div>
     <div class="form-box">
       <div class="form sign-in-form">
-        <form action="" method="post">
+        <form action="/login.do" method="get">
           <h3>Sign In</h3>
           <input type="text" placeholder="userID" name="userID" />
           <input type="password" placeholder="Password" name="password" />
           <input type="submit" value="Login" />
           <a href="#" class="forgot">Forgot Password</a>
+          <%if ( msg == "회원가입이 필요합니다."){%>
+            <p>회원가입이 필요합니다.</p>
+          <%}%>
         </form>
       </div>
       <div class="form sign-up-form">

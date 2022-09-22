@@ -10,6 +10,16 @@ public class UserVO {
     private int userAge;
     private boolean userSex;
 
+    private int tierNum;
+
+    public int getTierNum() {
+        return tierNum;
+    }
+
+    public void setTierNum(int tierNum) {
+        this.tierNum = tierNum;
+    }
+
     public int getUserNum() {
         return userNum;
     }
@@ -76,6 +86,7 @@ public class UserVO {
                 ", userLocation='" + userLocation + '\'' +
                 ", userAge=" + userAge +
                 ", userSex=" + userSex +
+                ", tierNum=" + tierNum +
                 '}';
     }
 }

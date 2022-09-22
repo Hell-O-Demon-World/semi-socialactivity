@@ -3,10 +3,13 @@ package com.golfzone.social.user;
 import com.golfzone.social.db.MariaDB;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
-
+    private Connection conn;
+    private PreparedStatement pstmt;
+    private ResultSet rs;
     public UserDAOImpl() {
         try {
             Class.forName(MariaDB.DRIVER_NAME);
@@ -64,5 +67,58 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public List<UserVO> selectAll() {
         return null;
+    }
+
+    @Override
+    public UserVO findByUser(String userId) {
+        UserVO vo = new UserVO();
+        String id2 = "'"+userId+"'";
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("conn success");
+
+            String sql = MariaDB.USER_FIND_BY_USER+id2;
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                vo.setUserNum(rs.getInt("USER_NUM"));
+                vo.setUserId(rs.getString("USER_ID"));
+                vo.setUserPw(rs.getString("USER_PW"));
+                vo.setUserName(rs.getString("USER_NAME"));
+                vo.setUserLocation(rs.getString("USER_LOCATION"));
+                vo.setUserAge(rs.getInt("USER_AGE"));
+                vo.setUserSex(rs.getBoolean("USER_SEX"));
+                vo.setTierNum(rs.getInt("TIER_NUM"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+
+        return vo;
     }
 }

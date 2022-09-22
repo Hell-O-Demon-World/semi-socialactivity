@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface UserDAO {
     List<UserVO> selectAll();
+    UserVO findByUser(String userId);
 }
