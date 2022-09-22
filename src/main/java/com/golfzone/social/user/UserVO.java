@@ -9,15 +9,23 @@ public class UserVO {
     private String userLocation;
     private int userAge;
     private boolean userSex;
+    private String userTier;
+    private int userScore;
 
-    private int tierNum;
-
-    public int getTierNum() {
-        return tierNum;
+    public String getUserTier() {
+        return userTier;
     }
 
-    public void setTierNum(int tierNum) {
-        this.tierNum = tierNum;
+    public void setUserTier(String userTier) {
+        this.userTier = userTier;
+    }
+
+    public int getUserScore() {
+        return userScore;
+    }
+
+    public void setUserScore(int userScore) {
+        this.userScore = userScore;
     }
 
     public int getUserNum() {
@@ -86,7 +94,8 @@ public class UserVO {
                 ", userLocation='" + userLocation + '\'' +
                 ", userAge=" + userAge +
                 ", userSex=" + userSex +
-                ", tierNum=" + tierNum +
+                ", userTier='" + userTier + '\'' +
+                ", userScore=" + userScore +
                 '}';
     }
 }
