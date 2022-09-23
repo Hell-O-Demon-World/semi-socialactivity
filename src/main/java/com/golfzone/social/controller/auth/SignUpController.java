@@ -26,7 +26,7 @@ public class SignUpController extends HttpServlet {
         String userScoreMsg = req.getParameter("tierName");
 
         // Checking length, input nothing
-        if ((userId.length() > 10 && userId.length() < 5) || (userPw.length() > 10 && userPw.length() < 5)) {
+        if ((userId.length() > 10 || userId.length() < 5) || (userPw.length() > 10 || userPw.length() < 5)) {
             signupResultMsg = "길이는 5 ~ 10 자리 이내여야 합니다.";
         } else if (userId.equals("") || userPw.equals("") || userName.equals("") || userLocation.equals("") || userState.equals("") || userAge.equals("") || userScoreMsg.equals("") || userSex.equals("")) {
             signupResultMsg = "값을 입력해 주세요";

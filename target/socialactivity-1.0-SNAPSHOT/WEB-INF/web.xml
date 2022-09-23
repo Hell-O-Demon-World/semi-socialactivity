@@ -27,4 +27,12 @@
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>club</servlet-name>
+        <servlet-class>com.golfzone.social.controller.club.ClubController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>club</servlet-name>
+        <url-pattern>/club</url-pattern>
+    </servlet-mapping>
 </web-app>

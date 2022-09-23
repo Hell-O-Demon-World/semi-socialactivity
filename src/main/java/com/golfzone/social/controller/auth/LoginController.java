@@ -19,7 +19,7 @@ public class LoginController extends HttpServlet {
         //login
         if ((req.getParameter("userID").equals(userVO.getUserId())) && (req.getParameter("password").equals(userVO.getUserPw()))){
             //success
-            resultPath = "/main.jsp";
+            resultPath = "/club.jsp";
             resultMsg = "로그인 성공.";
         }
         else{

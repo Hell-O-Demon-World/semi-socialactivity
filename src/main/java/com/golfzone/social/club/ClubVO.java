@@ -10,8 +10,24 @@ public class ClubVO {
     private String clubTier;
     private String clubDescription;
     private String clubEmblemPath;
-    private boolean clubSex;
+    private int clubSex;
     private String clubPw;
+
+    @Override
+    public String toString() {
+        return "ClubVO{" +
+                "clubNum=" + clubNum +
+                ", clubName='" + clubName + '\'' +
+                ", clubMaxCount=" + clubMaxCount +
+                ", clubAge=" + clubAge +
+                ", clubLocation='" + clubLocation + '\'' +
+                ", clubTier='" + clubTier + '\'' +
+                ", clubDescription='" + clubDescription + '\'' +
+                ", clubEmblemPath='" + clubEmblemPath + '\'' +
+                ", clubSex=" + clubSex +
+                ", clubPw='" + clubPw + '\'' +
+                '}';
+    }
 
     public int getClubNum() {
         return clubNum;
@@ -77,11 +93,11 @@ public class ClubVO {
         this.clubEmblemPath = clubEmblemPath;
     }
 
-    public boolean isClubSex() {
+    public int getClubSex() {
         return clubSex;
     }
 
-    public void setClubSex(boolean clubSex) {
+    public void setClubSex(int clubSex) {
         this.clubSex = clubSex;
     }
 
@@ -91,21 +107,5 @@ public class ClubVO {
 
     public void setClubPw(String clubPw) {
         this.clubPw = clubPw;
-    }
-
-    @Override
-    public String toString() {
-        return "ClubVO{" +
-                "clubNum=" + clubNum +
-                ", clubName='" + clubName + '\'' +
-                ", clubMaxCount=" + clubMaxCount +
-                ", clubAge=" + clubAge +
-                ", clubLocation='" + clubLocation + '\'' +
-                ", clubTier='" + clubTier + '\'' +
-                ", clubDescription='" + clubDescription + '\'' +
-                ", clubEmblemPath='" + clubEmblemPath + '\'' +
-                ", clubSex=" + clubSex +
-                ", clubPw='" + clubPw + '\'' +
-                '}';
     }
 }

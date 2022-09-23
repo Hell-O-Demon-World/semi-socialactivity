@@ -1,13 +1,10 @@
 const location1 = document.getElementById("location");
-const location2 = document.getElementById("location2");
 const locationList = ["강원", "경기", "경남", "경북","광주", "대구", "대전", "부산", "서울", "울산", "인천", "전남", "전북", "제주", "충남", "충북"];
 
 locationList.forEach(elem=>{
-    location1.innerHTML+=`<option value=${elem}>${elem}</option>`;
+  location1.innerHTML+=`<option value=${elem}>${elem}</option>`;
 });
-locationList.forEach((elem, idx)=>{
-    location2.innerHTML+=`<option value=${elem}>${elem}</option>`;
-});
+
 function categoryChange(e) {
   const state = document.getElementById("state");
   const state2 = document.getElementById("state2");
@@ -29,7 +26,6 @@ function categoryChange(e) {
   const chungbuk = ["제천시", "청주시", "충주시", "괴산군", "단양군", "보은군", "영동군", "옥천군", "음성군", "증평군", "진천군", "청원군"];
   const states = [gangwon, gyeonggi, gyeongsangnam, gyeongsangbuk, gwangju, daegu, daejeon, busan, seoul, ulsan, incheon, jeonnam, jeonbuk, jeju, chungnam, chungbuk];
   state.options.length = 1;
-  state2.options.length = 1;
 
   const selectStateNum = locationList.indexOf(e.value);
   const selectState = states[selectStateNum];
@@ -42,13 +38,4 @@ function categoryChange(e) {
       state.appendChild(opt);
     }
   }
-
-  if (e.id === 'location2') {
-    for (let property in selectState) {
-      let opt = document.createElement("option");
-      opt.value = selectState[property];
-      opt.innerHTML = selectState[property];
-      state2.appendChild(opt);
-    }
-  }
-}
+} 
