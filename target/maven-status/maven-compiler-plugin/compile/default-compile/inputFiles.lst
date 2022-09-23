@@ -1,9 +1,7 @@
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/user/UserVO.java
-/Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/controller/AuthController.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/auth/AuthVO.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/board/BoardDAO.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/activity/ActivityDAOImpl.java
-/Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/controller/ClubController.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/activity/ActivityDAO.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/board/BoardDAOImpl.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/db/MariaDB.java
@@ -15,10 +13,13 @@
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/auth/AuthDAOImpl.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/album/AlbumDAOImpl.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/club/ClubVO.java
+/Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/controller/auth/LoginController.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/controller/MainController.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/controller/ActivityController.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/board/BoardVO.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/user/UserDAOImpl.java
+/Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/controller/club/ClubController.java
+/Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/controller/auth/SignUpController.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/controller/UserController.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/club/ClubDAO.java
 /Users/org/Workspace/Git/socialactivity/src/main/java/com/golfzone/social/album/AlbumDAO.java

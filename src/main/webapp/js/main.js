@@ -3,7 +3,7 @@ const clubAgeHigh = document.getElementById("clubAgeHigh");
 const clubTierLow = document.getElementById("clubTierLow");
 const clubName = document.getElementById("clubName");
 const clubTierHigh = document.getElementById("clubTierHigh");
-const clubLocation = document.getElementById("location");
+const clubLocation = document.getElementById("location2");
 const state = document.getElementById("state");
 const tierSelect = document.getElementById("tierName");
 

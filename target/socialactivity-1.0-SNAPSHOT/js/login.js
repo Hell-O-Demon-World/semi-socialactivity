@@ -80,8 +80,6 @@ const nickNameCheck = (e) => {
     showAlert(signupMsg, msg);
   }
 };
-const nickName = document.getElementById("userName");
-nickName.addEventListener("focus", (e) => nickNameCheck(e));
 
 /** age 길이 최대 3으로 제한*/
 const ageMaxLength = function (e) {
