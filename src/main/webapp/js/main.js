@@ -1,14 +1,21 @@
 const clubAgeLow = document.getElementById("clubAgeLow");
 const clubAgeHigh = document.getElementById("clubAgeHigh");
 const clubTierLow = document.getElementById("clubTierLow");
-const clubTierHigh = document.getElementById("clubTierHigh");
 const clubName = document.getElementById("clubName");
+const clubTierHigh = document.getElementById("clubTierHigh");
 const clubLocation = document.getElementById("location");
 const state = document.getElementById("state");
+const tierSelect = document.getElementById("tierName");
 
+tierSelect.innerHTML += `<option value=6>70타 미만</option>`;
+for (let i = 7; i < 11; i++) {
+  tierSelect.innerHTML += `<option value=${i}>${i * 10}타</option>`;
+}
+tierSelect.innerHTML += `<option value=11>110타 이상</option>`;
 for (let i = 1; i < 8; i++) {
   clubAgeLow.innerHTML += `<option value=${i}>${i * 10}대</option>`;
 }
+
 clubAgeLow.innerHTML += `<option value=9>80대 이상</option>`;
 
 for (let i = 7; i < 11; i++) {
