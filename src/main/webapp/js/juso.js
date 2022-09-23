@@ -4,9 +4,10 @@ const locationList = ["강원", "경기", "경남", "경북", "광주", "대구"
 
 const addLocation = (loc) => {
 
-    locationList.forEach(elem => {
-        loc.innerHTML += `<option value=${elem}>${elem}</option>`;
-    });
+  locationList.forEach(elem=>{
+    loc.innerHTML+=`<option value=${elem}>${elem}</option>`;
+
+  });
 }
 addLocation(location1);
 addLocation(location2);
@@ -53,4 +54,5 @@ function categoryChange(e) {
             state2.appendChild(opt);
         }
     }
-} 
+  }
+
