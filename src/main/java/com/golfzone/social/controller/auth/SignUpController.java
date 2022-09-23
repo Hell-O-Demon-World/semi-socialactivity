@@ -13,6 +13,7 @@ import java.io.IOException;
 public class SignUpController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String resultMsg = "";
         // init get parameter
         String userId = req.getParameter("userID");

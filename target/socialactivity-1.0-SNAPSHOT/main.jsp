@@ -170,9 +170,9 @@
     </div>
   </div>
 </section>
-<script src="./js/main.js"></script>
-<script src="./js/juso.js"></script>
-<script src="./js/login.js"></script>
+<script src="./js/main.js " charset="UTF-8"></script>
+<script src="./js/juso.js" charset="UTF-8"></script>
+<script src="./js/login.js" charset="UTF-8"></script>
 <script
         type="module"
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
