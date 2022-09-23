@@ -49,7 +49,7 @@ public class SignUpController extends HttpServlet {
                 userVO.setUserTier("diamond");
             } else if (Integer.parseInt(userScoreMsg) == 7) {
                 userVO.setUserTier("platinum");
-            } else if (Integer.parseInt(userScoreMsg) == 8) {
+            } else if (Integer.parseInt(userScoreMsg)== 8) {
                 userVO.setUserTier("gold");
             } else if (Integer.parseInt(userScoreMsg) == 9) {
                 userVO.setUserTier("silver");
