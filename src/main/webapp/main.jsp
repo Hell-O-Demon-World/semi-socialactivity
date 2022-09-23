@@ -13,7 +13,7 @@
 <% String msg = (String) request.getAttribute("resultMsg"); %>
 <section id="navBar">
   <nav id="mainNav">
-    <a href="#" class="logo">Logo</a>
+    <a href="/" class="logo">Logo</a>
     <ul>
       <li><a href="#">MyPage</a></li>
     </ul>

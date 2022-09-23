@@ -19,7 +19,7 @@
 <body>
 <section id="navBar">
     <nav id="mainNav">
-        <a href="#" class="logo">Logo</a>
+        <a href="/club.jsp" class="logo">Logo</a>
         <ul>
             <li><a href="#">MyPage</a></li>
         </ul>
@@ -100,7 +100,7 @@
     <section id="createClub">
         <div class="container">
             <div class="title">Club 생성</div>
-            <form action="club" method="post">
+            <form action="" method="post">
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Club Name</span>
@@ -153,7 +153,7 @@
                     </div>
 
                     <div class="etc">
-                <span class="details" >Club Location</label>
+                <label class="details" >Club Location</label>
                     <select name="location" id="clubLocation">
                   <option value = "0" selected>시/도 선택</option>
                 </select>
