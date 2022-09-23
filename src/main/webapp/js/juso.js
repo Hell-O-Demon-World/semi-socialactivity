@@ -5,9 +5,13 @@ const locationList = ["강원", "경기", "경남", "경북","광주", "대구",
 const addLocation =  (loc) => {
 
   locationList.forEach(elem=>{
-    location1.innerHTML+=`<option value=${elem}>${elem}</option>`;
+    loc.innerHTML+=`<option value=${elem}>${elem}</option>`;
+
   });
 }
+addLocation(location1);
+addLocation(location2);
+
 
 function categoryChange(e) {
   const state = document.getElementById("state");
@@ -40,6 +44,15 @@ function categoryChange(e) {
       opt.value = selectState[property];
       opt.innerHTML = selectState[property];
       state.appendChild(opt);
+    }
+  }
+
+  if (e.id === 'location2') {
+    for (let property in selectState) {
+      let opt = document.createElement("option");
+      opt.value = selectState[property];
+      opt.innerHTML = selectState[property];
+      state2.appendChild(opt);
     }
   }
 } 
