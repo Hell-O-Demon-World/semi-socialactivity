@@ -40,15 +40,15 @@ public class SignUpController extends HttpServlet {
             userVO.setUserAge(Integer.parseInt(userAge));
             userVO.setUserName(userName);
             userVO.setUserSex(Boolean.parseBoolean(userSex));
-            if (userScoreMsg.equals(6)) {
+            if (Integer.parseInt(userScoreMsg) == 6) {
                 userVO.setUserTier("diamond");
-            } else if (userScoreMsg.equals(7)) {
+            } else if (Integer.parseInt(userScoreMsg) == 7) {
                 userVO.setUserTier("platinum");
-            } else if (userScoreMsg.equals(8)) {
+            } else if (Integer.parseInt(userScoreMsg)== 8) {
                 userVO.setUserTier("gold");
-            } else if (userScoreMsg.equals(9)) {
+            } else if (Integer.parseInt(userScoreMsg) == 9) {
                 userVO.setUserTier("silver");
-            } else if (userScoreMsg.equals(10)) {
+            } else if (Integer.parseInt(userScoreMsg) == 10) {
                 userVO.setUserTier("bronze");
             } else {
                 userVO.setUserTier("unrank");
