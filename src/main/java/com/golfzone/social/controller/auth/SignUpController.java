@@ -14,7 +14,7 @@ public class SignUpController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        String resultMsg = "";
+        String signupResultMsg = "";
         // init get parameter
         String userId = req.getParameter("userID");
         String userPw = req.getParameter("userPW");
@@ -27,9 +27,9 @@ public class SignUpController extends HttpServlet {
 
         // Checking length, input nothing
         if ((userId.length() > 10 && userId.length() < 5) || (userPw.length() > 10 && userPw.length() < 5)) {
-            resultMsg = "길이는 5 ~ 10 자리 이내여야 합니다.";
+            signupResultMsg = "길이는 5 ~ 10 자리 이내여야 합니다.";
         } else if (userId.equals("") || userPw.equals("") || userName.equals("") || userLocation.equals("") || userState.equals("") || userAge.equals("") || userScoreMsg.equals("") || userSex.equals("")) {
-            resultMsg = "값을 입력해 주세요";
+            signupResultMsg = "값을 입력해 주세요";
         } else {
             // init VO, DAO
             UserDAO userDAO = new UserDAOImpl();
@@ -39,16 +39,21 @@ public class SignUpController extends HttpServlet {
             userVO.setUserLocation(userLocation + " " + userState);
             userVO.setUserAge(Integer.parseInt(userAge));
             userVO.setUserName(userName);
-            userVO.setUserSex(Boolean.parseBoolean(userSex));
-            if (userScoreMsg.equals(6)) {
+            if (userSex.equals(0)){
+                userVO.setUserSex(false);
+            }
+            else {
+                userVO.setUserSex(true);
+            }
+            if (Integer.parseInt(userScoreMsg) == 6) {
                 userVO.setUserTier("diamond");
-            } else if (userScoreMsg.equals(7)) {
+            } else if (Integer.parseInt(userScoreMsg) == 7) {
                 userVO.setUserTier("platinum");
-            } else if (userScoreMsg.equals(8)) {
+            } else if (Integer.parseInt(userScoreMsg) == 8) {
                 userVO.setUserTier("gold");
-            } else if (userScoreMsg.equals(9)) {
+            } else if (Integer.parseInt(userScoreMsg) == 9) {
                 userVO.setUserTier("silver");
-            } else if (userScoreMsg.equals(10)) {
+            } else if (Integer.parseInt(userScoreMsg) == 10) {
                 userVO.setUserTier("bronze");
             } else {
                 userVO.setUserTier("unrank");
@@ -58,16 +63,15 @@ public class SignUpController extends HttpServlet {
             UserVO tempUserVO = userDAO.findByUser(userId);
             // check id duplicate
             if (tempUserVO.getUserId() != null) {
-                resultMsg = "이미 존재하는 아이디 입니다.";
+                signupResultMsg = "이미 존재하는 아이디 입니다.";
 
             } else {
                 userDAO.insertUser(userVO);
-                resultMsg = "회원 가입 완료";
-                System.out.println(userVO.getUserLocation());
+                signupResultMsg = "회원 가입 완료";
             }
-            System.out.println(resultMsg);
+            System.out.println(signupResultMsg);
         }
-        req.setAttribute("resultMsg", resultMsg);
+        req.setAttribute("signupResultMsg", signupResultMsg);
         req.getRequestDispatcher("/main.jsp").forward(req, resp);
     }
 }
