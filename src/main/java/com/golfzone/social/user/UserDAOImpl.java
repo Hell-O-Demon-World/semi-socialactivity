@@ -73,25 +73,22 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void insertUser(UserVO userVO) {
-        String id = "";
-        id = userVO.getUserName() + ","
-                + userVO.getUserId() + ","
-                + userVO.getUserPw() + ","
-                + userVO.getUserLocation() + ","
-                + userVO.getUserAge() + ","
-                + userVO.isUserSex() + ","
-                + userVO.getUserTier() + ","
-                + userVO.getUserScore();
-        String tmpId = "'" + id + "'";
+    public int insertUser(UserVO userVO) {
+        int flag = 0;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
             System.out.println("conn success");
-
-            String sql = MariaDB.USER_INSERT + tmpId;
+            String sql = MariaDB.INSERT_USER;
             pstmt = conn.prepareStatement(sql);
-            rs = pstmt.executeQuery();
-
+            pstmt.setString(1, userVO.getUserName());
+            pstmt.setString(2, userVO.getUserId());
+            pstmt.setString(3, userVO.getUserPw());
+            pstmt.setString(4, userVO.getUserLocation());
+            pstmt.setInt(5, userVO.getUserAge());
+            pstmt.setBoolean(6, userVO.isUserSex());
+            pstmt.setString(7, userVO.getUserTier());
+            pstmt.setInt(8, userVO.getUserScore());
+            flag = pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -119,6 +116,7 @@ public class UserDAOImpl implements UserDAO {
                 }
             }
         } // end finally
+        return flag;
     }
 
     @Override

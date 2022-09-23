@@ -23,8 +23,7 @@ public class SignUpController extends HttpServlet {
         String userName = req.getParameter("userName");
         String userSex = req.getParameter("userGender");
         String userScoreMsg = req.getParameter("tierName");
-        System.out.println("userID: "+userId+"userPW: "+userPw);
-        System.out.println(userId.length() + " " + userPw.length());
+
         // Checking length, input nothing
         if ((userId.length() > 10 && userId.length() < 5) || (userPw.length() > 10 && userPw.length() < 5)) {
             resultMsg = "길이는 5 ~ 10 자리 이내여야 합니다.";
@@ -57,12 +56,15 @@ public class SignUpController extends HttpServlet {
 
             UserVO tempUserVO = userDAO.findByUser(userId);
             // check id duplicate
-            if (tempUserVO != null) {
+            if (tempUserVO.getUserId() != null) {
                 resultMsg = "이미 존재하는 아이디 입니다.";
-            } else{
+
+            } else {
                 userDAO.insertUser(userVO);
                 resultMsg = "회원 가입 완료";
+                System.out.println(userVO.getUserLocation());
             }
+            System.out.println(resultMsg);
         }
         req.setAttribute("resultMsg", resultMsg);
         req.getRequestDispatcher("/main.jsp").forward(req, resp);
