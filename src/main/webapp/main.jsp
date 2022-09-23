@@ -87,89 +87,104 @@
     </form>
   </div>
 </section>
-
-<section id="clubIntro">
-  <h1>클럽 소개</h1>
-</section>
-<section id="loginForm">
-  <div class="container">
-    <div class="blue-bg">
-      <div class="box sign-in">
-        <h2>Already Have an Account?</h2>
-        <button type="button" id="signInBtn" onclick="removeActive()">
-          Sign in
-        </button>
+<div class = "main-flex-container">
+  <div class="list-container">
+    <section id="clubIntro">
+      <div class="slide">모임 홍보 슬라이드</div>
+    </section>
+    <section id="recommendClub">
+      <h1>추천 모임</h1>
+      <div class="recommend-club-container">
+        
       </div>
-      <div class="box sign-up">
-        <h2>Don't have an Account</h2>
-        <button type="button" id="signupBtn" onclick="addActive()">
-          Sign up
-        </button>
+    </section>
+    <section id="recommendActivity">
+      <h1>추천 액티비티</h1>
+      <div class="recommend-activity-container">
+        
       </div>
-    </div>
-    <div class="form-box">
-      <div class="form sign-in-form">
-        <form action="/login" method="post">
-          <h3>Sign In</h3>
-          <input type="text" placeholder="userID" name="userID" />
-          <input type="password" placeholder="Password" name="password" />
-          <input type="submit" value="Login" />
-          <a href="#" class="forgot">Forgot Password</a>
-          <%if ( msg == "회원가입이 필요합니다."){%>
-            <p><%=msg%></p>
-          <%}%>
-        </form>
+    </section>  
+  </div>
+  <section id="loginForm">
+    <div class="container">
+      <div class="blue-bg">
+        <div class="box sign-in">
+          <h2>Already Have an Account?</h2>
+          <button type="button" id="signInBtn" onclick="removeActive()">
+            Sign in
+          </button>
+        </div>
+        <div class="box sign-up">
+          <h2>Don't have an Account</h2>
+          <button type="button" id="signupBtn" onclick="addActive()">
+            Sign up
+          </button>
+        </div>
       </div>
-      <div class="form sign-up-form">
-        <form action="signup" method="post">
-          <h3>Sign Up</h3>
-          <input
-                  type="text"
-                  name="userName"
-                  placeholder="user NickName(11자리)"
-          />
-          <input type="text" name="userID" placeholder="user ID(11자리)" />
-          <input
-                  type="password"
-                  name="userPW"
-                  placeholder="userPW(11자리)"
-          />
-          <div class="location2">
-            <select
-                    name="location2"
-                    id="location2"
-                    onchange="categoryChange(this)"
-            >
-              <option value selected>시/도 선택</option>
-            </select>
-            <b>/</b>
-            <select name="state2" id="state2">
-              <option selected>군/구 선택</option>
-            </select>
-          </div>
-          <div class="extra-input">
-            <div class="age">
-              <label for="age-ipt-num">나이</label>
-              <input type="number" id="age-ipt-num" name="age" />
-            </div>
-            <div class="tier">
-              <label for="tierName">등급</label>
-              <select name="tierName" id="tierName"></select>
-            </div>
-            <div class="gender">
-              <label for="gender-ipt-num">성별</label>
-              <select name="userGender" id="gender-ipt-num">
-                <option value="0">남성</option>
-                <option value="1">여성</option>
+      <div class="form-box">
+        <div class="form sign-in-form">
+          <form action="/login" method="post">
+            <h3>Sign In</h3>
+            <input type="text" placeholder="userID" name="userID" />
+            <input type="password" placeholder="Password" name="password" />
+            <input type="submit" value="Login" />
+            <a href="#" class="forgot">Forgot Password</a>
+            <%if ( msg == "회원가입이 필요합니다."){%>
+              <p><%=msg%></p>
+            <%}%>
+          </form>
+        </div>
+        <div class="form sign-up-form">
+          <form action="signup" method="post">
+            <h3>Sign Up</h3>
+            <input
+                    type="text"
+                    name="userName"
+                    placeholder="user NickName(11자리)"
+            />
+            <input type="text" name="userID" placeholder="user ID(11자리)" />
+            <input
+                    type="password"
+                    name="userPW"
+                    placeholder="userPW(11자리)"
+            />
+            <div class="location2">
+              <select
+                      name="location2"
+                      id="location2"
+                      onchange="categoryChange(this)"
+              >
+                <option value selected>시/도 선택</option>
+              </select>
+              <b>/</b>
+              <select name="state2" id="state2">
+                <option selected>군/구 선택</option>
               </select>
             </div>
-          </div>
-          <input type="submit" value="Register" />
-        </form>
+            <div class="extra-input">
+              <div class="age">
+                <label for="age-ipt-num">나이</label>
+                <input type="number" id="age-ipt-num" name="age" />
+              </div>
+              <div class="tier">
+                <label for="tierName">등급</label>
+                <select name="tierName" id="tierName"></select>
+              </div>
+              <div class="gender">
+                <label for="gender-ipt-num">성별</label>
+                <select name="userGender" id="gender-ipt-num">
+                  <option value="0">남성</option>
+                  <option value="1">여성</option>
+                </select>
+              </div>
+            </div>
+            <input type="submit" value="Register" />
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 <script src="./js/main.js " charset="UTF-8"></script>
 <script src="./js/juso.js" charset="UTF-8"></script>
 <script src="./js/login.js" charset="UTF-8"></script>

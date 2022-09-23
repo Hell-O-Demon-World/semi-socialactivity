@@ -101,7 +101,34 @@ li a:hover {
 .search-name input:focus {
   outline: none;
 }
-
+.list-container {
+  display: grid;
+  width: calc(65% - 10px);
+  height: 100vh;
+}
+.main-flex-container {
+  display: flex;
+  width: 100%;
+}
+#recommendClub{
+  height: 50%;
+}
+#recommendActivity{
+  height: 50%;
+}
+#clubIntro .slide {
+  width: 90%;
+  height: 100%;
+  background: #0287C3;
+  font-size: 24px;
+}
+#recommendClub .recommend-club-container, #recommendActivity .recommend-activity-container{
+  width: 90%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background: #0287C3;
+}
 #dropDown .optional {
   position: absolute;
   top: 30px;
@@ -161,8 +188,8 @@ select option {
 /* clubIntro section - 임시*/
 #clubIntro {
   float: left;
-  width: 65%;
-  height: 100vh;
+  width: 100%;
+  height: 30%;
 }
 
 /* club 생성 form */
