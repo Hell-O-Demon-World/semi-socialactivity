@@ -35,4 +35,36 @@
         <servlet-name>club</servlet-name>
         <url-pattern>/club</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>board</servlet-name>
+        <servlet-class>com.golfzone.social.controller.board.BoardController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>board</servlet-name>
+        <url-pattern>/board</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>comment</servlet-name>
+        <servlet-class>com.golfzone.social.controller.comment.CommentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>comment</servlet-name>
+        <url-pattern>/comment</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Activity</servlet-name>
+        <servlet-class>com.golfzone.social.controller.activity.ActivityController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Activity</servlet-name>
+        <url-pattern>/Activity</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Album</servlet-name>
+        <servlet-class>com.golfzone.social.controller.album.AlbumController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Album</servlet-name>
+        <url-pattern>/Album</url-pattern>
+    </servlet-mapping>
 </web-app>
