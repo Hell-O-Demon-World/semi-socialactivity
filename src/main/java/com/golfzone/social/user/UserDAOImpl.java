@@ -3,7 +3,6 @@ package com.golfzone.social.user;
 import com.golfzone.social.db.MariaDB;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
