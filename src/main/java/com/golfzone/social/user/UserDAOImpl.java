@@ -69,7 +69,52 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<UserVO> selectAll() {
-        return null;
+        List<UserVO> vos = new ArrayList<>();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("conn success");
+            String sql = MariaDB.USER_SELECT_ALL;
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                UserVO vo = new UserVO();
+                vo.setUserNum(rs.getInt("userNum"));
+                vo.setUserName(rs.getString("userName"));
+                vo.setUserId(rs.getString("userID"));
+                vo.setUserPw(rs.getString("userPW"));
+                vo.setUserLocation(rs.getString("userLocation"));
+                vo.setUserAge(rs.getInt("userAge"));
+                vo.setUserSex(rs.getBoolean("userSex"));
+                vo.setUserTier(rs.getString("userTier"));
+                vo.setUserScore(rs.getInt("userScore"));
+                vos.add(vo);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        return vos;
     }
 
     @Override

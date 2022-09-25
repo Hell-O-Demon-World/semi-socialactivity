@@ -1,4 +1,9 @@
 <%@ page import="com.golfzone.social.user.UserVO" %>
+<%@ page import="com.golfzone.social.club.ClubDAO" %>
+<%@ page import="com.golfzone.social.club.ClubDAOImpl" %>
+<%@ page import="com.golfzone.social.club.ClubVO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <head>
@@ -11,6 +16,10 @@
 </head>
 <body>
 <% String msg = (String) request.getAttribute("resultMsg"); %>
+<%
+  ClubDAO clubDAO = new ClubDAOImpl();
+  List<ClubVO> clubVOS = clubDAO.selectAll();
+%>
 <section id="navBar">
   <nav id="mainNav">
     <a href="/" class="logo">Logo</a>
@@ -19,7 +28,7 @@
     </ul>
   </nav>
   <div id="dropDown">
-    <form action="" method="post" class="search-form">
+    <form action="#" method="post" class="search-form">
       <div class="search-name">
         <ion-icon class="search-icon" name="search-outline"></ion-icon>
         <input
@@ -90,18 +99,93 @@
 <div class = "main-flex-container">
   <div class="list-container">
     <section id="clubIntro">
-      <div class="slide">모임 홍보 슬라이드</div>
+      <h1>모임(광고)</h1>
+      <div class="slide">
+        <div class="left-button" onclick="showLeftItem()"><p><div class="arrow-left" id="leftArrow"></div></p></div>
+        <div class="promotion-club-container">
+          <div class="promotion-club-item">
+            <form action="#" method="post">
+              <img src="${pageContext.request.contextPath}/img/test-emblem-logo.png" alt="no-emblem-img" />
+              <p>모임명</p>
+              <p>인원</p>
+              <p>지역</p>
+              <input id ="joinClubBtn" type="submit" value="가입하기"/>
+            </form>
+          </div>
+        </div>
+        <div class="right-button" onclick="showRightItem"><div class="arrow-right" id="rightArrow"></div></div>
+      </div>
     </section>
     <section id="recommendClub">
       <h1>추천 모임</h1>
-      <div class="recommend-club-container">
-        
+      <div class="recommend-club-container" id = "recommendClubContainer">
+        <%for (int i = 0; i< clubVOS.size(); i++){%>
+          <div class="recommend-club-item">
+            <form action="#" method="post">
+              <img src=<%=clubVOS.get(i).getClubEmblemPath()%> alt="no-emblem-img" />
+              <p>모임명 : <%=clubVOS.get(i).getClubName()%></p>
+              <p>인원 : <%=clubVOS.get(i).getClubMaxCount()%></p>
+              <p>지역 : <%=clubVOS.get(i).getClubLocation()%></p>
+              <input id ="joinClubBtn" type="submit" value="가입하기"/>
+            </form>
+          </div>
+        <%}%>
       </div>
     </section>
     <section id="recommendActivity">
       <h1>추천 액티비티</h1>
-      <div class="recommend-activity-container">
-        
+      <div class="recommend-activity-container" id = "recommendActivivityContainer">
+        <div class="recommend-activity-item">
+          <form action="#" method="post">
+            <img src="${pageContext.request.contextPath}/img/test-activity-logo.png" href="no-img" />
+            <p>액티비티명</p>
+            <p>인원</p>
+            <p>지역</p>
+            <input id ="joinActivityBtn" type="submit" value="가입하기"/>
+          </form>
+        </div>
+        <div class="recommend-activity-item">
+          <img src="#" href="no-img" />
+          <p>액티비티명</p>
+          <p>인원</p>
+          <p>지역</p>
+          <input id ="joinActivityBtn" type="submit" value="가입하기"/>
+        </div>
+        <div class="recommend-activity-item">
+          <img src="#" href="no-img" />
+          <p>액티비티명</p>
+          <p>인원</p>
+          <p>지역</p>
+          <input id ="joinActivityBtn" type="submit" value="가입하기"/>
+        </div>
+        <div class="recommend-activity-item">
+          <img src="#" href="no-img" />
+          <p>액티비티명</p>
+          <p>인원</p>
+          <p>지역</p>
+          <input id ="joinActivityBtn" type="submit" value="가입하기"/>
+        </div>
+        <div class="recommend-activity-item">
+          <img src="#" href="no-img" />
+          <p>액티비티명</p>
+          <p>인원</p>
+          <p>지역</p>
+          <input id ="joinActivityBtn" type="submit" value="가입하기"/>
+        </div>
+        <div class="recommend-activity-item">
+          <img src="#" href="no-img" />
+          <p>액티비티명</p>
+          <p>인원</p>
+          <p>지역</p>
+          <input id ="joinActivityBtn" type="submit" value="가입하기"/>
+        </div>
+        <div class="recommend-activity-item">
+          <img src="#" href="no-img" />
+          <p>액티비티명</p>
+          <p>인원</p>
+          <p>지역</p>
+          <input id ="joinActivityBtn" type="submit" value="가입하기"/>
+        </div>
       </div>
     </section>  
   </div>
@@ -188,6 +272,8 @@
 <script src="./js/main.js " charset="UTF-8"></script>
 <script src="./js/juso.js" charset="UTF-8"></script>
 <script src="./js/login.js" charset="UTF-8"></script>
+<script src="./js/arrow.js" charset="UTF-8"></script>
+<script src="./js/recommend.js" charset="UTF-8"></script>
 <script
         type="module"
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"

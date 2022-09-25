@@ -23,12 +23,12 @@ a.logo {
   color: #fff;
   font-size: 35px;
   line-height: 80px;
-  padding: 0 100px;
+  padding: 0 10%;
   font-weight: bold;
 }
 nav ul {
   float: right;
-  margin-right: 90px;
+  margin-right: 6%;
 }
 
 nav ul li {
@@ -49,10 +49,10 @@ li a:hover {
   font-size: 19px;
   transition: 0.5s;
 }
-
 /* Search Dropdown */
 #dropDown {
   position: relative;
+  z-index: 100;
   top: -60px;
   left: 50%;
   transform: translateX(-50%);
@@ -60,7 +60,7 @@ li a:hover {
   justify-content: center;
   align-items: center;
   height: 40px;
-  width: 500px;
+  width: 50%;
 }
 
 #dropDown .search-name {
@@ -101,34 +101,7 @@ li a:hover {
 .search-name input:focus {
   outline: none;
 }
-.list-container {
-  display: grid;
-  width: calc(65% - 10px);
-  height: 100vh;
-}
-.main-flex-container {
-  display: flex;
-  width: 100%;
-}
-#recommendClub{
-  height: 50%;
-}
-#recommendActivity{
-  height: 50%;
-}
-#clubIntro .slide {
-  width: 90%;
-  height: 100%;
-  background: #0287C3;
-  font-size: 24px;
-}
-#recommendClub .recommend-club-container, #recommendActivity .recommend-activity-container{
-  width: 90%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  background: #0287C3;
-}
+
 #dropDown .optional {
   position: absolute;
   top: 30px;
@@ -187,15 +160,108 @@ select option {
 /* clubIntro */
 /* clubIntro section - 임시*/
 #clubIntro {
-  float: left;
-  width: 100%;
+  width: 90%;
   height: 30%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
 }
 
+#clubIntro h1{
+  width: 100%;
+}
+#clubIntro .left-button, #clubIntro .right-button{
+  width: 10%;
+  height: 10%;
+}
 /* club 생성 form */
 #createClub {
   float: right;
   width: 35%;
   height: 100vh;
   border: 3px solid #222;
+}
+
+/* 모임 리스트 form */
+.main-flex-container {
+  display: flex;
+  width: 100%;
+}
+.list-container {
+  display: grid;
+  width: 65%;
+  height: 100vh;
+}
+#recommendClub{
+  height: 50%;
+}
+#recommendActivity{
+  height: 50%;
+}
+#clubIntro .slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 12rem;
+  font-size: 20px;
+  background-color: #03a9f4;
+}
+.arrow-left, .arrow-right{
+  position: relative;
+  cursor: pointer; 
+}
+.arrow-left::after{
+  position: absolute;
+  left: 0; 
+  top: -4.1px; 
+  content: '';
+  width: 2rem; /* 사이즈 */
+  height: 2rem; /* 사이즈 */
+  border-top: 5px solid #000; /* 선 두께 */
+  border-right: 5px solid #000; /* 선 두께 */
+  transform: rotate(225deg); /* 각도 */
+}
+.arrow-right::after{
+  position: absolute;
+  left: -4.1px; 
+  top: -4.1px; 
+  content: '';
+  width: 2rem; /* 사이즈 */
+  height: 2rem; /* 사이즈 */
+  border-top: 5px solid #000; /* 선 두께 */
+  border-right: 5px solid #000; /* 선 두께 */
+  transform: rotate(45deg); /* 각도 */
+}
+
+.promotion-club-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 10rem;
+  margin: 5px 5px;
+  background-color: #131516;
+}
+.recommend-club-container, .recommend-activity-container{
+  display: grid;
+  width: 70%;
+  height: 10rem;
+  padding: 5px 5px;
+  grid-auto-flow: column;
+  grid-gap: 1%;
+  overflow: auto;
+}
+
+.promotion-club-item, .recommend-club-item, .recommend-activity-item{
+  width: 10vw;
+  height: 100%;
+  text-align: center;
+  background-color: #131516;
+}
+
+.promotion-club-item form > img, .recommend-club-item form > img, .recommend-activity-item form > img{
+  width: 2.5rem;
+  height: 2.5rem;
 }

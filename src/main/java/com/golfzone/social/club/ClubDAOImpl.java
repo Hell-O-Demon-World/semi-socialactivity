@@ -4,6 +4,8 @@ import com.golfzone.social.db.MariaDB;
 import com.golfzone.social.user.UserVO;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClubDAOImpl implements ClubDAO {
     private Connection conn;
@@ -19,6 +21,7 @@ public class ClubDAOImpl implements ClubDAO {
             e.printStackTrace();
         }
     }
+
     @Override
     public int insertClub(ClubVO clubVO) {
         int flag = 0;
@@ -119,4 +122,54 @@ public class ClubDAOImpl implements ClubDAO {
         } // end finally
         return vo;
     }
+
+    @Override
+    public List<ClubVO> selectAll() {
+        List<ClubVO> vos = new ArrayList<>();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("conn success");
+
+            String sql = MariaDB.CLUB_SELECT_ALL;
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                ClubVO vo = new ClubVO();
+                vo.setClubEmblemPath(rs.getString("CLUB_EMBLEMPATH"));
+                vo.setClubName(rs.getString("CLUB_NAME"));
+                vo.setClubLocation(rs.getString("CLUB_LOCATION"));
+                vo.setClubMaxCount(rs.getInt("CLUB_MAXCOUNT"));
+                vos.add(vo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vos;
+    }
 }
+
