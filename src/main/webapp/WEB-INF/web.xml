@@ -43,4 +43,12 @@
         <servlet-name>joinclub</servlet-name>
         <url-pattern>/joinclub</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>joincactivity</servlet-name>
+        <servlet-class>com.golfzone.social.controller.activity.JoinActivityController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>joincactivity</servlet-name>
+        <url-pattern>/joincactivity</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -129,7 +129,7 @@
                                 <input type="hidden" name="clubNum" value="<%=clubNum%>">
                                 <input type="hidden" name="clubName" value="<%=clubName%>">
                                 <input type="hidden" name="clubLocation" value="<%=clubLocation%>">
-                                <input id="joinClubBtn2" type="submit" value="가입하기"/>
+                                <input id="joinClubBtn" type="submit" value="가입하기"/>
                             </form>
                         </div>
                     </div>
@@ -163,7 +163,7 @@
                 <div class="recommend-activity-container" id="recommendActivivityContainer">
                     <%for (int i = 0; i < activityVOS.size(); i++) {%>
                     <div class="recommend-activity-item">
-                        <form action="#" method="post">
+                        <form action="/activity" method="post">
                             <p>액티비티명 : <%=activityVOS.get(i).getActivityTitle()%>
                             </p>
                             <p>인원 : ? / 4 명</p>
