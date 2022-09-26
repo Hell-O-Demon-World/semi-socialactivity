@@ -29,7 +29,7 @@ public class BoardDAOImpl implements BoardDAO{
         int flag = 0;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn success");
+            System.out.println("insertBoard: conn success");
             String sql = MariaDB.INSERT_BOARD;
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, boardVO.getBoardTitle());

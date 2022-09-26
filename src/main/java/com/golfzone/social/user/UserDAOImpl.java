@@ -14,57 +14,9 @@ public class UserDAOImpl implements UserDAO {
     public UserDAOImpl() {
         try {
             Class.forName(MariaDB.DRIVER_NAME);
-//			jdbcConnectionTest();
-
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
-
-    private void jdbcConnectionTest() {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-
-        try {
-            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn successed...");
-
-            String sql = "select version() as version";
-            pstmt = conn.prepareStatement(sql);
-            rs = pstmt.executeQuery();
-
-            while (rs.next()) {
-                System.out.println(rs.getString("version"));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
     }
 
     @Override
@@ -72,7 +24,7 @@ public class UserDAOImpl implements UserDAO {
         List<UserVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn success");
+            System.out.println("User selectAll: conn success");
             String sql = MariaDB.USER_SELECT_ALL;
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -122,7 +74,7 @@ public class UserDAOImpl implements UserDAO {
         int flag = 0;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn success");
+            System.out.println("insertUser: conn success");
             String sql = MariaDB.INSERT_USER;
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userVO.getUserName());
@@ -170,7 +122,7 @@ public class UserDAOImpl implements UserDAO {
         String id2 = "'" + userId + "'";
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn success");
+            System.out.println("findByUser: conn success");
 
             String sql = MariaDB.USER_FIND_BY_USER + id2;
             pstmt = conn.prepareStatement(sql);

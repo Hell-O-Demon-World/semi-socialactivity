@@ -27,7 +27,7 @@ public class ClubDAOImpl implements ClubDAO {
         int flag = 0;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn success");
+            System.out.println("insertClub: conn success");
             String sql = MariaDB.INSERT_CLUB;
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, clubVO.getClubName());
@@ -75,7 +75,7 @@ public class ClubDAOImpl implements ClubDAO {
         ClubVO vo = new ClubVO();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn success");
+            System.out.println("findByClubName: conn success");
 
             String sql = MariaDB.CLUB_FIND_BY_CLUB_NAME;
             pstmt = conn.prepareStatement(sql);
@@ -128,7 +128,7 @@ public class ClubDAOImpl implements ClubDAO {
         ClubVO vo = new ClubVO();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn success");
+            System.out.println("findByClubPassword: conn success");
 
             String sql = MariaDB.CLUB_FIND_BY_CLUB_PASSWORD;
             pstmt = conn.prepareStatement(sql);
@@ -182,7 +182,7 @@ public class ClubDAOImpl implements ClubDAO {
         List<ClubVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn success");
+            System.out.println("Club selectAll: conn success");
 
             String sql = MariaDB.CLUB_SELECT_ALL;
             pstmt = conn.prepareStatement(sql);
