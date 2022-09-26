@@ -49,6 +49,7 @@ const swiperAlbum = new Swiper(".album-container", {
   spaceBetween: 30, // 슬라이드 간격(px)
   slidesPerGroup: 4,
   allowTouchMove: false,
+  height: 400,
   loop: true,
   loopFillGroupWithBlank: true, // 빈칸인 경우 빈칸으로 메우기
   pagination: {
@@ -77,8 +78,8 @@ const boardSwiper = new Swiper(".board-container", {
 /* comment swiper */
 const commentSwiper = new Swiper(".comment-container", {
   direction: "vertical",
-  height: 550,
-  slidesPerView: 10,
+  height: 150,
+  slidesPerView: 4,
   freeMode: true,
   scrollbar: {
     el: ".swiper-scrollbar",
@@ -86,7 +87,7 @@ const commentSwiper = new Swiper(".comment-container", {
   mousewheel: true,
 });
 /* 게시판 글추가  */
-const createBoardBtn = document.getElementById("createBoardBtn");
+const createBoardBtn = document.querySelector(".add-board");
 const createBoard = document.getElementById("createBoard");
 const newBoardForm = (e) => {
   createBoard.style.display = "flex";
