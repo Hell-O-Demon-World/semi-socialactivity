@@ -21,6 +21,7 @@
           <li><a href="#board">Board</a></li>
           <li><a href="#album">Album</a></li>
           <li><a href="#">MyPage</a></li>
+          <li><input type="submit" value="logout" id="logout" /></li>
         </ul>
       </nav>
     </section>
@@ -28,6 +29,7 @@
       <h1>Activity List</h1>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
+          <!-- activity slide start -->
           <div class="swiper-slide">
             <div class="activity-name">Activity 1</div>
             <div class="activity-description">
@@ -36,14 +38,7 @@
               praesentium voluptatibus. Exercitationem, qui?
             </div>
           </div>
-          <div class="swiper-slide">Slide 2</div>
-          <div class="swiper-slide">Slide 3</div>
-          <div class="swiper-slide">Slide 4</div>
-          <div class="swiper-slide">Slide 5</div>
-          <div class="swiper-slide">Slide 6</div>
-          <div class="swiper-slide">Slide 7</div>
-          <div class="swiper-slide">Slide 8</div>
-          <div class="swiper-slide">Slide 9</div>
+          <!-- activity slide end -->
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -51,7 +46,10 @@
       </div>
     </section>
     <section id="board">
-      <h1>board section</h1>
+      <div class="header">
+        <h1>board section</h1>
+        <div id="createBoardBtn">Create Board</div>
+      </div>
       <div id="left">
         <div class="swiper board-container">
           <div class="swiper-wrapper">
@@ -74,58 +72,9 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
               </div>
               <div class="button-container">
-                <div class="button-update">수정</div>
-                <div class="button-delete">삭제</div>
-                <div class="button-details">자세히</div>
-              </div>
-              <div class="line"></div>
-            </div>
-            <div class="swiper-slide">
-              <div class="board-info">
-                <div class="board-number">
-                  <div>게시글 번호</div>
-                  <div class="text">번호</div>
+                <div class="button-delete">
+                  <input type="submit" value="삭제" name="deleteBoard" />
                 </div>
-                <div class="board-creator">
-                  <div>게시글 작성자</div>
-                  <div class="text">작성자명</div>
-                </div>
-              </div>
-              <div class="board-content">
-                <div class="board-title">
-                  <div>게시글 제목</div>
-                  <div class="text">NO.2 JSP, Servlet</div>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              </div>
-              <div class="button-container">
-                <div class="button-update">수정</div>
-                <div class="button-delete">삭제</div>
-                <div class="button-details">자세히</div>
-              </div>
-              <div class="line"></div>
-            </div>
-            <div class="swiper-slide">
-              <div class="board-info">
-                <div class="board-number">
-                  <div>게시글 번호</div>
-                  <div class="text">번호</div>
-                </div>
-                <div class="board-creator">
-                  <div>게시글 작성자</div>
-                  <div class="text">작성자명</div>
-                </div>
-              </div>
-              <div class="board-content">
-                <div class="board-title">
-                  <div>게시글 제목</div>
-                  <div class="text">NO.3 JSP, Servlet</div>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              </div>
-              <div class="button-container">
-                <div class="button-update">수정</div>
-                <div class="button-delete">삭제</div>
                 <div class="button-details">자세히</div>
               </div>
               <div class="line"></div>
@@ -163,8 +112,25 @@
             <div class="swiper comment-container">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <div class="writer">작성자</div>
+                  <div>
+                    <div class="writer">작성자</div>
+                  </div>
                   <div class="content">내용</div>
+                </div>
+                <div class="swiper-slide">
+                  <div>
+                    <div>
+                      <input type="submit" value="삭제" name="deleteComment" />
+                      <div class="comment-details">자세히</div>
+                    </div>
+                    <div class="writer">작성자</div>
+                  </div>
+                  <div class="comment-content">
+                    가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가
+                  </div>
+                  <div class="display-none">
+                    가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가
+                  </div>
                 </div>
               </div>
               <div class="swiper-scrollbar"></div>
@@ -176,6 +142,7 @@
     <section id="createBoard">
       <h1>Create Board</h1>
       <div id="boardForm">
+        <div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
         <form action="" method="">
           <div>
             <div class="title">
@@ -200,8 +167,55 @@
         </form>
       </div>
     </section>
-
+    <section id="album">
+      <div class="swiper album-container">
+        <div class="swiper-wrapper">
+          <!-- activity slide start -->
+          <div class="swiper-slide">
+            <img src="../img/golfzon-logo.jpeg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/golfzon-logo.jpeg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/golfzon-logo.jpeg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/golfzon-logo.jpeg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/golfzon-logo.jpeg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/golfzon-logo.jpeg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/golfzon-logo.jpeg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/golfzon-logo.jpeg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/golfzon-logo.jpeg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/golfzon-logo.jpeg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/golfzon-logo.jpeg" alt="" />
+          </div>
+          <!-- activity slide end -->
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/1202a2b8dd.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="../js/clubmain.js"></script>
   </body>
 </html>
