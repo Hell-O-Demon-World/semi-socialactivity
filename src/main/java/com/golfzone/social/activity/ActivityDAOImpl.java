@@ -1,8 +1,11 @@
 package com.golfzone.social.activity;
 
+import com.golfzone.social.club.ClubVO;
 import com.golfzone.social.db.MariaDB;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ActivityDAOImpl implements ActivityDAO {
 
@@ -100,5 +103,52 @@ public class ActivityDAOImpl implements ActivityDAO {
             }
         } // end finally
         return flag;
+    }
+
+    @Override
+    public List<ActivityVO> selectAll() {
+        List<ActivityVO> vos = new ArrayList<>();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("conn success");
+
+            String sql = MariaDB.ACTIVITY_SELECT_ALL;
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                ActivityVO vo = new ActivityVO();
+                vo.setActivityTitle(rs.getString("ACTIVITY_TITLE"));
+                vo.setActivityDescription(rs.getString("ACTIVITY_DESCRIPTION"));
+                vos.add(vo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vos;
     }
 }
