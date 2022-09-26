@@ -115,15 +115,21 @@
                 <div class="slide">
                     <div class="left-button" onclick="showLeftItem()"><p>
                         <div class="arrow-left" id="leftArrow"></div>
-                        </p></div>
+                    </div>
                     <div class="promotion-club-container">
+                        <%  int clubNum = 3;
+                            String clubName = "KIM";
+                            String clubLocation = "SEOUL";%>
                         <div class="promotion-club-item">
-                            <form action="#" method="post">
+                            <form action="/joinclub" method="post">
                                 <img src="${pageContext.request.contextPath}/img/test-emblem-logo.png" alt="no-emblem-img"/>
-                                <p>모임명</p>
+                                <p>모임명 : </p>
                                 <p>인원</p>
                                 <p>지역</p>
-                                <input id="joinClubBtn" type="submit" value="가입하기"/>
+                                <input type="hidden" name="clubNum" value="<%=clubNum%>">
+                                <input type="hidden" name="clubName" value="<%=clubName%>">
+                                <input type="hidden" name="clubLocation" value="<%=clubLocation%>">
+                                <input id="joinClubBtn2" type="submit" value="가입하기"/>
                             </form>
                         </div>
                     </div>
@@ -136,18 +142,19 @@
                 <h1>추천 모임</h1>
                 <div class="recommend-club-container" id="recommendClubContainer">
                     <%for (int i = 0; i < clubVOS.size(); i++) {%>
-                    <div class="recommend-club-item">
-                        <form action="#" method="post">
-                            <img src=<%=clubVOS.get(i).getClubEmblemPath()%> alt="no-emblem-img"/>
-                            <p>모임명 : <%=clubVOS.get(i).getClubName()%>
-                            </p>
-                            <p>인원 : <%=clubVOS.get(i).getClubMaxCount()%>
-                            </p>
-                            <p>지역 : <%=clubVOS.get(i).getClubLocation()%>
-                            </p>
-                            <input id="joinClubBtn" type="submit" value="가입하기"/>
-                        </form>
-                    </div>
+                        <div class="recommend-club-item">
+                            <form action="/joinclub" method="post">
+                                <img src=<%=clubVOS.get(i).getClubEmblemPath()%> alt="no-emblem-img"/>
+                                <p>모임명 : <%=clubVOS.get(i).getClubName()%>
+                                </p>
+                                <p>인원 : <%=clubVOS.get(i).getClubMaxCount()%>
+                                </p>
+                                <p>지역 : <%=clubVOS.get(i).getClubLocation()%>
+                                </p>
+                                <input type="hidden" value=<%=clubVOS.get(i).getClubName()%>>
+                                <input class="join-club-button" type="submit" value="가입하기" />
+                            </form>
+                        </div>
                     <%}%>
                 </div>
             </section>
@@ -156,13 +163,13 @@
                 <div class="recommend-activity-container" id="recommendActivivityContainer">
                     <%for (int i = 0; i < activityVOS.size(); i++) {%>
                     <div class="recommend-activity-item">
-                        <form action="#" method="post">
+                        <form action="/activity" method="post">
                             <p>액티비티명 : <%=activityVOS.get(i).getActivityTitle()%>
                             </p>
                             <p>인원 : ? / 4 명</p>
                             <p>소개 : <%=activityVOS.get(i).getActivityDescription()%>
                             </p>
-                            <input id="joinActivityBtn" type="submit" value="가입하기"/>
+                            <input class="join-activity-button" type="submit" value="가입하기"/>
                         </form>
                     </div>
                     <%}%>
@@ -172,7 +179,7 @@
         <section id="createClub">
         <div class="container">
             <div class="title">Club 생성</div>
-            <form action="" method="post">
+            <form action="/club" method="post">
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Club Name</span>
