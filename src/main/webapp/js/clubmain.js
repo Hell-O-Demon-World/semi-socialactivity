@@ -1,5 +1,5 @@
-const swiperPrev = document.querySelector(".swiper-button-prev");
-const swiperNext = document.querySelector(".swiper-button-next");
+const swiperPrev = document.querySelector("#activity .swiper-button-prev");
+const swiperNext = document.querySelector("#activity .swiper-button-next");
 const slideCount = document.querySelectorAll("#activity .swiper-slide").length;
 const pageCount = // 슬라이드 페이지 개수
   slideCount % 4
@@ -44,6 +44,26 @@ const swiper = new Swiper(".mySwiper", {
   },
 });
 
+const swiperAlbum = new Swiper(".album-container", {
+  slidesPerView: 4, // 한 번에 보여질 element의 개수
+  spaceBetween: 30, // 슬라이드 간격(px)
+  slidesPerGroup: 4,
+  allowTouchMove: false,
+  loop: true,
+  loopFillGroupWithBlank: true, // 빈칸인 경우 빈칸으로 메우기
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  lazy: {
+    loadPrevNext: true, // 이전, 다음 이미지는 미리 로딩
+  },
+});
+
 /* 게시판 swiper */
 const boardSwiper = new Swiper(".board-container", {
   direction: "vertical",
@@ -65,7 +85,22 @@ const commentSwiper = new Swiper(".comment-container", {
   },
   mousewheel: true,
 });
+/* 게시판 글추가  */
+const createBoardBtn = document.getElementById("createBoardBtn");
+const createBoard = document.getElementById("createBoard");
+const newBoardForm = (e) => {
+  createBoard.style.display = "flex";
+  createBoard.style.zIndex = "100";
+};
+/* 글 추가 form display none */
+const removeFormBtn = document.querySelector(".close-btn");
+const removeForm = () => {
+  createBoard.style.display = "none";
+  createBoard.style.zIndex = "-1";
+};
+removeFormBtn.addEventListener("click", removeForm);
 
+createBoardBtn.addEventListener("click", newBoardForm);
 /* 게시판 crud */
 const updateBoard = document.querySelectorAll(".button-update");
 const deleteBoard = document.querySelectorAll(".button-delete");
@@ -76,7 +111,6 @@ const detailsBoard = document.getElementsByClassName("button-details");
  * @param {Event} e 이벤트 객체 전달
  */
 const showDetail = (e) => {
-  console.log(1);
   const detail = e.target.parentNode.parentNode;
   const title = detail.querySelector(".board-title .text").innerText;
   const creator = detail.querySelector(".board-creator .text").innerText;
@@ -100,62 +134,41 @@ const commentButton = document.getElementById("submitComment");
 const addComment = (e) => {
   e.preventDefault();
   const comment = e.target.parentNode;
-  const commentDetails = comment.querySelector('input[type="text"]').value;
+  let commentDetails = comment.querySelector('input[type="text"]').value;
+  let realCommentDetails = commentDetails;
   const commentList = document.querySelector(
     ".comment-container .swiper-wrapper"
   );
-  if (commentList.innerHTML.innerText === "댓글이 없습니다.") {
-    commentList.innerHTML = "";
+  if (commentDetails.length > 15) {
+    commentDetails = commentDetails.substring(0, 15) + "...";
   }
-  const div = document.createElement("div");
-  div.className = "swiper-slide";
-  div.innerHTML = `<div class="content"> ${commentDetails}</div>`;
-  commentList.insertBefore(div, null);
+
+  commentList.innerHTML += `
+  <div class="swiper-slide">
+    <div>
+      <div>
+        <input type="submit" value="삭제" name="deleteComment" />
+        <div class="comment-details">자세히</div>
+      </div>
+      <div class="writer">작성자</div>
+    </div>  
+    <div class="comment-content">
+      ${commentDetails}
+    </div>
+    <div class ="display-none">${realCommentDetails}</div>
+  </div>
+`;
+
   commentSwiper.update();
 };
 commentButton.addEventListener("click", addComment);
 
 const boardButton = document.getElementById("submitBoard");
+boardButton.addEventListener("click", removeForm);
 /** comment 추가
  *
  * @param {Event} e 이벤트 객체 추가
  */
-
-const boardList = document.querySelector("#board .swiper-wrapper");
-const addBoard = (e) => {
-  e.preventDefault();
-  const board = e.target.parentNode;
-  const title = board.querySelector("#boardTitle").value;
-  const creator = board.querySelector(".creator-name").innerText;
-  const text = board.querySelector("textarea").value;
-  boardList.innerHTML += `<div class="swiper-slide">
-  <div class="board-info">
-    <div class="board-number">
-      <div>게시글 번호</div>
-      <div class="text">번호</div>
-    </div>
-    <div class="board-creator">
-      <div>게시글 작성자</div>
-      <div class="text">${creator}</div>
-    </div>
-  </div>
-  <div class="board-content">
-    <div class="board-title">
-      <div>게시글 제목</div>
-      <div class="text">${title}</div>
-    </div>
-    <p>${text}</p>
-  </div>
-  <div class="button-container">
-    <div class="button-update">수정</div>
-    <div class="button-delete">삭제</div>
-    <div class="button-details">자세히</div>
-  </div>
-  <div class="line"></div>
-</div>`;
-  boardSwiper.update();
-};
-boardButton.addEventListener("click", addBoard);
 
 /* textarea 글자 수 제한 */
 const createBoardText = document.querySelector("#createBoard textarea");
@@ -180,3 +193,24 @@ createBoardText.keyup = function () {
     $(this).val(content.substring(0, 100));
   }
 };
+
+/* Comment 글자수 자르기 */
+
+const comments = document.getElementsByClassName("comment-content");
+console.log(comments);
+Array.prototype.forEach.call(comments, (elem) => {
+  elem.innerText = `${elem.innerText.substring(0, 15)} ...`;
+});
+
+/* comment 자세히 보기 */
+const commentDetailList = document.getElementsByClassName("comment-details");
+const showCommentDetails = (e) => {
+  console.log(
+    e.target.parentNode.parentNode.parentNode.querySelector(".display-none")
+      .innerText
+  );
+};
+Array.prototype.forEach.call(commentDetailList, (elem) => {
+  elem.addEventListener("click", showCommentDetails);
+});
+showCommentDetails;
