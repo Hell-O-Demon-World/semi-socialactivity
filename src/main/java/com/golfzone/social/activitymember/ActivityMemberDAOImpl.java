@@ -16,57 +16,10 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
     public ActivityMemberDAOImpl() {
         try {
             Class.forName(MariaDB.DRIVER_NAME);
-//			jdbcConnectionTest();
 
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private void jdbcConnectionTest() {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-
-        try {
-            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn successed...");
-
-            String sql = "select version() as version";
-            pstmt = conn.prepareStatement(sql);
-            rs = pstmt.executeQuery();
-
-            while (rs.next()) {
-                System.out.println(rs.getString("version"));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
     }
 
     @Override
@@ -74,7 +27,7 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
         int flag = 0;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn success");
+            System.out.println("insertActivityMember: conn success");
             String sql = MariaDB.INSERT_ACTIVITY_MEMBER;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, activityMemberVO.getActivityNum());
@@ -112,7 +65,7 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
         List<ActivityMemberVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn success");
+            System.out.println("ActivityMember selectAll: conn success");
 
             String sql = MariaDB.ACTIVITY_MEMBER_SELECT_ALL;
             pstmt = conn.prepareStatement(sql);

@@ -27,7 +27,7 @@ public class ActivityDAOImpl implements ActivityDAO {
         int flag = 0;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn success");
+            System.out.println("insertActivity: conn success");
             String sql = MariaDB.INSERT_ACTIVITY;
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, activityVO.getActivityTitle());
@@ -63,7 +63,7 @@ public class ActivityDAOImpl implements ActivityDAO {
         List<ActivityVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("conn success");
+            System.out.println("Activity selectAll: conn success");
 
             String sql = MariaDB.ACTIVITY_SELECT_ALL;
             pstmt = conn.prepareStatement(sql);

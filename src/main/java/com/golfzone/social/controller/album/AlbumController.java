@@ -15,7 +15,7 @@ public class AlbumController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        String AlbumResultMsg = "";
+        String AlbumInsertResultMsg = "";
         // init get parameter
         String albumNum = req.getParameter("albumNum");
         String imageName = req.getParameter("imageName");
@@ -23,7 +23,7 @@ public class AlbumController extends HttpServlet {
 
         // Checking length, input nothing
         if (imageName.equals("") || imagePath.equals("")) {
-            AlbumResultMsg = "값을 입력해 주세요";
+            AlbumInsertResultMsg = "이미지를 입력해 주세요";
         } else {
             // init VO, DAO
             AlbumDAO albumDAO = new AlbumDAOImpl();
@@ -31,9 +31,9 @@ public class AlbumController extends HttpServlet {
             albumVO.setImageName(imageName);
             albumVO.setImagePath(imagePath);
             albumDAO.insertAlbum(albumVO);
-            System.out.println(AlbumResultMsg);
+            System.out.println(AlbumInsertResultMsg);
         }
-        req.setAttribute("AlbumResultMsg", AlbumResultMsg);
+        req.setAttribute("AlbumInsertResultMsg", AlbumInsertResultMsg);
         req.getRequestDispatcher("").forward(req, resp);
     }
 }
