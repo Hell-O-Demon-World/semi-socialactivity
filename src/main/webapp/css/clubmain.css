@@ -1,0 +1,323 @@
+#navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+#activity {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 50vh;
+  background: #eee;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  top: 80px;
+}
+#activity h1 {
+  text-align: center;
+  padding-top: 20px;
+  position: relative;
+  background: #fff;
+  height: 50px;
+}
+
+#board {
+  position: relative;
+  top: 80px;
+  width: 100%;
+  height: 70vh;
+}
+#album {
+  width: 100%;
+  height: 100%;
+}
+.swiper {
+  width: 100%;
+  height: 70vh;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  flex-direction: column;
+}
+.swiper-slide .activity-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 100px;
+}
+
+.swiper-slide .activity-description {
+  padding: 0 30px;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Board */
+#board {
+  height: 70vh;
+}
+#board #left {
+  width: 100%;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+.board-container {
+  float: left;
+  width: 49%;
+  height: 100%;
+}
+
+#board-details {
+  height: 100%;
+}
+
+#board #left .swiper-slide {
+  position: relative;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  flex-direction: row;
+}
+#board #left .swiper-slide .line {
+  position: absolute;
+  bottom: 15px;
+  width: 90%;
+
+  border-bottom: 3px solid #222;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#board .swiper-slide .board-info {
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.board-title {
+  display: flex;
+  margin-bottom: 10px;
+}
+#board .swiper-slide .board-info .board-number,
+#board .swiper-slide .board-info .board-creator,
+#board .swiper-slide .board-info .board-title {
+  width: 100%;
+  font-size: 12px;
+}
+
+.text {
+  font-weight: 900;
+  font-size: 16px;
+}
+#board .swiper-slide .board-content {
+  position: absolute;
+  top: 40px;
+  left: 200px;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+}
+.board-title .text {
+  margin-left: 20px;
+}
+
+#board .button-container {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 12px;
+  top: 5px;
+  right: 20px;
+}
+#board .button-container div {
+  font-weight: bold;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+#board .button-container div:nth-child(1) {
+  background: rgb(66, 94, 250);
+}
+#board .button-container div:nth-child(2) {
+  background: rgb(255, 0, 0);
+  margin: 0 12px;
+}
+#board .button-container div:nth-child(3) {
+  background: rgb(0, 255, 0);
+}
+
+/* board-details */
+
+#board-details {
+  float: right;
+  width: 50%;
+  height: 100%;
+}
+#board-details #info {
+  float: left;
+  height: 100%;
+  width: 50%;
+}
+#board-details .details-info {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  margin: 10px 15px;
+}
+#board-details .text {
+  font-size: 1.3rem;
+}
+#board-details .line {
+  width: 100%;
+  border-bottom: 2px solid #222;
+}
+.details-content {
+  margin: 10px 15px;
+}
+.details-content .text {
+  margin-bottom: 20px;
+}
+
+/* comment */
+#comment {
+  float: right;
+  width: 50%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+#comment .swiper-wrapper {
+  height: 100%;
+}
+
+#comment .swiper {
+  width: 100%;
+  height: 100%;
+}
+.commentInput {
+  margin: auto;
+}
+.commentInput input[type="text"] {
+  width: 50%;
+  height: 40px;
+  border-radius: 10px;
+  margin: 20px 30px;
+}
+.commentInput input[type="submit"] {
+  cursor: pointer;
+  height: 40px;
+  padding: 5px 10px;
+  background: #03a9f4;
+}
+
+/* createBoard */
+#createBoard {
+  width: 100%;
+  height: 70vh;
+  position: relative;
+  top: 80px;
+  padding-top: 100px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+}
+#boardForm form {
+  margin-top: 20px;
+  padding: 20px 40px;
+  width: 100%;
+  height: 50vh;
+  border: 2px solid #222;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+}
+#createBoard .creator {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+#createBoard .title {
+  width: 100%;
+  height: 50px;
+  margin-top: 30px;
+}
+#boardForm form input {
+  height: 100%;
+  border-radius: 10px;
+}
+#boardForm form input:focus {
+  outline: none;
+}
+#boardForm .content {
+  margin-top: 30px;
+  display: flex;
+  justify-self: center;
+  align-items: start;
+  flex-direction: column;
+}
+#boardForm form textarea {
+  margin-top: 20px;
+  resize: none;
+  font-size: 13pt;
+  height: 150px;
+}
+#boardForm input[type="submit"] {
+  margin-top: 20px;
+  width: 100%;
+  cursor: pointer;
+  height: 80px;
+}
