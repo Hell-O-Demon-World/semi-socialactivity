@@ -35,6 +35,7 @@
         <a href="/club.jsp" class="logo">Logo</a>
         <ul>
             <li><a href="#">MyPage</a></li>
+            <li><a href="/">Logout</a></li>
         </ul>
     </nav>
     <div id="dropDown">
@@ -126,9 +127,7 @@
                                 <p>모임명 : </p>
                                 <p>인원</p>
                                 <p>지역</p>
-                                <input type="hidden" name="clubNum" value="<%=clubNum%>">
-                                <input type="hidden" name="clubName" value="<%=clubName%>">
-                                <input type="hidden" name="clubLocation" value="<%=clubLocation%>">
+                                <input id = "1" type="hidden" value="<%=clubNum%>" name="clubNum"/>
                                 <input id="joinClubBtn2" type="submit" value="가입하기"/>
                             </form>
                         </div>
@@ -151,7 +150,7 @@
                                 </p>
                                 <p>지역 : <%=clubVOS.get(i).getClubLocation()%>
                                 </p>
-                                <input type="hidden" value=<%=clubVOS.get(i).getClubName()%>>
+                                <input type="hidden" value="<%=clubVOS.get(i).getClubNum()%>" name = "clubNum"/>
                                 <input class="join-club-button" type="submit" value="가입하기" />
                             </form>
                         </div>

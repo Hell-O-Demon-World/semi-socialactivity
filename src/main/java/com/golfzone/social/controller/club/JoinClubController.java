@@ -19,13 +19,10 @@ public class JoinClubController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String clubResultMsg = "resultMsg";
         String clubNum = req.getParameter("clubNum");
-        String clubName = req.getParameter("clubName");
-        String clubLocation = req.getParameter("clubLocation");
+        String id = req.getParameter("1");
         ClubDAO clubDAO = new ClubDAOImpl();
         ClubVO clubVO = new ClubVO();
-
-        clubVO.setClubName(clubName);
-        clubVO.setClubLocation(clubLocation);
+        System.out.println("id" + clubNum);
         ClubMemberDAO clubMemberDAO = new ClubMemberDAOImpl();
         ClubMemberVO clubMemberVO = new ClubMemberVO();
         clubMemberVO.setClubNum(Integer.parseInt(clubNum));
@@ -36,7 +33,6 @@ public class JoinClubController extends HttpServlet {
         else {
             // role num, auth_num, club num, user num, tier name
             clubMemberVO.setRoleNum(2);
-            clubMemberVO.setAuthNum(1);
             clubMemberVO.setUserNum(3);
             clubMemberVO.setTierName("unrank");
             clubMemberDAO.insertClubMember(clubMemberVO);

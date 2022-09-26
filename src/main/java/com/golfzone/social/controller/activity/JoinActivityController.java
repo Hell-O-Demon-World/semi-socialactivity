@@ -19,7 +19,6 @@ public class JoinActivityController extends HttpServlet {
         String activityNum = req.getParameter("activityNum");
         String userNum = req.getParameter("userNum");
         String clubNum = req.getParameter("clubNum");
-
         ActivityMemberVO activityMemberVO = new ActivityMemberVO();
         ActivityMemberDAO activityMemberDAO = new ActivityMemberDAOImpl();
 
