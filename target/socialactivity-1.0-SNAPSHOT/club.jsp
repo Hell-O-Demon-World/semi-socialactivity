@@ -129,7 +129,7 @@
                                 <input type="hidden" name="clubNum" value="<%=clubNum%>">
                                 <input type="hidden" name="clubName" value="<%=clubName%>">
                                 <input type="hidden" name="clubLocation" value="<%=clubLocation%>">
-                                <input id="joinClubBtn" type="submit" value="가입하기"/>
+                                <input id="joinClubBtn2" type="submit" value="가입하기"/>
                             </form>
                         </div>
                     </div>
