@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 200;
 }
 
 #activity {
@@ -82,7 +82,7 @@
 }
 #board #left {
   width: 100%;
-  height: 100%;
+  height: 70vh;
   float: left;
   position: relative;
 }
@@ -95,7 +95,19 @@
 #board-details {
   height: 100%;
 }
-
+#board .header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+#board .header #createBoardBtn {
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 10px 20px;
+  background: #03a9f4;
+  border-radius: 10px;
+  cursor: pointer;
+}
 #board #left .swiper-slide {
   position: relative;
   text-align: center;
@@ -179,11 +191,17 @@
   top: 5px;
   right: 20px;
 }
-#board .button-container div {
+#board .button-container div,
+#board .button-container input {
   font-weight: bold;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 10px;
+}
+#board .button-container input {
+  padding: 0;
+  border: none;
+  background: rgb(66, 94, 250);
 }
 #board .button-container div:nth-child(1) {
   background: rgb(66, 94, 250);
@@ -205,8 +223,8 @@
 }
 #board-details #info {
   float: left;
-  height: 100%;
-  width: 50%;
+  height: 30%;
+  width: 100%;
 }
 #board-details .details-info {
   display: flex;
@@ -232,11 +250,17 @@
 /* comment */
 #comment {
   float: right;
-  width: 50%;
-  height: 100%;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
   overflow-y: hidden;
 }
-
+.display-none {
+  display: none;
+}
 #comment .swiper-wrapper {
   height: 100%;
 }
@@ -245,8 +269,26 @@
   width: 100%;
   height: 100%;
 }
+#comment .swiper-slide {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#comment .swiper-slide div:first-child {
+  display: flex;
+  justify-content: space-around;
+}
+#comment .swiper-slide .vertical-line {
+  margin: 0 20px;
+}
+#comment .swiper-slide i {
+  cursor: pointer;
+}
 .commentInput {
-  margin: auto;
+  margin: 0;
 }
 .commentInput input[type="text"] {
   width: 50%;
@@ -260,31 +302,47 @@
   padding: 5px 10px;
   background: #03a9f4;
 }
-
+.swiper-slide input[type="submit"] {
+  cursor: pointer;
+  background: rgb(208, 12, 12);
+  border: none;
+  border-radius: 10px;
+}
+.comment-details {
+  background: #03a9f4;
+  margin-left: 5px;
+  margin-right: 20px;
+  border-radius: 10px;
+  width: 70%;
+  cursor: pointer;
+}
 /* createBoard */
 #createBoard {
   width: 100%;
   height: 70vh;
   position: relative;
-  top: 80px;
+  top: -700px;
   padding-top: 100px;
   display: flex;
   justify-content: start;
   align-items: center;
   flex-direction: column;
+  display: none;
 }
 #boardForm form {
   margin-top: 20px;
   padding: 20px 40px;
   width: 100%;
-  height: 50vh;
+  height: 70vh;
   border: 2px solid #222;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: start;
   flex-direction: column;
+  background: #03a9f4;
 }
+
 #createBoard .creator {
   margin-top: 30px;
   display: flex;
@@ -320,4 +378,11 @@
   width: 100%;
   cursor: pointer;
   height: 80px;
+}
+
+.close-btn i {
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  cursor: pointer;
 }

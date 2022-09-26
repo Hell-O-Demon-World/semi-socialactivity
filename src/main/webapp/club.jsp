@@ -152,7 +152,7 @@
                                 <p>지역 : <%=clubVOS.get(i).getClubLocation()%>
                                 </p>
                                 <input type="hidden" value=<%=clubVOS.get(i).getClubName()%>>
-                                <input id="joinClubBtn" type="submit" value="가입하기" />
+                                <input class="join-club-button" type="submit" value="가입하기" />
                             </form>
                         </div>
                     <%}%>
@@ -169,7 +169,7 @@
                             <p>인원 : ? / 4 명</p>
                             <p>소개 : <%=activityVOS.get(i).getActivityDescription()%>
                             </p>
-                            <input id="joinActivityBtn" type="submit" value="가입하기"/>
+                            <input class="join-activity-button" type="submit" value="가입하기"/>
                         </form>
                     </div>
                     <%}%>

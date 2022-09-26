@@ -20,5 +20,8 @@ public interface MariaDB {
     String INSERT_CLUB_MEMBER = "insert into club_member(role_num, auth_num, club_num, user_num, tier_name) values(?, ?, ?, ?, ?)";
     String CLUB_MEMBER_SELECT_ALL = "select * from club_member";
     String CLUB_MEMBER_FIND_BY_CLUB_NUM = "select * from club_member where club_num = ?";
+    String INSERT_ACTIVITY_MEMBER = "insert into activity_member(activity_num, club_num, user_num) values(?, ?, ?)";
+    String ACTIVITY_MEMBER_SELECT_ALL = "select * activity_member";
+    String USER_FIND_BY_ACTIVITY_MEMBER = "select * activity_member where user_num = ? and activity_num = ?";
 
 }
