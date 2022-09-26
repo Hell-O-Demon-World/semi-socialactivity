@@ -124,6 +124,60 @@ public class ClubDAOImpl implements ClubDAO {
     }
 
     @Override
+    public ClubVO findByClubPassword(ClubVO clubVO) {
+        ClubVO vo = new ClubVO();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("conn success");
+
+            String sql = MariaDB.CLUB_FIND_BY_CLUB_PASSWORD;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, clubVO.getClubName());
+            pstmt.setString(2, clubVO.getClubPw());
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                vo.setClubName(rs.getString("CLUB_NAME"));
+                vo.setClubMaxCount(rs.getInt("CLUB_MAXCOUNT"));
+                vo.setClubAge(rs.getInt("CLUB_AGE"));
+                vo.setClubLocation(rs.getString("CLUB_LOCATION"));
+                vo.setClubTier(rs.getString("CLUB_TIER"));
+                vo.setClubDescription(rs.getString("CLUB_DESCRIPTION"));
+                vo.setClubEmblemPath(rs.getString("CLUB_EMBLEMPATH"));
+                vo.setClubSex(rs.getInt("CLUB_SEX"));
+                vo.setClubPw(rs.getString("CLUB_PW"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vo;
+    }
+
+    @Override
     public List<ClubVO> selectAll() {
         List<ClubVO> vos = new ArrayList<>();
         try {
