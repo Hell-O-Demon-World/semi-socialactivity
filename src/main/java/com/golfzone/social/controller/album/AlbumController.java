@@ -23,7 +23,7 @@ public class AlbumController extends HttpServlet {
 
         // Checking length, input nothing
         if (imageName.equals("") || imagePath.equals("")) {
-            AlbumInsertResultMsg = "이미지를 입력해 주세요";
+            AlbumInsertResultMsg = "이미지를 업로드해주세요";
         } else {
             // init VO, DAO
             AlbumDAO albumDAO = new AlbumDAOImpl();
