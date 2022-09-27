@@ -31,6 +31,7 @@ public class AlbumController extends HttpServlet {
             albumVO.setImageName(imageName);
             albumVO.setImagePath(imagePath);
             albumDAO.insertAlbum(albumVO);
+            AlbumInsertResultMsg = "이미지 업로드 완료";
             System.out.println(AlbumInsertResultMsg);
         }
         req.setAttribute("AlbumInsertResultMsg", AlbumInsertResultMsg);
