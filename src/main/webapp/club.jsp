@@ -162,12 +162,14 @@
                 <div class="recommend-activity-container" id="recommendActivivityContainer">
                     <%for (int i = 0; i < activityVOS.size(); i++) {%>
                     <div class="recommend-activity-item">
-                        <form action="/activity" method="post">
+                        <form action="/joinactivity" method="post">
                             <p>액티비티명 : <%=activityVOS.get(i).getActivityTitle()%>
                             </p>
                             <p>인원 : ? / 4 명</p>
                             <p>소개 : <%=activityVOS.get(i).getActivityDescription()%>
                             </p>
+                            <input type="hidden" value="<%=activityVOS.get(i).getActivityNum()%>" name = "activityNum"/>
+                            <input type="hidden" value="<%=activityVOS.get(i).getActivityTitle()%>" name = "activityTitle"/>
                             <input class="join-activity-button" type="submit" value="가입하기"/>
                         </form>
                     </div>
