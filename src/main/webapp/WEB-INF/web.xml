@@ -51,4 +51,12 @@
         <servlet-name>joinactivity</servlet-name>
         <url-pattern>/joinactivity</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>quitactivity</servlet-name>
+        <servlet-class>com.golfzone.social.controller.activity.QuitActivityController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>quitactivity</servlet-name>
+        <url-pattern>/quitactivity</url-pattern>
+    </servlet-mapping>
 </web-app>
