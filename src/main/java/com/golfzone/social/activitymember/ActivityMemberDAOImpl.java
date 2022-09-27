@@ -23,6 +23,44 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
     }
 
     @Override
+    public int insertActivityMember(ActivityMemberVO activityMemberVO) {
+        int flag = 0;
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("insertActivityMember: conn success");
+            String sql = MariaDB.INSERT_ACTIVITY_MEMBER;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, activityMemberVO.getActivityNum());
+            pstmt.setInt(2, activityMemberVO.getClubNum());
+            pstmt.setInt(3, activityMemberVO.getUserNum());
+            flag = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        } // end finally
+        return flag;
+    }
+
+
+    @Override
     public List<ActivityMemberVO> selectAll() {
         List<ActivityMemberVO> vos = new ArrayList<>();
         try {
@@ -118,77 +156,5 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
             }
         } // end finally
         return vo;
-    }
-
-    @Override
-    public int insertActivityMember(ActivityMemberVO activityMemberVO) {
-        int flag = 0;
-        try {
-            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("insertActivityMember: conn success");
-            String sql = MariaDB.INSERT_ACTIVITY_MEMBER;
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, activityMemberVO.getActivityNum());
-            pstmt.setInt(2, activityMemberVO.getClubNum());
-            pstmt.setInt(3, activityMemberVO.getUserNum());
-            flag = pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                }
-            }
-        } // end finally
-        return flag;
-    }
-
-    @Override
-    public int deleteActivityMember(ActivityMemberVO activityMemberVO) {
-        int flag = 0;
-        try {
-            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("deleteActivityMember: conn success");
-            String sql = MariaDB.DELETE_USER_FROM_ACTIVITY_MEMBER;
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, activityMemberVO.getActivityMemberNum());
-            flag = pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                }
-            }
-        } // end finally
-        return flag;
     }
 }

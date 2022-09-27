@@ -16,24 +16,29 @@ import java.io.IOException;
 public class JoinClubController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        /* Setting request type UTF-8 */
         req.setCharacterEncoding("UTF-8");
         String clubResultMsg = "resultMsg";
-        String clubNum = req.getParameter("clubNum");
+        /* get params from club.jsp */
+        int clubNum = Integer.parseInt(req.getParameter("clubNum")) + 1;
+        int userNum = Integer.parseInt(req.getParameter("userNum"));
+        /* init */
         ClubDAO clubDAO = new ClubDAOImpl();
         ClubVO clubVO = new ClubVO();
-        System.out.println("클럽 넘버" + clubNum);
+
         ClubMemberDAO clubMemberDAO = new ClubMemberDAOImpl();
         ClubMemberVO clubMemberVO = new ClubMemberVO();
-        clubMemberVO.setClubNum(Integer.parseInt(clubNum));
-
+        clubMemberVO.setRoleNum(3); // Meaning of 3 is a reguler memeber
+        clubMemberVO.setClubNum(clubNum);
+        clubMemberVO.setUserNum(userNum);
+        System.out.println("roleNum: "+clubMemberVO.getRoleNum());
+        System.out.println("clubNum: "+clubMemberVO.getClubNum());
+        System.out.println("userNum: "+clubMemberVO.getUserNum());
         if (clubMemberDAO.findByClubNum(clubMemberVO).getClubNum() != 0){
             clubResultMsg = "이미 가입한 클럽입니다.";
         }
         else {
-            // role num, auth_num, club num, user num, tier name
-            clubMemberVO.setRoleNum(2);
-            clubMemberVO.setUserNum(3);
-            clubMemberVO.setTierName("unrank");
+            /* insert member to club member */
             clubMemberDAO.insertClubMember(clubMemberVO);
             clubResultMsg = "클럽 가입 완료!";
         }
