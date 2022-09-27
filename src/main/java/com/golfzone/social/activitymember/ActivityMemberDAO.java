@@ -11,4 +11,5 @@ public interface ActivityMemberDAO {
     int insertActivityMember(ActivityMemberVO activityMemberVO);
 
     int deleteActivityMember(ActivityMemberVO activityMemberVO);
+    //주석1
 }
