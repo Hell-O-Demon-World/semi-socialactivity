@@ -30,8 +30,10 @@ public class ClubMemberDAOImpl implements ClubMemberDAO {
             String sql = MariaDB.INSERT_CLUB_MEMBER;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, clubMemberVO.getRoleNum());
-            pstmt.setInt(2, clubMemberVO.getClubNum());
-            pstmt.setInt(3, clubMemberVO.getUserNum());
+            pstmt.setInt(2, clubMemberVO.getAuthNum());
+            pstmt.setInt(3, clubMemberVO.getClubNum());
+            pstmt.setInt(4, clubMemberVO.getUserNum());
+            pstmt.setString(5, clubMemberVO.getTierName());
             flag = pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,8 +80,10 @@ public class ClubMemberDAOImpl implements ClubMemberDAO {
             while (rs.next()) {
                 vo.setMemberNum(rs.getInt("MEMBER_NUM"));
                 vo.setRoleNum(rs.getInt("ROLE_NUM"));
+                vo.setAuthNum(rs.getInt("AUTH_NUM"));
                 vo.setClubNum(rs.getInt("CLUB_NUM"));
                 vo.setUserNum(rs.getInt("USER_NUM"));
+                vo.setTierName(rs.getString("TIER_NAME"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -126,8 +130,10 @@ public class ClubMemberDAOImpl implements ClubMemberDAO {
                 ClubMemberVO vo = new ClubMemberVO();
                 vo.setClubNum(rs.getInt("CLUB_NUM"));
                 vo.setRoleNum(rs.getInt("ROLE_NUM"));
+                vo.setRoleNum(rs.getInt("AUTH_NUM"));
                 vo.setRoleNum(rs.getInt("CLUB_NUM"));
                 vo.setRoleNum(rs.getInt("USER_NUM"));
+                vo.setRoleNum(rs.getInt("TIER_NAME"));
                 vos.add(vo);
             }
         } catch (SQLException e) {

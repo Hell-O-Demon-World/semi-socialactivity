@@ -4,9 +4,7 @@
 <%@ page import="com.golfzone.social.club.ClubDAOImpl" %>
 <%@ page import="com.golfzone.social.activity.ActivityVO" %>
 <%@ page import="com.golfzone.social.club.ClubVO" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="com.golfzone.social.user.UserVO" %><%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: org
   Date: 2022/09/23
@@ -31,11 +29,6 @@
     ClubDAO clubDAO = new ClubDAOImpl();
     List<ActivityVO> activityVOS = activityDAO.selectAll();
     List<ClubVO> clubVOS = clubDAO.selectAll();
-    UserVO userVO = new UserVO();
-    if (request.getAttribute("userNum") != null){
-        Integer userNum = (Integer) request.getAttribute("userNum");
-        userVO.setUserNum(userNum);
-    }
 %>
 <section id="navBar">
     <nav id="mainNav">
@@ -125,7 +118,8 @@
                         <div class="arrow-left" id="leftArrow"></div>
                     </div>
                     <div class="promotion-club-container">
-                        <% String clubName = "KIM";
+                        <%  int clubNum = 3;
+                            String clubName = "KIM";
                             String clubLocation = "SEOUL";%>
                         <div class="promotion-club-item">
                             <form action="/joinclub" method="post">
@@ -133,7 +127,7 @@
                                 <p>모임명 : </p>
                                 <p>인원</p>
                                 <p>지역</p>
-                                <input id = "1" type="hidden" value="3" name="clubNum"/>
+                                <input id = "1" type="hidden" value="<%=clubNum%>" name="clubNum"/>
                                 <input id="joinClubBtn2" type="submit" value="가입하기"/>
                             </form>
                         </div>
@@ -152,12 +146,11 @@
                                 <img src=<%=clubVOS.get(i).getClubEmblemPath()%> alt="no-emblem-img"/>
                                 <p>모임명 : <%=clubVOS.get(i).getClubName()%>
                                 </p>
-                                <p>인원 : ? / <%=clubVOS.get(i).getClubMaxCount()%>
+                                <p>인원 : <%=clubVOS.get(i).getClubMaxCount()%>
                                 </p>
                                 <p>지역 : <%=clubVOS.get(i).getClubLocation()%>
                                 </p>
-                                <input type="hidden" value="<%=userVO.getUserNum()%>" name = "userNum"/>
-                                <input type="hidden" value="<%=i%>" name = "clubNum"/>
+                                <input type="hidden" value="<%=clubVOS.get(i).getClubNum()%>" name = "clubNum"/>
                                 <input class="join-club-button" type="submit" value="가입하기" />
                             </form>
                         </div>

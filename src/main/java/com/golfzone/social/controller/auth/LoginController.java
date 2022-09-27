@@ -26,7 +26,6 @@ public class LoginController extends HttpServlet {
             //fail
             resultMsg = "회원가입이 필요합니다.";
         }
-        req.setAttribute("userNum" ,userVO.getUserNum());
         req.setAttribute("resultMsg" ,resultMsg);
         req.getRequestDispatcher(resultPath).forward(req, resp);
     }
