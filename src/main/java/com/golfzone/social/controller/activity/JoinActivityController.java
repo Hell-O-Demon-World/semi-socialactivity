@@ -27,7 +27,7 @@ public class JoinActivityController extends HttpServlet {
         activityMemberVO.setClubNum(Integer.parseInt(clubNum));
 
         // Checking Number, input nothing
-        if (activityMemberDAO.findUserByActivityNum(activityMemberVO).getActivityNum() != 0) {
+        if (activityMemberDAO.findUserByActivityNum(activityMemberVO).getActivityNum() !=0 ) {
             activityMemberResultMsg = "이미가입된 액티비티야 ";
         } else {
             // init VO, DAO
