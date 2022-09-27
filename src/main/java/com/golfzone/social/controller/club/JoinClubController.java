@@ -19,10 +19,9 @@ public class JoinClubController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String clubResultMsg = "resultMsg";
         String clubNum = req.getParameter("clubNum");
-        String id = req.getParameter("1");
         ClubDAO clubDAO = new ClubDAOImpl();
         ClubVO clubVO = new ClubVO();
-        System.out.println("id" + clubNum);
+        System.out.println("클럽 넘버" + clubNum);
         ClubMemberDAO clubMemberDAO = new ClubMemberDAOImpl();
         ClubMemberVO clubMemberVO = new ClubMemberVO();
         clubMemberVO.setClubNum(Integer.parseInt(clubNum));
