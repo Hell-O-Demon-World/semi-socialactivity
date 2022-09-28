@@ -13,6 +13,7 @@ public class ClubVO {
     private int clubSex;
     private String clubPw;
 
+
     @Override
     public String toString() {
         return "ClubVO{" +
