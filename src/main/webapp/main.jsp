@@ -109,7 +109,8 @@
             <div class="slide">
                 <div class="left-button" onclick="showLeftItem()"><p>
                     <div class="arrow-left" id="leftArrow"></div>
-                    </p></div>
+                    </p>
+                </div>
                 <div class="promotion-club-container">
                     <div class="promotion-club-item">
                         <form action="#" method="post">
