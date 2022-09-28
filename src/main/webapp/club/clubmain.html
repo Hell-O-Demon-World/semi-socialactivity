@@ -25,7 +25,9 @@
               ><div class="create-activity">CREATE ACTIVITY</div></a
             >
           </li>
-          <li><div class="add-image">ADD IMG</div></li>
+          <li>
+            <a href="#addImage"><div class="add-image">ADD IMG</div></a>
+          </li>
         </ul>
       </div>
     </div>
@@ -270,15 +272,16 @@
       </div>
     </section>
     <section id="addImage">
+      <div class="close-image">X</div>
       <div class="container">
         <form action="" method="">
           <div class="input-box">
             <span class="details">Image Name</span>
-            <input type="text" name="emblemPath" />
+            <input type="text" name="imageName" />
           </div>
           <div class="input-box">
             <span class="details">Club Image</span>
-            <input type="file" name="emblemPath" />
+            <input type="file" name="imagePath" />
           </div>
           <input type="submit" name="image" value="Submit Image" />
         </form>
