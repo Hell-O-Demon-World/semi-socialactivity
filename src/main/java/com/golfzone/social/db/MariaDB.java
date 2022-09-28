@@ -30,4 +30,5 @@ public interface MariaDB {
     String USER_FIND_BY_USER = "select * from user where user_id = ";
     String USER_FIND_BY_ACTIVITY_MEMBER = "select * from activity_member where user_num = ? and activity_num = ?";
 
+    String SEARCH_BY_CLUB_TITLE = "select * from club where club_name like ?";
 }

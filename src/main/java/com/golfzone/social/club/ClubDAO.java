@@ -7,6 +7,8 @@ public interface ClubDAO {
 
     ClubVO findByClubName(ClubVO clubVO);
 
+
+
     ClubVO findByClubPassword(ClubVO clubVO);
     List<ClubVO> selectAll();
 }

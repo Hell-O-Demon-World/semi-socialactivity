@@ -59,4 +59,13 @@
         <servlet-name>quitactivity</servlet-name>
         <url-pattern>/quitactivity</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>searchtitle</servlet-name>
+        <servlet-class>com.golfzone.social.controller.search.SearchTitleController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>searchtitle</servlet-name>
+        <url-pattern>/searchtitle</url-pattern>
+    </servlet-mapping>
 </web-app>
