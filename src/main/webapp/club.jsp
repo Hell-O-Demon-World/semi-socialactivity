@@ -149,7 +149,7 @@
                     <%for (int i = 0; i < clubVOS.size(); i++) {%>
                         <div class="recommend-club-item">
                             <form action="/joinclub" method="post">
-                                <img src=<%=clubVOS.get(i).getClubEmblemPath()%> alt="no-emblem-img"/>
+                                <img src="${pageContext.request.contextPath}/img/<%=clubVOS.get(i).getClubEmblemPath()%>" alt="no-emblem-img"/>
                                 <p>모임명 : <%=clubVOS.get(i).getClubName()%>
                                 </p>
                                 <p>인원 : ? / <%=clubVOS.get(i).getClubMaxCount()%>
