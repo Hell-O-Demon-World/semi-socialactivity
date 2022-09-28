@@ -43,6 +43,7 @@ public class ClubController extends HttpServlet {
         }
         else {
             clubDAO.insertClub(clubVO);
+            /* 클럽 멤버에 추가 역할은 방장 */
             clubResultMsg = "클럽 생성 완료!";
         }
         req.setAttribute("resultMsg" ,clubResultMsg);

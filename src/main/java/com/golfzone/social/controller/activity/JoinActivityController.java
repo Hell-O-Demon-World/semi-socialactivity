@@ -28,7 +28,7 @@ public class JoinActivityController extends HttpServlet {
 
         // Checking Number, input nothing
         if (activityMemberDAO.findUserByActivityNum(activityMemberVO).getActivityNum() != 0) {
-            activityMemberResultMsg = "이미가입된 액티비티야 ";
+            activityMemberResultMsg = "이미 가입된 액티비티야";
         } else {
             // init VO, DAO
             activityMemberDAO = new ActivityMemberDAOImpl();

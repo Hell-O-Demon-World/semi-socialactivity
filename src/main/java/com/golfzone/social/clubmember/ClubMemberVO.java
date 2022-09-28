@@ -3,20 +3,16 @@ package com.golfzone.social.clubmember;
 public class ClubMemberVO {
     private int memberNum;
     private int roleNum;
-    private int authNum;
     private int clubNum;
     private int userNum;
-    private String tierName;
 
     @Override
     public String toString() {
         return "ClubMemberVO{" +
                 "memberNum=" + memberNum +
                 ", roleNum=" + roleNum +
-                ", authNum=" + authNum +
                 ", clubNum=" + clubNum +
-                ", userNum=" + userNum +
-                ", tierName='" + tierName + '\'' +
+                ", userNum=" + userNum + '\'' +
                 '}';
     }
 
@@ -36,14 +32,6 @@ public class ClubMemberVO {
         this.roleNum = roleNum;
     }
 
-    public int getAuthNum() {
-        return authNum;
-    }
-
-    public void setAuthNum(int authNum) {
-        this.authNum = authNum;
-    }
-
     public int getClubNum() {
         return clubNum;
     }
@@ -60,11 +48,4 @@ public class ClubMemberVO {
         this.userNum = userNum;
     }
 
-    public String getTierName() {
-        return tierName;
-    }
-
-    public void setTierName(String tierName) {
-        this.tierName = tierName;
-    }
 }
