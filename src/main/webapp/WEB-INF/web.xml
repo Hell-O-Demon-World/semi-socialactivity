@@ -61,11 +61,11 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>searchtitle</servlet-name>
-        <servlet-class>com.golfzone.social.controller.search.SearchTitleController</servlet-class>
+        <servlet-name>searchclub</servlet-name>
+        <servlet-class>com.golfzone.social.controller.search.SearchClubController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>searchtitle</servlet-name>
-        <url-pattern>/searchtitle</url-pattern>
+        <servlet-name>searchclub</servlet-name>
+        <url-pattern>/searchclub</url-pattern>
     </servlet-mapping>
 </web-app>
