@@ -27,19 +27,34 @@ public class ClubController extends HttpServlet {
         String clubSex = req.getParameter("sex");
         String clubPw = req.getParameter("pw");
 
+
         ClubDAO clubDAO = new ClubDAOImpl();
         ClubVO clubVO = new ClubVO();
         clubVO.setClubName(clubName);
         clubVO.setClubMaxCount(Integer.parseInt(clubMaxCount));
         clubVO.setClubAge(Integer.parseInt(clubAge));
         clubVO.setClubLocation(clubLocation);
-        clubVO.setClubTier(clubTier);
+        if (Integer.parseInt(clubTier) == 6) {
+            clubVO.setClubTier("diamond");
+        } else if (Integer.parseInt(clubTier) == 7) {
+            clubVO.setClubTier("platinum");
+        } else if (Integer.parseInt(clubTier) == 8) {
+            clubVO.setClubTier("gold");
+        } else if (Integer.parseInt(clubTier) == 9) {
+            clubVO.setClubTier("silver");
+        } else if (Integer.parseInt(clubTier) == 10) {
+            clubVO.setClubTier("bronze");
+        } else if (Integer.parseInt(clubTier) == 11) {
+            clubVO.setClubTier("unrank");
+        }
         clubVO.setClubDescription(clubDescription);
         clubVO.setClubEmblemPath(clubEmblemPath);
         clubVO.setClubSex(Integer.parseInt(clubSex));
         clubVO.setClubPw(clubPw);
-        if (clubDAO.findByClubName(clubVO).equals(clubVO.getClubName())) {
-            clubResultMsg = "이미 존재하는 클럽명입니다.";
+        if (clubDAO.findByClubName(clubVO).getClubName() != null) {
+            if (clubDAO.findByClubName(clubVO).getClubName().equals(clubVO.getClubName())) {
+                clubResultMsg = "이미 존재하는 클럽명입니다.";
+            }
         } else {
             if (clubPw == null) {
                 clubVO.setClubPw("");
@@ -48,6 +63,7 @@ public class ClubController extends HttpServlet {
             /* 클럽 멤버에 추가 역할은 방장 */
             clubResultMsg = "클럽 생성 완료!";
         }
+        System.out.println(clubResultMsg);
         req.setAttribute("resultMsg", clubResultMsg);
         req.getRequestDispatcher("/club.jsp").forward(req, resp);
     }

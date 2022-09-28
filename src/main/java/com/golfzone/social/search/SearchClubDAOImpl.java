@@ -82,15 +82,140 @@ public class SearchClubDAOImpl implements SearchClubDAO {
                 sql += " and club_age <= " + Integer.parseInt(searchClubVO.getSearchMaxAge());
             }
 
-            /*
-            if ((!sql.endsWith("where")) && (searchClubVO.getSearchMinScore() != null)) {
-                if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 7) {
-                    sql += " club_tier like 'platinum'";
+            // 선행 조건이 존재하는 경우
+            if ((!(sql.endsWith("where"))) && (searchClubVO.getSearchMinScore() != null) && (searchClubVO.getSearchMaxScore() != null)) {
+                if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 11) {
+                    sql += " and club_tier in (" + "'unrank'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 10) {
+                    if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 11) {
+                        sql += " and club_tier in (" + "'bronze', 'unrank'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 10) {
+                        sql += " and club_tier in (" + "'bronze'" + ")";
+                    }
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 9) {
+                    if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 11) {
+                        sql += " and club_tier in (" + "'silver', 'bronze', 'unrank'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 10) {
+                        sql += " and club_tier in (" + "'silver', 'bronze'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 9) {
+                        sql += " and club_tier in (" + "'silver'" + ")";
+                    }
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 8) {
+                    if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 11) {
+                        sql += " and club_tier in (" + "'gold', 'silver', 'bronze', 'unrank'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 10) {
+                        sql += " and club_tier in (" + "'gold', 'silver', 'bronze'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 9) {
+                        sql += " and club_tier in (" + "'gold', 'silver'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 8) {
+                        sql += " and club_tier in (" + "'gold'" + ")";
+                    }
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 7) {
+                    if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 11) {
+                        sql += " and club_tier in (" + "'platinum', 'gold', 'silver', 'bronze', 'unrank'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 10) {
+                        sql += " and club_tier in (" + "'platinum', 'gold', 'silver', 'bronze'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 9) {
+                        sql += " and club_tier in (" + "'platinum', 'gold', 'silver'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 8) {
+                        sql += " and club_tier in (" + "'platinum', 'gold'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 7) {
+                        sql += " and club_tier in (" + "'platinum'" + ")";
+                    }
                 }
-                sql += " or club_tier like %" + searchClubVO.getSearchMinScore() + "%";
-            } else if ((sql.endsWith("where")) && (searchClubVO.getSearchMinScore() != null)) {
-                sql += " club_tier like %" + Integer.parseInt(searchClubVO.getSearchMinScore());
-            } */
+            } else if ((!(sql.endsWith("where"))) && (searchClubVO.getSearchMinScore() != null) && (searchClubVO.getSearchMaxScore() == null)) {
+                if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 7) {
+                    sql += " and club_tier in (" + "'platinum', 'gold', 'silver', 'bronze', 'unrank'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 8) {
+                    sql += " and club_tier in (" + "'gold', 'silver', 'bronze', 'unrank'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 9) {
+                    sql += " and club_tier in (" + "'silver', 'bronze', 'unrank'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 10) {
+                    sql += " and club_tier in (" + "'bronze', 'unrank'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 11) {
+                    sql += " and club_tier in (" + "'unrank'" + ")";
+                }
+            } else if ((!(sql.endsWith("where"))) && (searchClubVO.getSearchMinScore() == null) && (searchClubVO.getSearchMaxScore() != null)) {
+                if (Integer.parseInt(searchClubVO.getSearchMaxScore()) <= 6) {
+                    sql += " and club_tier in (" + "'diamond'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 7) {
+                    sql += " and club_tier in (" + "'diamond', 'platinum'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 8) {
+                    sql += " and club_tier in (" + "'diamond', 'platinum', 'gold'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 9) {
+                    sql += " and club_tier in (" + "'diamond', 'platinum', 'gold', 'silver'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 10) {
+                    sql += " and club_tier in (" + "'diamond', 'platinum', 'gold', 'silver', 'bronze'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 11) {
+                    sql += " and club_tier in (" + "'diamond', 'platinum', 'gold', 'silver', 'bronze', 'unrank'" + ")";
+                }
+            } else if ((sql.endsWith("where")) && (searchClubVO.getSearchMinScore() != null) && (searchClubVO.getSearchMaxScore() != null)) {
+                if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 11) {
+                    sql += " club_tier in (" + "'unrank'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 10) {
+                    if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 11) {
+                        sql += " club_tier in (" + "'bronze', 'unrank'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 10) {
+                        sql += " club_tier in (" + "'bronze'" + ")";
+                    }
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 9) {
+                    if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 11) {
+                        sql += " club_tier in (" + "'silver', 'bronze', 'unrank'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 10) {
+                        sql += " club_tier in (" + "'silver', 'bronze'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 9) {
+                        sql += " club_tier in (" + "'silver'" + ")";
+                    }
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 8) {
+                    if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 11) {
+                        sql += " club_tier in (" + "'gold', 'silver', 'bronze', 'unrank'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 10) {
+                        sql += " club_tier in (" + "'gold', 'silver', 'bronze'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 9) {
+                        sql += " club_tier in (" + "'gold', 'silver'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 8) {
+                        sql += " club_tier in (" + "'gold'" + ")";
+                    }
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 7) {
+                    if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 11) {
+                        sql += " club_tier in (" + "'platinum', 'gold', 'silver', 'bronze', 'unrank'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 10) {
+                        sql += " club_tier in (" + "'platinum', 'gold', 'silver', 'bronze'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 9) {
+                        sql += " club_tier in (" + "'platinum', 'gold', 'silver'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 8) {
+                        sql += " club_tier in (" + "'platinum', 'gold'" + ")";
+                    } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 7) {
+                        sql += " club_tier in (" + "'platinum'" + ")";
+                    }
+                }
+            } else if ((sql.endsWith("where")) && (searchClubVO.getSearchMinScore() != null) && (searchClubVO.getSearchMaxScore() == null)) {
+                if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 7) {
+                    sql += " club_tier in (" + "'platinum', 'gold', 'silver', 'bronze', 'unrank'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 8) {
+                    sql += " club_tier in (" + "'gold', 'silver', 'bronze', 'unrank'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 9) {
+                    sql += " club_tier in (" + "'silver', 'bronze', 'unrank'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 10) {
+                    sql += " club_tier in (" + "'bronze', 'unrank'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMinScore()) == 11) {
+                    sql += " club_tier in (" + "'unrank'" + ")";
+                }
+            } else if ((sql.endsWith("where")) && (searchClubVO.getSearchMinScore() == null) && (searchClubVO.getSearchMaxScore() != null)) {
+                if (Integer.parseInt(searchClubVO.getSearchMaxScore()) <= 6) {
+                    sql += " club_tier in (" + "'diamond'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 7) {
+                    sql += " club_tier in (" + "'diamond', 'platinum'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 8) {
+                    sql += " club_tier in (" + "'diamond', 'platinum', 'gold'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 9) {
+                    sql += " club_tier in (" + "'diamond', 'platinum', 'gold', 'silver'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 10) {
+                    sql += " club_tier in (" + "'diamond', 'platinum', 'gold', 'silver', 'bronze'" + ")";
+                } else if (Integer.parseInt(searchClubVO.getSearchMaxScore()) == 11) {
+                    sql += " club_tier in (" + "'diamond', 'platinum', 'gold', 'silver', 'bronze', 'unrank'" + ")";
+                }
+            }
 
             if ((!(sql.endsWith("where"))) && (searchClubVO.getSearchLocation() != null)) {
                 sql += " and club_location like '%" + searchClubVO.getSearchLocation() + "%'";
@@ -98,6 +223,7 @@ public class SearchClubDAOImpl implements SearchClubDAO {
                 sql += " club_location like '%" + searchClubVO.getSearchLocation() + "%'";
             }
             pstmt = conn.prepareStatement(sql);
+            System.out.println(sql);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
