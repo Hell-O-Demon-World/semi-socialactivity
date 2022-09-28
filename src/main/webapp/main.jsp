@@ -79,11 +79,12 @@
                     </select>
                 </div>
                 <div class="location">
-                    <label for="location">지역 선택</label>
+                    <label>지역 선택</label>
                     <select
                             name="location"
-                            id="location"
+                            class="location-select"
                             onchange="categoryChange(this)"
+                            id = "location";
                     >
                         <option value selected>시/도 선택</option>
                     </select>
@@ -206,11 +207,12 @@
                                 name="userPW"
                                 placeholder="userPW(11자리)"
                         />
-                        <div class="location2">
+                        <div class="location">
                             <select
                                     name="location2"
-                                    id="location2"
+                                    class="location-select"
                                     onchange="categoryChange(this)"
+                                    id = "location2"
                             >
                                 <option value selected>시/도 선택</option>
                             </select>
@@ -226,7 +228,8 @@
                             </div>
                             <div class="tier">
                                 <label for="tierName">등급</label>
-                                <select name="tierName" id="tierName"></select>
+                                <select name="tierName" id="tierName">
+                                </select>
                             </div>
                             <div class="gender">
                                 <label for="gender-ipt-num">성별</label>

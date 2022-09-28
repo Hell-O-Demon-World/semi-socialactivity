@@ -8,6 +8,13 @@ const signinPw = document.getElementById("signinPw");
 const signupId = document.getElementById("signupId");
 const signupPw = document.getElementById("signupPw");
 
+const tierSelect = document.getElementById("tierName");
+tierSelect.innerHTML += `<option value=6>70타 미만</option>`;
+for (let i = 7; i < 11; i++) {
+  tierSelect.innerHTML += `<option value=${i}>${i * 10}타</option>`;
+}
+tierSelect.innerHTML += `<option value=11>110타 이상</option>`;
+
 const addActive = function () {
   formBx.classList.add("active");
 };

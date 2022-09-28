@@ -20,7 +20,11 @@
           <li>
             <a href="#board"><div class="add-board">ADD BOARD</div></a>
           </li>
-          <li><div class="create-activity">CREATE ACTIVITY</div></li>
+          <li>
+            <a href="#activity"
+              ><div class="create-activity">CREATE ACTIVITY</div></a
+            >
+          </li>
           <li><div class="add-image">ADD IMG</div></li>
         </ul>
       </div>
@@ -80,7 +84,12 @@
                   <div>게시글 제목</div>
                   <div class="text">NO.1 JSP, Servlet</div>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p class="board-description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Amet, quis ad. Ea corporis accusamus possimus aperiam sapiente
+                  id, ipsam dolorem non voluptates quidem eaque accusantium
+                  facilis odit quibusdam, soluta sequi repellendus similique
+                </p>
               </div>
               <div class="button-container">
                 <div class="button-delete">
@@ -116,33 +125,45 @@
             <h1>comment</h1>
             <div class="commentInput">
               <form action="" method="">
-                <input type="text" name="content" />
+                <textarea
+                  name="activity-description"
+                  cols="30"
+                  rows="10"
+                  placeholder="write comment"
+                ></textarea>
                 <input type="submit" value="comment" id="submitComment" />
               </form>
+            </div>
+            <div id="commentHeader">
+              <div>writer</div>
+              <div>content</div>
+              <div>delete</div>
             </div>
             <div class="swiper comment-container">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <div>
-                    <div class="writer">작성자</div>
-                  </div>
-                  <div class="content">내용</div>
-                </div>
-                <div class="swiper-slide">
-                  <div>
-                    <div>
-                      <input type="submit" value="삭제" name="deleteComment" />
-                      <div class="comment-details">자세히</div>
-                    </div>
-                    <div class="writer">작성자</div>
-                  </div>
+                  <div class="comment-writer">작성자</div>
                   <div class="comment-content">
-                    가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Explicabo illo cupiditate consequatur quisquam quaerat
+                    quibusdam omnis eveniet voluptas reprehenderit consequuntur.
                   </div>
-                  <div class="display-none">
-                    가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가
-                  </div>
+                  <div class="comment-delete">X</div>
                 </div>
+                <div class="swiper-slide">slide1</div>
+                <div class="swiper-slide">slide1</div>
+                <div class="swiper-slide">slide1</div>
+                <div class="swiper-slide">slide1</div>
+                <div class="swiper-slide">slide1</div>
+                <div class="swiper-slide">slide1</div>
+                <div class="swiper-slide">slide1</div>
+                <div class="swiper-slide">slide1</div>
+                <div class="swiper-slide">slide1</div>
+                <div class="swiper-slide">slide1</div>
+                <div class="swiper-slide">slide1</div>
+                <div class="swiper-slide">slide1</div>
+                <div class="swiper-slide">slide1</div>
+                <div class="swiper-slide">slide1</div>
               </div>
               <div class="swiper-scrollbar"></div>
             </div>
@@ -190,15 +211,19 @@
             <img src="../img/golfzon-logo.jpeg" alt="" />
           </div>
           <div class="swiper-slide">
+            <div>image name</div>
             <img src="../img/golfzon-logo.jpeg" alt="" />
           </div>
           <div class="swiper-slide">
+            <div>image name</div>
             <img src="../img/golfzon-logo.jpeg" alt="" />
           </div>
           <div class="swiper-slide">
+            <div>image name</div>
             <img src="../img/golfzon-logo.jpeg" alt="" />
           </div>
           <div class="swiper-slide">
+            <div>image name</div>
             <img src="../img/golfzon-logo.jpeg" alt="" />
           </div>
           <div class="swiper-slide">
@@ -225,7 +250,7 @@
     </section>
     <section id="createActivity">
       <div class="container">
-        <div class="close-activity">x</div>
+        <div class="close-activity">X</div>
         <form action="" method="">
           <div>
             <label for="activityName">Activity Name</label>
@@ -241,6 +266,21 @@
             ></textarea>
           </div>
           <input type="submit" value="Create activity" />
+        </form>
+      </div>
+    </section>
+    <section id="addImage">
+      <div class="container">
+        <form action="" method="">
+          <div class="input-box">
+            <span class="details">Image Name</span>
+            <input type="text" name="emblemPath" />
+          </div>
+          <div class="input-box">
+            <span class="details">Club Image</span>
+            <input type="file" name="emblemPath" />
+          </div>
+          <input type="submit" name="image" value="Submit Image" />
         </form>
       </div>
     </section>

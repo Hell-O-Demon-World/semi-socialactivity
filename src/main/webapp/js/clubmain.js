@@ -78,7 +78,7 @@ const boardSwiper = new Swiper(".board-container", {
 /* comment swiper */
 const commentSwiper = new Swiper(".comment-container", {
   direction: "vertical",
-  height: 150,
+  height: 350,
   slidesPerView: 4,
   freeMode: true,
   scrollbar: {
@@ -127,43 +127,6 @@ for (const $button of detailsBoard) {
   $button.addEventListener("click", showDetail);
 }
 
-const commentButton = document.getElementById("submitComment");
-/** comment 추가
- *
- * @param {Event} e 이벤트 객체 추가
- */
-const addComment = (e) => {
-  e.preventDefault();
-  const comment = e.target.parentNode;
-  let commentDetails = comment.querySelector('input[type="text"]').value;
-  let realCommentDetails = commentDetails;
-  const commentList = document.querySelector(
-    ".comment-container .swiper-wrapper"
-  );
-  if (commentDetails.length > 15) {
-    commentDetails = commentDetails.substring(0, 15) + "...";
-  }
-
-  commentList.innerHTML += `
-  <div class="swiper-slide">
-    <div>
-      <div>
-        <input type="submit" value="삭제" name="deleteComment" />
-        <div class="comment-details">자세히</div>
-      </div>
-      <div class="writer">작성자</div>
-    </div>  
-    <div class="comment-content">
-      ${commentDetails}
-    </div>
-    <div class ="display-none">${realCommentDetails}</div>
-  </div>
-`;
-
-  commentSwiper.update();
-};
-commentButton.addEventListener("click", addComment);
-
 const boardButton = document.getElementById("submitBoard");
 boardButton.addEventListener("click", removeForm);
 /** comment 추가
@@ -173,6 +136,8 @@ boardButton.addEventListener("click", removeForm);
 
 /* textarea 글자 수 제한 */
 const createBoardText = document.querySelector("#createBoard textarea");
+const BoardText = document.querySelector("#board textarea");
+const createActivity = document.getElementById("createActivity");
 
 /** 글자수 체크
  *
@@ -187,20 +152,14 @@ const countText = (e) => {
 };
 
 createBoardText.addEventListener("keyup", countText);
-createBoardText.keyup = function () {
-  var content = $(this).val();
-  if (content.length > 100) {
-    alert("최대 100자까지 입력 가능합니다.");
-    $(this).val(content.substring(0, 100));
-  }
-};
-
+BoardText.addEventListener("keyup", countText);
+createActivity.addEventListener("keyup", countText);
 /* Comment 글자수 자르기 */
 
-const comments = document.getElementsByClassName("comment-content");
+const comments = document.getElementsByClassName("board-description");
 console.log(comments);
 Array.prototype.forEach.call(comments, (elem) => {
-  elem.innerText = `${elem.innerText.substring(0, 15)} ...`;
+  elem.innerText = `${elem.innerText.substring(0, 50)} ...`;
 });
 
 /* comment 자세히 보기 */
@@ -215,3 +174,5 @@ Array.prototype.forEach.call(commentDetailList, (elem) => {
   elem.addEventListener("click", showCommentDetails);
 });
 showCommentDetails;
+
+/* 액티비티 생성 */

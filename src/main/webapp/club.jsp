@@ -70,7 +70,7 @@
                     </select>
                 </div>
                 <div class="tier">
-                    <label for="clubTierLow">타수</label>
+                    <label for="clubTierLow" >타수</label>
                     <select
                             name="tierLow"
                             id="clubTierLow"
@@ -87,6 +87,7 @@
                 <div class="location">
                     <label for="location">지역 선택</label>
                     <select
+                            class = "location-select"
                             name="location"
                             id="location"
                             onchange="categoryChange(this)"
