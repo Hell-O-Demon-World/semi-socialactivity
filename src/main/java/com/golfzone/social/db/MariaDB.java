@@ -15,7 +15,7 @@ public interface MariaDB {
 
     String DELETE_USER_FROM_ACTIVITY_MEMBER = "delete from activity_member where activity_member_num = ?";
 
-    String INSERT_ACTIVITY = "insert into activity(activity_title, activity_description) values(?, ?)";
+    String INSERT_ACTIVITY = "insert into activity(club_num, activity_title, activity_description) values(?, ?, ?)";
     String INSERT_ACTIVITY_MEMBER = "insert into activity_member(activity_num, club_num, user_num) values(?, ?, ?)";
     String INSERT_ALBUM = "insert into album(image_name, image_path) values(?, ?)";
     String INSERT_BOARD = "insert into board(board_title, board_content, board_writer) values(?, ?, ?)";

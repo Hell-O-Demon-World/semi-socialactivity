@@ -30,9 +30,11 @@ public class ActivityDAOImpl implements ActivityDAO {
             System.out.println("insertActivity: conn success");
             String sql = MariaDB.INSERT_ACTIVITY;
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, activityVO.getActivityTitle());
-            pstmt.setString(2, activityVO.getActivityDescription());
+            pstmt.setInt(1, activityVO.getClubNum());
+            pstmt.setString(2, activityVO.getActivityTitle());
+            pstmt.setString(3, activityVO.getActivityDescription());
             flag = pstmt.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

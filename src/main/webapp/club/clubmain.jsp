@@ -67,7 +67,7 @@
         ><div class="create-activity">CREATE ACTIVITY</div></a
         >
       </li>
-      <li><div class="add-image">ADD IMG</div></li>
+      <li><a href="#addImage"><div class="add-image">ADD IMG</div></a></li>
     </ul>
   </div>
 </div>
@@ -304,20 +304,23 @@
 <section id="createActivity">
   <div class="container">
     <div class="close-activity">X</div>
-    <form action="" method="">
+    <form method="post" action="/createactivity">
       <div>
         <label for="activityName">Activity Name</label>
-        <input type="text" id="activityName" name="name" />
+        <input type="text" id="activityName" name="activityTitle" />
       </div>
       <div>
         <label for="activityDescription">Activity Description</label>
         <textarea
-                name="description"
+                name="activitiyDescription"
                 id="activityDescription"
                 cols="30"
                 rows="10"
+                maxlength="100"
         ></textarea>
       </div>
+      <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum"/>
+      <input type="hidden" value="<%=clubVO.getClubNum()%>" name="clubNum"/>
       <input type="submit" value="Create activity" />
     </form>
   </div>
@@ -326,6 +329,7 @@
   <div class="container">
     <form action="" method="">
       <div class="input-box">
+        <div class="close-image">X</div>
         <span class="details">Image Name</span>
         <input type="text" name="emblemPath" />
       </div>
