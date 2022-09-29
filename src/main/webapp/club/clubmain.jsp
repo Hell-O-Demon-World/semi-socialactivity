@@ -103,7 +103,7 @@
       <div class="swiper-slide">
         <div class="activity-name"><%=activityVOS.get(i).getActivityTitle()%></div>
         <div class="activity-description">
-          <%=activityVOS.get(i).getActivityDescription()%>
+          <p><%=activityVOS.get(i).getActivityDescription()%></p>
         </div>
       </div>
       <%}%>
