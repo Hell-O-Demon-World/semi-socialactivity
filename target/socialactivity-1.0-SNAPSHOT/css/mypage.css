@@ -1,0 +1,101 @@
+#left {
+  width: 50%;
+  float: left;
+  height: 100vh;
+}
+#right {
+  width: 50%;
+  float: right;
+  height: 100vh;
+}
+#left #myClub {
+  height: 50%;
+  border-bottom: 2px solid #222;
+  position: relative;
+}
+#left #myActivity {
+  height: 50%;
+  position: relative;
+}
+#myClub .swiper,
+#myActivity .swiper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 50%;
+}
+
+#myClub .swiper-slide,
+#myActivity .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  flex-direction: column;
+}
+#myClub .swiper-slide div:nth-child(even),
+#myActivity .swiper-slide div:nth-child(even) {
+  border-bottom: 2px solid #222;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+.btn {
+  background: #2196f3;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+/* My-info */
+#right #myInfo {
+  width: 100%;
+  height: 100%;
+  padding: 50px 50px;
+}
+
+#right #myInfo .info-container {
+  border: 2px solid #222;
+  height: 60%;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 50px;
+}
+#right #myInfo .info-container .info-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#right #myInfo .info-container .info-box .label {
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+#exitUser {
+  background: #ff4081;
+  width: 200px;
+  height: 50px;
+  font-size: 2rem;
+  font-weight: 900;
+  border-radius: 15px;
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
+  cursor: pointer;
+
+}
