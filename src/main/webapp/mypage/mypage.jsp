@@ -67,8 +67,7 @@
         activityVO.setActivityNum(activityMemberVOS.get(i).getActivityNum());
         activityVOS.add(activityDAO.findByActivityNum(activityVO));
     }
-    ActivityMemberVO activityMemberVO = new ActivityMemberVO();
-    activityMemberVO.setActivityMemberNum(activityMemberDAO.findByUser(userVO).getActivityMemberNum());
+
 %>
 <section id="navBar">
     <nav id="mainNav">
@@ -117,18 +116,23 @@
             <div class="swiper-wrapper">
                 <%for (int i = 0; i < activityVOS.size(); i++) {%>
                 <div class="swiper-slide">
-                    <div>Name</div>
-                    <div class="name"><%=activityVOS.get(i).getActivityTitle()%>
-                    </div>
-                    <div>Description</div>
-                    <div class="description"><%=activityVOS.get(i).getActivityDescription()%>
-                    </div>
                     <form id="linkToDeleteActivity<%=i%>" method="post" action="/quitactivity">
-                        <input type="hidden" value="<%=activityMemberVO.getActivityMemberNum()%>"
+                        <div>Name</div>
+                        <div class="name"><%=activityVOS.get(i).getActivityTitle()%>
+                        </div>
+                        <div>Description</div>
+                        <div class="description"><%=activityVOS.get(i).getActivityDescription()%>
+                        </div>
+                        <%
+                        int activityMemberNum = activityMemberVOS.get(i).getActivityMemberNum();
+                        int activityNum = activityVOS.get(i).getActivityNum();
+                        int clubNum = activityVOS.get(i).getClubNum();
+                        %>
+                        <input type="hidden" value="<%=activityMemberNum%>"
                                name="activityMemberNum">
-                        <input type="hidden" value="<%=activityVOS.get(i).getActivityNum()%>" name="activityNum">
+                        <input type="hidden" value="<%=activityNum%>" name="activityNum">
                         <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum">
-                        <input type="hidden" value="<%=clubVOS.get(i).getClubNum()%>" name="clubNum">
+                        <input type="hidden" value="<%=clubNum%>" name="clubNum">
                     </form>
                     <div class="btn"><a onclick="document.getElementById('linkToDeleteActivity<%=i%>').submit();"
                                         class="linkText">액티비티 나가기</a></div>

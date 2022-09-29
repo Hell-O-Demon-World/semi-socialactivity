@@ -19,11 +19,13 @@ com/golfzone/social/controller/club/ClubController.class
 com/golfzone/social/user/UserDAOImpl.class
 com/golfzone/social/controller/club/JoinClubController.class
 com/golfzone/social/auth/AuthVO.class
+com/golfzone/social/controller/search/SearchClubController.class
 com/golfzone/social/controller/board/BoardController.class
 com/golfzone/social/comment/CommentDAOImpl.class
 com/golfzone/social/clubmember/ClubMemberVO.class
 com/golfzone/social/user/UserVO.class
 com/golfzone/social/controller/comment/CommentController.class
+com/golfzone/social/search/SearchClubDAOImpl.class
 com/golfzone/social/album/AlbumDAOImpl.class
 com/golfzone/social/controller/auth/LoginController.class
 com/golfzone/social/club/ClubDAOImpl.class
@@ -35,6 +37,8 @@ com/golfzone/social/comment/CommentDAO.class
 com/golfzone/social/controller/activity/JoinActivityController.class
 com/golfzone/social/controller/MainController.class
 com/golfzone/social/clubmember/ClubMemberDAO.class
+com/golfzone/social/search/SearchClubVO.class
+com/golfzone/social/search/SearchClubDAO.class
 com/golfzone/social/club/ClubDAO.class
 com/golfzone/social/controller/club/CreateClubController.class
 com/golfzone/social/db/MariaDB.class

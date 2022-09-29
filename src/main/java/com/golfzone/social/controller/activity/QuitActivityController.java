@@ -21,17 +21,19 @@ public class QuitActivityController extends HttpServlet {
         int activityNum = Integer.parseInt(req.getParameter("activityNum"));
         int userNum = Integer.parseInt(req.getParameter("userNum"));
         int clubNum = Integer.parseInt(req.getParameter("clubNum"));
+
         System.out.println("activityMemberNum : "+activityMemberNum);
         System.out.println("activityNum : "+activityNum);
         System.out.println("userNum : "+userNum);
         System.out.println("clubNum : "+clubNum);
+
         ActivityMemberVO activityMemberVO = new ActivityMemberVO();
         ActivityMemberDAO activityMemberDAO = new ActivityMemberDAOImpl();
 
         activityMemberVO.setActivityMemberNum(activityMemberNum);
         activityMemberVO.setActivityNum(activityNum);
-        activityMemberVO.setUserNum(userNum);
         activityMemberVO.setClubNum(clubNum);
+        activityMemberVO.setUserNum(userNum);
 
         // Checking Number, input nothing
         if (activityMemberDAO.findUserByActivityNum(activityMemberVO).getActivityNum() == 0) {
