@@ -41,7 +41,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>createclub</servlet-name>
-        <url-pattern>/club/createclub</url-pattern>
+        <url-pattern>/createclub</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>clubinfo</servlet-name>

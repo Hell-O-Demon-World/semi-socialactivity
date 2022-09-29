@@ -41,8 +41,6 @@
         Integer userNum = (Integer) request.getAttribute("userNum");
         userVO.setUserNum(userNum);
     }
-    ActivityMemberDAO activityMemberDAO = new ActivityMemberDAOImpl();
-    ActivityMemberVO activityMemberVO = new ActivityMemberVO();
 %>
 <section id="navBar">
     <nav id="mainNav">
@@ -199,7 +197,7 @@
         <section id="createClub">
         <div class="container">
             <div class="title">Club 생성</div>
-            <form action="/club/createclub" method="post">
+            <form action="/createclub" method="post">
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Club Name</span>
@@ -262,6 +260,7 @@
                         <span class="details">Club Description</span>
                         <textarea name="description" cols="30" rows="10 " placeholder="Club Description"></textarea>
                     </div>
+                    <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum">
                     <div class="button">
                         <input type="submit" value="Register">
                     </div>

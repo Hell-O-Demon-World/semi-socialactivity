@@ -17,6 +17,8 @@ public class CreateClubController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         String clubResultMsg = "resultMsg";
+        int userNum = Integer.parseInt(req.getParameter("userNum"));
+
         String clubName = req.getParameter("clubName");
         String clubMaxCount = req.getParameter("maxCount");
         String clubAge = req.getParameter("age");
@@ -66,6 +68,7 @@ public class CreateClubController extends HttpServlet {
         }
         System.out.println(clubResultMsg);
         req.setAttribute("resultMsg", clubResultMsg);
+        req.setAttribute("userNum", userNum);
         req.getRequestDispatcher("/club.jsp").forward(req, resp);
     }
 }
