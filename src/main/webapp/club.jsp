@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="/css/main.css" type="text/css"/>
     <link rel="stylesheet" href="/css/createclub.css" type="text/css"/>
     <link rel="stylesheet" href="/css/swiper.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
     <title>클럽 생성</title>
 </head>
 <body>
@@ -133,42 +134,25 @@
         <div class="list-container">
             <section id="clubIntro">
                 <h1>모임(광고)</h1>
-                        <!-- activity slide start -->
-                        <!-- <%for (int i = 0; i < clubVOS.size(); i++) {%>
-                        <div class="swiper-slide">
-                            싱글벙글 -->
-<%--                            <form action="/joinclub" method="post">--%>
-<%--                                <img src="${pageContext.request.contextPath}/img/<%=clubVOS.get(i).getClubEmblemPath()%>" alt="no-emblem-img"/>--%>
-<%--                                <p>모임명 : <%=clubVOS.get(i).getClubName()%>--%>
-<%--                                </p>--%>
-<%--                                <p>인원 : ? / <%=clubVOS.get(i).getClubMaxCount()%>--%>
-<%--                                </p>--%>
-<%--                                <p>지역 : <%=clubVOS.get(i).getClubLocation()%>--%>
-<%--                                </p>--%>
-<%--                                <input type="hidden" value="<%=userVO.getUserNum()%>" name = "userNum"/>--%>
-<%--                                <input type="hidden" value="<%=i%>" name = "clubNum"/>--%>
-<%--                                <input class="join-club-button" type="submit" value="가입하기" />--%>
-<%--                            </form>--%>
-                        <!-- </div> -->
-                        <!-- <%}%> -->
-                        <!-- activity slide end -->
-            </section>
-            <section id = "swiperRecommend">
-                <div class="swiper mySwiper">
+
+                <div class="swiper recommendSwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">Slide 1</div>
-                        <div class="swiper-slide">Slide 2</div>
-                        <div class="swiper-slide">Slide 3</div>
-                        <div class="swiper-slide">Slide 4</div>
-                        <div class="swiper-slide">Slide 5</div>
-                        <div class="swiper-slide">Slide 6</div>
-                        <div class="swiper-slide">Slide 7</div>
-                        <div class="swiper-slide">Slide 8</div>
-                        <div class="swiper-slide">Slide 9</div>
+                        <%for (int i = 0; i < clubVOS.size(); i++) {%>
+                        <div class="swiper-slide">
+                            <form action="/joinclub" method="post">
+                                <img src="${pageContext.request.contextPath}/img/<%=clubVOS.get(i).getClubEmblemPath()%>" alt="no-emblem-img"/>
+                                <p>모임명 : <%=clubVOS.get(i).getClubName()%></p>
+                                <p>인원 : ? / <%=clubVOS.get(i).getClubMaxCount()%></p>
+                                <p>지역 : <%=clubVOS.get(i).getClubLocation()%></p>
+                                <input type="hidden" value="<%=userVO.getUserNum()%>" name = "userNum"/>
+                                <input type="hidden" value="<%=i%>" name = "clubNum"/>
+                                <input class="join-club-button" type="submit" value="가입하기" />
+                            </form>
+                        </div>
+                        <%}%>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
-                </div>
             </section>
             <section id="recommendClub">
                 <h1>추천 모임</h1>
