@@ -151,7 +151,7 @@
             </div>
             <div class="info-box">
                 <div class="label">ID</div>
-                <div><%=userVO.getUserName()%>
+                <div><%=userVO.getUserId()%>
                 </div>
             </div>
             <div class="info-box">

@@ -205,3 +205,4 @@ Array.prototype.forEach.call(commentDetailList, (elem) => {
   elem.addEventListener("click", showCommentDetails);
 });
 showCommentDetails;
+
