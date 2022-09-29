@@ -99,5 +99,12 @@
     <servlet-mapping>
         <servlet-name>createactivity</servlet-name>
         <url-pattern>/createactivity</url-pattern>
+    <servlet>
+        <servlet-name>quituser</servlet-name>
+        <servlet-class>com.golfzone.social.controller.auth.QuitUserController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>quituser</servlet-name>
+        <url-pattern>/quituser</url-pattern>
     </servlet-mapping>
 </web-app>
