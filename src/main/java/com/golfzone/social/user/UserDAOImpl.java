@@ -117,6 +117,44 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public int deleteUserByUserNum(int userNum) {
+        int flag = 0;
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("deleteUserByUserNum: conn success");
+            String sql = MariaDB.DELETE_USER_FROM_USER;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, userNum);
+            flag = pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return flag;
+    }
+
+    @Override
     public UserVO findByUserNum(int userNum) {
         UserVO vo = new UserVO();
         try {

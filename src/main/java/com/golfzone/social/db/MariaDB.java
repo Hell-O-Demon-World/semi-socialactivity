@@ -14,6 +14,7 @@ public interface MariaDB {
     String USER_SELECT_ALL = "select * from user";
 
     String DELETE_USER_FROM_ACTIVITY_MEMBER = "delete from activity_member where activity_member_num = ?";
+    String DELETE_USER_FROM_USER = "delete from user where user_num = ?";
 
     String INSERT_ACTIVITY = "insert into activity(activity_title, activity_description) values(?, ?)";
     String INSERT_ACTIVITY_MEMBER = "insert into activity_member(activity_num, club_num, user_num) values(?, ?, ?)";
