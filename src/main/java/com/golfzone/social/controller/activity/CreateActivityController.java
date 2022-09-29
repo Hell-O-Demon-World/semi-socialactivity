@@ -32,7 +32,6 @@ public class CreateActivityController extends HttpServlet {
         activityVO.setActivityTitle(activityTitle);
         activityVO.setActivityDescription(activitiyDescription);
         activityVO.setClubNum(clubNum);
-
         // init VO, DAO
         activityDAO.insertActivity(activityVO);
         List<ActivityVO> activityVOS = activityDAO.selectAll();
@@ -50,7 +49,7 @@ public class CreateActivityController extends HttpServlet {
         req.setAttribute("userNum", userNum);
         req.setAttribute("clubNum", clubNum);
         req.setAttribute("activityMemberResultMsg", activityResultMsg);
-        req.getRequestDispatcher("/club/clubmain.jsp").forward(req, resp);
 
+        req.getRequestDispatcher("/club/clubmain.jsp").forward(req, resp);
     }
 }

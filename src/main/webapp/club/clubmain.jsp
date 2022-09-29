@@ -14,7 +14,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.golfzone.social.club.ClubVO" %>
 <%@ page import="com.golfzone.social.club.ClubDAO" %>
-<%@ page import="com.golfzone.social.club.ClubDAOImpl" %><%--
+<%@ page import="com.golfzone.social.club.ClubDAOImpl" %>
+<%@ page import="java.util.Arrays" %><%--
   Created by IntelliJ IDEA.
   User: org
   Date: 2022/09/28
@@ -55,6 +56,7 @@
   /* get activity list */
   ActivityDAO activityDAO = new ActivityDAOImpl();
   List<ActivityVO> activityVOS = activityDAO.selectAllByClubNum(clubVO);
+
 %>
 <div class="navigation">
   <div class="toggle">
@@ -103,7 +105,7 @@
       <div class="swiper-slide">
         <div class="activity-name"><%=activityVOS.get(i).getActivityTitle()%></div>
         <div class="activity-description">
-          <p><%=activityVOS.get(i).getActivityDescription()%></p>
+          <%=activityVOS.get(i).getActivityDescription()%>
         </div>
       </div>
       <%}%>
@@ -304,10 +306,10 @@
 <section id="createActivity">
   <div class="container">
     <div class="close-activity">X</div>
-    <form method="post" action="/createactivity">
+    <form method="post" action="/createactivity" onsubmit="return false;">
       <div>
         <label for="activityName">Activity Name</label>
-        <input type="text" id="activityName" name="activityTitle" />
+        <input type="text" id="activityName" name="activityTitle" minlength="1" required/>
       </div>
       <div>
         <label for="activityDescription">Activity Description</label>
@@ -316,7 +318,9 @@
                 id="activityDescription"
                 cols="30"
                 rows="10"
+                minlength="10"
                 maxlength="100"
+                required
         ></textarea>
       </div>
       <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum"/>
