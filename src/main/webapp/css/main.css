@@ -19,13 +19,18 @@ nav {
   height: 80px;
   width: 100%;
 }
-a.logo {
+a.logo{
   color: #fff;
   font-size: 35px;
   line-height: 80px;
   padding: 0 10%;
   font-weight: bold;
+  cursor: pointer;
 }
+a.linkText{
+  cursor: pointer;
+}
+
 nav ul {
   float: right;
   margin-right: 6px;
@@ -170,10 +175,6 @@ select option {
 #clubIntro {
   width: 90%;
   height: 30%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  flex-wrap: wrap;
 }
 
 #clubIntro h1 {

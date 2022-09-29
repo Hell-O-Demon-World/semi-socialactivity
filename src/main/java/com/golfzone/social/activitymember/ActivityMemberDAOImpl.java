@@ -2,6 +2,7 @@ package com.golfzone.social.activitymember;
 
 import com.golfzone.social.club.ClubVO;
 import com.golfzone.social.db.MariaDB;
+import com.golfzone.social.user.UserVO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -121,6 +122,103 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
     }
 
     @Override
+    public ActivityMemberVO findClubNumByActivityNum(ActivityMemberVO activityMemberVO) {
+        ActivityMemberVO vo = new ActivityMemberVO();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("find user activity conn success");
+
+            String sql = MariaDB.ACTIVITY_MEMBER_FIND_BY_ACTIVITY_NUM_USER_NUM;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, activityMemberVO.getActivityNum());
+            pstmt.setInt(2, activityMemberVO.getUserNum());
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                vo.setActivityMemberNum(rs.getInt("activity_member_num"));
+                vo.setActivityNum(rs.getInt("activity_num"));
+                vo.setClubNum(rs.getInt("club_num"));
+                vo.setUserNum(rs.getInt("user_num"));
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vo;
+    }
+
+    @Override
+    public ActivityMemberVO findByUser(UserVO userVO) {
+        ActivityMemberVO vo = new ActivityMemberVO();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("find user activity conn success");
+
+            String sql = MariaDB.ACTIVITY_MEMBER_FIND_BY_USER_NUM;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, userVO.getUserNum());
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                vo.setActivityMemberNum(rs.getInt("activity_member_num"));
+                vo.setActivityNum(rs.getInt("activity_num"));
+                vo.setClubNum(rs.getInt("club_num"));
+                vo.setUserNum(rs.getInt("user_num"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vo;
+    }
+
+    @Override
     public int insertActivityMember(ActivityMemberVO activityMemberVO) {
         int flag = 0;
         try {
@@ -191,4 +289,103 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
         } // end finally
         return flag;
     }
+
+    @Override
+    public List<ActivityMemberVO> selectAllByUserNum(UserVO userVO) {
+        List<ActivityMemberVO> vos = new ArrayList<>();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("find user activity conn success");
+
+            String sql = MariaDB.ACTIVITY_MEMBER_FIND_BY_USER_NUM;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, userVO.getUserNum());
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                ActivityMemberVO vo = new ActivityMemberVO();
+                vo.setActivityMemberNum(rs.getInt("activity_member_num"));
+                vo.setActivityNum(rs.getInt("activity_num"));
+                vo.setClubNum(rs.getInt("club_num"));
+                vo.setUserNum(rs.getInt("user_num"));
+                vos.add(vo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vos;
+    }
+
+    @Override
+    public List<ActivityMemberVO> selectAllByClubNum(ClubVO clubVO) {
+        List<ActivityMemberVO> vos = new ArrayList<>();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("find user activity conn success");
+
+            String sql = MariaDB.ACTIVITY_MEMBER_FIND_BY_CLUB_NUM;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, clubVO.getClubNum());
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                ActivityMemberVO vo = new ActivityMemberVO();
+                vo.setActivityMemberNum(rs.getInt("activity_member_num"));
+                vo.setActivityNum(rs.getInt("activity_num"));
+                vo.setClubNum(rs.getInt("club_num"));
+                vo.setUserNum(rs.getInt("user_num"));
+                vos.add(vo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vos;
+    }
+
 }

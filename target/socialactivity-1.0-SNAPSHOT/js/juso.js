@@ -1,16 +1,15 @@
-const location1 = document.getElementById("location");
-const location2 = document.getElementById("location2");
-const locationList = ["강원", "경기", "경남", "경북", "광주", "대구", "대전", "부산", "서울", "울산", "인천", "전남", "전북", "제주", "충남", "충북"];
+const location1 = [...document.getElementsByClassName("location-select")];
 
+let locationList = ["강원", "경기", "경남", "경북", "광주", "대구", "대전", "부산", "서울", "울산", "인천", "전남", "전북", "제주", "충남", "충북"];
 const addLocation = (loc) => {
-
-  locationList.forEach(elem=>{
+    locationList.forEach(elem=>{
     loc.innerHTML+=`<option value=${elem}>${elem}</option>`;
-
-  });
+    });
 }
-addLocation(location1);
-addLocation(location2);
+location1.forEach(elem=>{
+    addLocation(elem);
+})
+
 
 function categoryChange(e) {
     const state = document.getElementById("state");
@@ -32,8 +31,13 @@ function categoryChange(e) {
     const chungnam = ["공주시", "논산시", "보령시", "서산시", "아산시", "천안시", "금산군", "당진군", "부여군", "서천군", "연기군", "예산군", "청양군", "태안군", "홍성군",];
     const chungbuk = ["제천시", "청주시", "충주시", "괴산군", "단양군", "보은군", "영동군", "옥천군", "음성군", "증평군", "진천군", "청원군"];
     const states = [gangwon, gyeonggi, gyeongsangnam, gyeongsangbuk, gwangju, daegu, daejeon, busan, seoul, ulsan, incheon, jeonnam, jeonbuk, jeju, chungnam, chungbuk];
-    state.options.length = 1;
-    state2.options.length = 1;
+    if(state !== null){
+        state.options.length = 1;
+    }
+    if(state2 !== null){
+        state2.options.length = 1;
+    }
+
 
     const selectStateNum = locationList.indexOf(e.value);
     const selectState = states[selectStateNum];

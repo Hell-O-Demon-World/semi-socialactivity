@@ -2,6 +2,7 @@ const ageLow = document.getElementById("ageLow");
 const ageHigh = document.getElementById("ageHigh");
 const tierAge = document.getElementById("tierAge");
 const clubLoc = document.getElementById("clubLocation");
+locationList = ["강원", "경기", "경남", "경북", "광주", "대구", "대전", "부산", "서울", "울산", "인천", "전남", "전북", "제주", "충남", "충북"];
 
 /** age 길이 최대 3으로 제한*/
 const memberMaxLength = function (e) {

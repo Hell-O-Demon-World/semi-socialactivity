@@ -26,8 +26,16 @@ public interface MariaDB {
 
     String CLUB_FIND_BY_CLUB_NAME = "select * from club where club_name = ?";
     String CLUB_FIND_BY_CLUB_PASSWORD = "select * from club where club_name = ?, club_pw = ?";
-    String CLUB_MEMBER_FIND_BY_CLUB_NUM = "select * from club_member where club_num = ?";
-    String USER_FIND_BY_USER = "select * from user where user_id = ";
+    String CLUB_MEMBER_FIND_BY_USER_NUM_CLUB_NUM = "select * from club_member where user_num = ? and club_num = ?";
+    String USER_FIND_BY_USER = "select * from user where user_id = ?";
+    String USER_FIND_BY_USER_NUM = "select * from user where user_num = ?";
     String USER_FIND_BY_ACTIVITY_MEMBER = "select * from activity_member where user_num = ? and activity_num = ?";
-
+    String ACTIVITY_MEMBER_FIND_BY_ACTIVITY_NUM_USER_NUM = "select * from activity_member where activity_num = ? and user_num = ?";
+    String CLUB_MEMBER_FIND_BY_USER_NUM = "select * from club_member where user_num = ?";
+    String CLUB_FIND_BY_CLUB_NUM = "select * from club where club_num = ?";
+    String ACTIVITY_FIND_BY_ACTIVITY_NUM = "select * from activity where activity_num = ?";
+    String ACTIVITY_MEMBER_FIND_BY_USER_NUM = "select * from activity_member where user_num = ?";
+    String ACTIVITY_MEMBER_FIND_BY_CLUB_NUM = "select * from activity_member where club_num = ?";
+    String ACTIVITY_FIND_BY_CLUB_NUM = "select * from activity where club_num = ?";
+    String COUNT_CLUB_MEMBER = "select count(*) as count from club_member where club_num = ?";
 }

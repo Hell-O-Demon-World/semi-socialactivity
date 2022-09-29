@@ -6,16 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class ClubController extends HttpServlet {
+public class ClubInfoController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        /* Setting request type UTF-8 */
-        req.setCharacterEncoding("UTF-8");
-        /* get params from club.jsp */
         int userNum = Integer.parseInt(req.getParameter("userNum"));
-        System.out.println("userNum in mypage : "+userNum);
-
+        int clubNum = Integer.parseInt(req.getParameter("clubNum"));
+        req.setAttribute("clubNum", clubNum);
         req.setAttribute("userNum", userNum);
-        req.getRequestDispatcher("/club.jsp").forward(req, resp);
+        req.getRequestDispatcher("/club/clubmain.jsp").forward(req, resp);
     }
 }

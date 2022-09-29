@@ -34,17 +34,20 @@ public class JoinClubController extends HttpServlet {
         System.out.println("roleNum: "+clubMemberVO.getRoleNum());
         System.out.println("clubNum: "+clubMemberVO.getClubNum());
         System.out.println("userNum: "+clubMemberVO.getUserNum());
-        if (clubMemberDAO.findByClubNum(clubMemberVO).getClubNum() != 0){
-            clubResultMsg = "이미 가입한 클럽입니다.";
-            System.out.println(clubResultMsg);
-        }
-        else {
+        System.out.println(clubMemberDAO.findByUserNumClubNum(clubMemberVO).getUserNum());
+        System.out.println(clubMemberDAO.findByUserNumClubNum(clubMemberVO).getClubNum());
+        if (clubMemberDAO.findByUserNumClubNum(clubMemberVO).getUserNum() == 0 && clubMemberDAO.findByUserNumClubNum(clubMemberVO).getClubNum() == 0){
             /* insert member to club member */
             clubMemberDAO.insertClubMember(clubMemberVO);
             clubResultMsg = "클럽 가입 완료!";
             System.out.println(clubResultMsg);
         }
+        else {
+            clubResultMsg = "이미 가입한 클럽입니다.";
+            System.out.println(clubResultMsg);
+        }
         req.setAttribute("resultMsg" ,clubResultMsg);
+        req.setAttribute("userNum", userNum);
         req.getRequestDispatcher("/club.jsp").forward(req, resp);
     }
 }

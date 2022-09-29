@@ -1,4 +1,4 @@
-package com.golfzone.social.controller.club;
+package com.golfzone.social.controller.mypage;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -6,16 +6,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class ClubController extends HttpServlet {
+public class MyPageController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         /* Setting request type UTF-8 */
         req.setCharacterEncoding("UTF-8");
-        /* get params from club.jsp */
+        /* get params from mypage.jsp */
         int userNum = Integer.parseInt(req.getParameter("userNum"));
-        System.out.println("userNum in mypage : "+userNum);
 
         req.setAttribute("userNum", userNum);
-        req.getRequestDispatcher("/club.jsp").forward(req, resp);
+        req.getRequestDispatcher("/mypage/mypage.jsp").forward(req, resp);
     }
 }

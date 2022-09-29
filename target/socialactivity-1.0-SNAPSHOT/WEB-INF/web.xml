@@ -36,12 +36,28 @@
         <url-pattern>/club</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>createclub</servlet-name>
+        <servlet-class>com.golfzone.social.controller.club.CreateClubController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createclub</servlet-name>
+        <url-pattern>/club/createclub</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>clubinfo</servlet-name>
+        <servlet-class>com.golfzone.social.controller.club.ClubInfoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>clubinfo</servlet-name>
+        <url-pattern>/clubinfo</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>joinclub</servlet-name>
         <servlet-class>com.golfzone.social.controller.club.JoinClubController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>joinclub</servlet-name>
-        <url-pattern>/joinclub</url-pattern>
+        <url-pattern>/club/joinclub</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>joinactivity</servlet-name>
@@ -50,6 +66,14 @@
     <servlet-mapping>
         <servlet-name>joinactivity</servlet-name>
         <url-pattern>/joinactivity</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>mypage</servlet-name>
+        <servlet-class>com.golfzone.social.controller.mypage.MyPageController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mypage</servlet-name>
+        <url-pattern>/mypage</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>quitactivity</servlet-name>

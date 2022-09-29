@@ -71,6 +71,104 @@ public class ActivityDAOImpl implements ActivityDAO {
 
             while (rs.next()) {
                 ActivityVO vo = new ActivityVO();
+                vo.setActivityNum(rs.getInt("ACTIVITY_NUM"));
+                vo.setActivityTitle(rs.getString("ACTIVITY_TITLE"));
+                vo.setActivityDescription(rs.getString("ACTIVITY_DESCRIPTION"));
+                vos.add(vo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vos;
+    }
+
+    @Override
+    public ActivityVO findByActivityNum(ActivityVO activityVO) {
+        ActivityVO vo = new ActivityVO();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("Activity selectAll: conn success");
+
+            String sql = MariaDB.ACTIVITY_FIND_BY_ACTIVITY_NUM;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, activityVO.getActivityNum());
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                vo.setActivityNum(rs.getInt("ACTIVITY_NUM"));
+                vo.setClubNum(rs.getInt("CLUB_NUM"));
+                vo.setActivityTitle(rs.getString("ACTIVITY_TITLE"));
+                vo.setActivityDescription(rs.getString("ACTIVITY_DESCRIPTION"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vo;
+    }
+
+    @Override
+    public List<ActivityVO> selectAllByClubNum(ClubVO clubVO) {
+        List<ActivityVO> vos = new ArrayList<>();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("Activity selectAll: conn success");
+
+            String sql = MariaDB.ACTIVITY_FIND_BY_CLUB_NUM;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, clubVO.getClubNum());
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                ActivityVO vo = new ActivityVO();
+                vo.setActivityNum(rs.getInt("ACTIVITY_NUM"));
                 vo.setActivityTitle(rs.getString("ACTIVITY_TITLE"));
                 vo.setActivityDescription(rs.getString("ACTIVITY_DESCRIPTION"));
                 vos.add(vo);

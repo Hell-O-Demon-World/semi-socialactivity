@@ -45,7 +45,7 @@
   transition: 0.5s;
 }
 .navigation .toggle.active::before {
-  transform: rotate(315deg);
+  transform: rotate(360deg);
 }
 .navigation ul {
   padding-top: 20px;

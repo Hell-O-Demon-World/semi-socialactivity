@@ -13,38 +13,37 @@ import java.io.IOException;
 public class QuitActivityController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        /* Setting request type UTF-8 */
         req.setCharacterEncoding("UTF-8");
         String activityMemberResultMsg = "";
         // init get parameter
-        String activityMemberNum = req.getParameter("activityMemberNum");
-        String activityNum = req.getParameter("activityNum");
-        String userNum = req.getParameter("userNum");
-        String clubNum = req.getParameter("clubNum");
+        int activityMemberNum = Integer.parseInt(req.getParameter("activityMemberNum"));
+        int activityNum = Integer.parseInt(req.getParameter("activityNum"));
+        int userNum = Integer.parseInt(req.getParameter("userNum"));
+        int clubNum = Integer.parseInt(req.getParameter("clubNum"));
+        System.out.println("activityMemberNum : "+activityMemberNum);
+        System.out.println("activityNum : "+activityNum);
+        System.out.println("userNum : "+userNum);
+        System.out.println("clubNum : "+clubNum);
         ActivityMemberVO activityMemberVO = new ActivityMemberVO();
         ActivityMemberDAO activityMemberDAO = new ActivityMemberDAOImpl();
 
-        activityMemberVO.setActivityMemberNum(Integer.parseInt(activityMemberNum));
-        activityMemberVO.setActivityNum(Integer.parseInt(activityNum));
-        activityMemberVO.setUserNum(Integer.parseInt(userNum));
-        activityMemberVO.setClubNum(Integer.parseInt(clubNum));
+        activityMemberVO.setActivityMemberNum(activityMemberNum);
+        activityMemberVO.setActivityNum(activityNum);
+        activityMemberVO.setUserNum(userNum);
+        activityMemberVO.setClubNum(clubNum);
 
         // Checking Number, input nothing
         if (activityMemberDAO.findUserByActivityNum(activityMemberVO).getActivityNum() == 0) {
             activityMemberResultMsg = "가입하지 않은 액티비티입니다.";
         } else {
             // init VO, DAO
-            activityMemberDAO = new ActivityMemberDAOImpl();
-            activityMemberVO = new ActivityMemberVO();
-            activityMemberVO.setActivityMemberNum(Integer.parseInt(activityMemberNum));
-            activityMemberVO.setActivityNum(Integer.parseInt(activityNum));
-            activityMemberVO.setClubNum(Integer.parseInt(clubNum));
-            activityMemberVO.setUserNum(Integer.parseInt(userNum));
             activityMemberDAO.deleteActivityMember(activityMemberVO);
             activityMemberResultMsg = "탈퇴완료...";
         }
         System.out.println(activityMemberResultMsg);
-
+        req.setAttribute("userNum", userNum);
         req.setAttribute("activityMemberResultMsg", activityMemberResultMsg);
-        req.getRequestDispatcher("zxcvzxcv").forward(req, resp);
+        req.getRequestDispatcher("/mypage/mypage.jsp").forward(req, resp);
     }
 }

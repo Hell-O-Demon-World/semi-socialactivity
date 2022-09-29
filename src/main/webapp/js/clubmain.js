@@ -2,9 +2,9 @@ const swiperPrev = document.querySelector("#activity .swiper-button-prev");
 const swiperNext = document.querySelector("#activity .swiper-button-next");
 const slideCount = document.querySelectorAll("#activity .swiper-slide").length;
 const pageCount = // 슬라이드 페이지 개수
-  slideCount % 4
-    ? slideCount - (slideCount % 4)
-    : slideCount - (slideCount % 4) - 4;
+    slideCount % 4
+        ? slideCount - (slideCount % 4)
+        : slideCount - (slideCount % 4) - 4;
 
 const swiper = new Swiper(".mySwiper", {
   slidesPerView: 4, // 한 번에 보여질 element의 개수
@@ -102,6 +102,36 @@ const removeForm = () => {
 removeFormBtn.addEventListener("click", removeForm);
 
 createBoardBtn.addEventListener("click", newBoardForm);
+/* image 추가 */
+const addImageBtn = document.querySelector(".add-image");
+const addImage = document.getElementById("addImage");
+const newImageForm = (e) => {
+  addImage.style.display = "flex";
+  addImage.style.zIndex = "1000";
+};
+const removeImageFormBtn = document.querySelector(".close-image");
+const removeImageForm = () => {
+  addImage.style.display = "none";
+  addImage.style.zIndex = "-1";
+};
+removeImageFormBtn.addEventListener("click", removeImageForm);
+
+addImageBtn.addEventListener("click", newImageForm);
+/* 액티비티 추가 */
+const addActivityBtn = document.querySelector(".create-activity");
+const addActivity = document.getElementById("createActivity");
+const newActivityForm = (e) => {
+  addActivity.style.display = "flex";
+  addActivity.style.zIndex = "100";
+};
+const removeActivityFormBtn = document.querySelector(".close-activity");
+const removeActivityForm = () => {
+  addImage.style.display = "none";
+  addImage.style.zIndex = "-1";
+};
+removeActivityFormBtn.addEventListener("click", removeActivityForm);
+
+addActivityBtn.addEventListener("click", newActivityForm);
 /* 게시판 crud */
 const updateBoard = document.querySelectorAll(".button-update");
 const deleteBoard = document.querySelectorAll(".button-delete");
@@ -138,7 +168,7 @@ boardButton.addEventListener("click", removeForm);
 const createBoardText = document.querySelector("#createBoard textarea");
 const BoardText = document.querySelector("#board textarea");
 const createActivity = document.getElementById("createActivity");
-
+const imageName = document.querySelector("#addImage input[type=text]");
 /** 글자수 체크
  *
  * @param {Event}
@@ -154,6 +184,7 @@ const countText = (e) => {
 createBoardText.addEventListener("keyup", countText);
 BoardText.addEventListener("keyup", countText);
 createActivity.addEventListener("keyup", countText);
+imageName.addEventListener("keyup", countText);
 /* Comment 글자수 자르기 */
 
 const comments = document.getElementsByClassName("board-description");
@@ -166,13 +197,11 @@ Array.prototype.forEach.call(comments, (elem) => {
 const commentDetailList = document.getElementsByClassName("comment-details");
 const showCommentDetails = (e) => {
   console.log(
-    e.target.parentNode.parentNode.parentNode.querySelector(".display-none")
-      .innerText
+      e.target.parentNode.parentNode.parentNode.querySelector(".display-none")
+          .innerText
   );
 };
 Array.prototype.forEach.call(commentDetailList, (elem) => {
   elem.addEventListener("click", showCommentDetails);
 });
 showCommentDetails;
-
-/* 액티비티 생성 */

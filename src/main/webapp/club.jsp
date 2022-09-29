@@ -6,7 +6,10 @@
 <%@ page import="com.golfzone.social.club.ClubVO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.golfzone.social.user.UserVO" %><%--
+<%@ page import="com.golfzone.social.user.UserVO" %>
+<%@ page import="com.golfzone.social.activitymember.ActivityMemberVO" %>
+<%@ page import="com.golfzone.social.activitymember.ActivityMemberDAO" %>
+<%@ page import="com.golfzone.social.activitymember.ActivityMemberDAOImpl" %><%--
   Created by IntelliJ IDEA.
   User: org
   Date: 2022/09/23
@@ -20,8 +23,9 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="css/main.css" type="text/css"/>
-    <link rel="stylesheet" href="css/createclub.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/main.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/createclub.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/swiper.css" type="text/css" />
     <title>클럽 생성</title>
 </head>
 <body>
@@ -36,12 +40,20 @@
         Integer userNum = (Integer) request.getAttribute("userNum");
         userVO.setUserNum(userNum);
     }
+    ActivityMemberDAO activityMemberDAO = new ActivityMemberDAOImpl();
+    ActivityMemberVO activityMemberVO = new ActivityMemberVO();
 %>
 <section id="navBar">
     <nav id="mainNav">
-        <a href="/club.jsp" class="logo">Logo</a>
+        <form id="clubPage" method="post" action="/club">
+            <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum">
+        </form>
+        <a onclick="document.getElementById('clubPage').submit();" class="logo" >Logo</a>
         <ul>
-            <li><a href="#">MyPage</a></li>
+            <form id="myPage" method="post" action="/mypage">
+                <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum">
+            </form>
+            <li><a onclick="document.getElementById('myPage').submit();" class="linkText">MyPage</a></li>
             <li><a href="/">Logout</a></li>
         </ul>
     </nav>
@@ -121,27 +133,41 @@
         <div class="list-container">
             <section id="clubIntro">
                 <h1>모임(광고)</h1>
-                <div class="slide">
-                    <div class="left-button" onclick="showLeftItem()"><p>
-                        <div class="arrow-left" id="leftArrow"></div>
+                        <!-- activity slide start -->
+                        <!-- <%for (int i = 0; i < clubVOS.size(); i++) {%>
+                        <div class="swiper-slide">
+                            싱글벙글 -->
+<%--                            <form action="/joinclub" method="post">--%>
+<%--                                <img src="${pageContext.request.contextPath}/img/<%=clubVOS.get(i).getClubEmblemPath()%>" alt="no-emblem-img"/>--%>
+<%--                                <p>모임명 : <%=clubVOS.get(i).getClubName()%>--%>
+<%--                                </p>--%>
+<%--                                <p>인원 : ? / <%=clubVOS.get(i).getClubMaxCount()%>--%>
+<%--                                </p>--%>
+<%--                                <p>지역 : <%=clubVOS.get(i).getClubLocation()%>--%>
+<%--                                </p>--%>
+<%--                                <input type="hidden" value="<%=userVO.getUserNum()%>" name = "userNum"/>--%>
+<%--                                <input type="hidden" value="<%=i%>" name = "clubNum"/>--%>
+<%--                                <input class="join-club-button" type="submit" value="가입하기" />--%>
+<%--                            </form>--%>
+                        <!-- </div> -->
+                        <!-- <%}%> -->
+                        <!-- activity slide end -->
+            </section>
+            <section id = "swiperRecommend">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">Slide 1</div>
+                        <div class="swiper-slide">Slide 2</div>
+                        <div class="swiper-slide">Slide 3</div>
+                        <div class="swiper-slide">Slide 4</div>
+                        <div class="swiper-slide">Slide 5</div>
+                        <div class="swiper-slide">Slide 6</div>
+                        <div class="swiper-slide">Slide 7</div>
+                        <div class="swiper-slide">Slide 8</div>
+                        <div class="swiper-slide">Slide 9</div>
                     </div>
-                    <div class="promotion-club-container">
-                        <% String clubName = "KIM";
-                            String clubLocation = "SEOUL";%>
-                        <div class="promotion-club-item">
-                            <form action="/joinclub" method="post">
-                                <img src="${pageContext.request.contextPath}/img/test-emblem-logo.png" alt="no-emblem-img"/>
-                                <p>모임명 : </p>
-                                <p>인원</p>
-                                <p>지역</p>
-                                <input id = "1" type="hidden" value="3" name="clubNum"/>
-                                <input id="joinClubBtn2" type="submit" value="가입하기"/>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="right-button" onclick="showRightItem">
-                        <div class="arrow-right" id="rightArrow"></div>
-                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </section>
             <section id="recommendClub">
@@ -149,7 +175,7 @@
                 <div class="recommend-club-container" id="recommendClubContainer">
                     <%for (int i = 0; i < clubVOS.size(); i++) {%>
                         <div class="recommend-club-item">
-                            <form action="/joinclub" method="post">
+                            <form action="/club/joinclub" method="post">
                                 <img src="${pageContext.request.contextPath}/img/<%=clubVOS.get(i).getClubEmblemPath()%>" alt="no-emblem-img"/>
                                 <p>모임명 : <%=clubVOS.get(i).getClubName()%>
                                 </p>
@@ -177,8 +203,9 @@
                             <p>소개 : <%=activityVOS.get(i).getActivityDescription()%>
                             </p>
                             <input type="hidden" value="<%=activityVOS.get(i).getActivityNum()%>" name = "activityNum"/>
-                            <input type="hidden" value="<%=activityVOS.get(i).getActivityTitle()%>" name = "activityTitle"/>
-                            <input class="join-activity-button" type="submit" value="가입하기"/>
+                            <input type="hidden" value="<%=userVO.getUserNum()%>" name = "userNum"/>
+                            <input type="hidden" value="<%=activityDAO.findByActivityNum(activityVOS.get(i)).getClubNum()%>" name = "clubNum"/>
+                            <input class="join-activity-button" type="submit" value="참여하기"/>
                         </form>
                     </div>
                     <%}%>
@@ -188,7 +215,7 @@
         <section id="createClub">
         <div class="container">
             <div class="title">Club 생성</div>
-            <form action="/club" method="post">
+            <form action="/club/createclub" method="post">
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Club Name</span>
@@ -263,13 +290,13 @@
     </div>
 </section>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/main.js"></script>
 <script src="js/juso.js"></script>
 <script src="js/createclub.js"></script>
-<script src="./js/arrow.js" charset="UTF-8"></script>
 <script src="./js/recommend.js" charset="UTF-8"></script>
 <script
         type="module"
@@ -279,5 +306,7 @@
         nomodule
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
 ></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script src="./js/swiper.js" charset="UTF-8"></script>
 </body>
 </html>

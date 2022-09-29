@@ -1,6 +1,7 @@
 package com.golfzone.social.clubmember;
 
 import com.golfzone.social.db.MariaDB;
+import com.golfzone.social.user.UserVO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -64,15 +65,15 @@ public class ClubMemberDAOImpl implements ClubMemberDAO {
     }
 
     @Override
-    public ClubMemberVO findByClubNum(ClubMemberVO clubMemberVO) {
+    public ClubMemberVO findByUser(UserVO userVO) {
         ClubMemberVO vo = new ClubMemberVO();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
             System.out.println("findByClubNum: conn success");
 
-            String sql = MariaDB.CLUB_MEMBER_FIND_BY_CLUB_NUM;
+            String sql = MariaDB.CLUB_MEMBER_FIND_BY_USER_NUM;
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, clubMemberVO.getClubNum());
+            pstmt.setInt(1, userVO.getUserNum());
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -112,6 +113,105 @@ public class ClubMemberDAOImpl implements ClubMemberDAO {
     }
 
     @Override
+    public ClubMemberVO findByUserNumClubNum(ClubMemberVO clubMemberVO) {
+        ClubMemberVO vo = new ClubMemberVO();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("findByClubNum: conn success");
+
+            String sql = MariaDB.CLUB_MEMBER_FIND_BY_USER_NUM_CLUB_NUM;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, clubMemberVO.getUserNum());
+            pstmt.setInt(2, clubMemberVO.getClubNum());
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                vo.setMemberNum(rs.getInt("MEMBER_NUM"));
+                vo.setRoleNum(rs.getInt("ROLE_NUM"));
+                vo.setClubNum(rs.getInt("CLUB_NUM"));
+                vo.setUserNum(rs.getInt("USER_NUM"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vo;
+    }
+
+    @Override
+    public List<ClubMemberVO> selectAllByUserNum(int userNum) {
+        List<ClubMemberVO> vos = new ArrayList<>();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("ClubMember selectAll: conn success");
+
+            String sql = MariaDB.CLUB_MEMBER_FIND_BY_USER_NUM;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, userNum);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                ClubMemberVO vo = new ClubMemberVO();
+                vo.setMemberNum(rs.getInt("MEMBER_NUM"));
+                vo.setRoleNum(rs.getInt("ROLE_NUM"));
+                vo.setClubNum(rs.getInt("CLUB_NUM"));
+                vo.setUserNum(rs.getInt("USER_NUM"));
+                vos.add(vo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vos;
+    }
+
+    @Override
     public List<ClubMemberVO> selectAll() {
         List<ClubMemberVO> vos = new ArrayList<>();
         try {
@@ -124,10 +224,10 @@ public class ClubMemberDAOImpl implements ClubMemberDAO {
 
             while (rs.next()) {
                 ClubMemberVO vo = new ClubMemberVO();
-                vo.setClubNum(rs.getInt("CLUB_NUM"));
+                vo.setMemberNum(rs.getInt("MEMBER_NUM"));
                 vo.setRoleNum(rs.getInt("ROLE_NUM"));
-                vo.setRoleNum(rs.getInt("CLUB_NUM"));
-                vo.setRoleNum(rs.getInt("USER_NUM"));
+                vo.setClubNum(rs.getInt("CLUB_NUM"));
+                vo.setUserNum(rs.getInt("USER_NUM"));
                 vos.add(vo);
             }
         } catch (SQLException e) {

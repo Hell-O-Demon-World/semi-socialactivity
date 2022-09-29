@@ -2,9 +2,9 @@ const swiperPrev = document.querySelector("#activity .swiper-button-prev");
 const swiperNext = document.querySelector("#activity .swiper-button-next");
 const slideCount = document.querySelectorAll("#activity .swiper-slide").length;
 const pageCount = // 슬라이드 페이지 개수
-  slideCount % 4
-    ? slideCount - (slideCount % 4)
-    : slideCount - (slideCount % 4) - 4;
+    slideCount % 4
+        ? slideCount - (slideCount % 4)
+        : slideCount - (slideCount % 4) - 4;
 
 const swiper = new Swiper(".mySwiper", {
   slidesPerView: 4, // 한 번에 보여질 element의 개수
@@ -78,7 +78,7 @@ const boardSwiper = new Swiper(".board-container", {
 /* comment swiper */
 const commentSwiper = new Swiper(".comment-container", {
   direction: "vertical",
-  height: 150,
+  height: 350,
   slidesPerView: 4,
   freeMode: true,
   scrollbar: {
@@ -102,6 +102,36 @@ const removeForm = () => {
 removeFormBtn.addEventListener("click", removeForm);
 
 createBoardBtn.addEventListener("click", newBoardForm);
+/* image 추가 */
+const addImageBtn = document.querySelector(".add-image");
+const addImage = document.getElementById("addImage");
+const newImageForm = (e) => {
+  addImage.style.display = "flex";
+  addImage.style.zIndex = "1000";
+};
+const removeImageFormBtn = document.querySelector(".close-image");
+const removeImageForm = () => {
+  addImage.style.display = "none";
+  addImage.style.zIndex = "-1";
+};
+removeImageFormBtn.addEventListener("click", removeImageForm);
+
+addImageBtn.addEventListener("click", newImageForm);
+/* 액티비티 추가 */
+const addActivityBtn = document.querySelector(".create-activity");
+const addActivity = document.getElementById("createActivity");
+const newActivityForm = (e) => {
+  addActivity.style.display = "flex";
+  addActivity.style.zIndex = "100";
+};
+const removeActivityFormBtn = document.querySelector(".close-activity");
+const removeActivityForm = () => {
+  addImage.style.display = "none";
+  addImage.style.zIndex = "-1";
+};
+removeActivityFormBtn.addEventListener("click", removeActivityForm);
+
+addActivityBtn.addEventListener("click", newActivityForm);
 /* 게시판 crud */
 const updateBoard = document.querySelectorAll(".button-update");
 const deleteBoard = document.querySelectorAll(".button-delete");
@@ -127,43 +157,6 @@ for (const $button of detailsBoard) {
   $button.addEventListener("click", showDetail);
 }
 
-const commentButton = document.getElementById("submitComment");
-/** comment 추가
- *
- * @param {Event} e 이벤트 객체 추가
- */
-const addComment = (e) => {
-  e.preventDefault();
-  const comment = e.target.parentNode;
-  let commentDetails = comment.querySelector('input[type="text"]').value;
-  let realCommentDetails = commentDetails;
-  const commentList = document.querySelector(
-    ".comment-container .swiper-wrapper"
-  );
-  if (commentDetails.length > 15) {
-    commentDetails = commentDetails.substring(0, 15) + "...";
-  }
-
-  commentList.innerHTML += `
-  <div class="swiper-slide">
-    <div>
-      <div>
-        <input type="submit" value="삭제" name="deleteComment" />
-        <div class="comment-details">자세히</div>
-      </div>
-      <div class="writer">작성자</div>
-    </div>  
-    <div class="comment-content">
-      ${commentDetails}
-    </div>
-    <div class ="display-none">${realCommentDetails}</div>
-  </div>
-`;
-
-  commentSwiper.update();
-};
-commentButton.addEventListener("click", addComment);
-
 const boardButton = document.getElementById("submitBoard");
 boardButton.addEventListener("click", removeForm);
 /** comment 추가
@@ -173,7 +166,9 @@ boardButton.addEventListener("click", removeForm);
 
 /* textarea 글자 수 제한 */
 const createBoardText = document.querySelector("#createBoard textarea");
-
+const BoardText = document.querySelector("#board textarea");
+const createActivity = document.getElementById("createActivity");
+const imageName = document.querySelector("#addImage input[type=text]");
 /** 글자수 체크
  *
  * @param {Event}
@@ -187,28 +182,23 @@ const countText = (e) => {
 };
 
 createBoardText.addEventListener("keyup", countText);
-createBoardText.keyup = function () {
-  var content = $(this).val();
-  if (content.length > 100) {
-    alert("최대 100자까지 입력 가능합니다.");
-    $(this).val(content.substring(0, 100));
-  }
-};
-
+BoardText.addEventListener("keyup", countText);
+createActivity.addEventListener("keyup", countText);
+imageName.addEventListener("keyup", countText);
 /* Comment 글자수 자르기 */
 
-const comments = document.getElementsByClassName("comment-content");
+const comments = document.getElementsByClassName("board-description");
 console.log(comments);
 Array.prototype.forEach.call(comments, (elem) => {
-  elem.innerText = `${elem.innerText.substring(0, 15)} ...`;
+  elem.innerText = `${elem.innerText.substring(0, 50)} ...`;
 });
 
 /* comment 자세히 보기 */
 const commentDetailList = document.getElementsByClassName("comment-details");
 const showCommentDetails = (e) => {
   console.log(
-    e.target.parentNode.parentNode.parentNode.querySelector(".display-none")
-      .innerText
+      e.target.parentNode.parentNode.parentNode.querySelector(".display-none")
+          .innerText
   );
 };
 Array.prototype.forEach.call(commentDetailList, (elem) => {

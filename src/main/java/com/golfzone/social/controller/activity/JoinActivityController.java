@@ -16,32 +16,35 @@ public class JoinActivityController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String activityMemberResultMsg = "";
         // init get parameter
-        String activityNum = req.getParameter("activityNum");
-        String userNum = req.getParameter("userNum");
-        String clubNum = req.getParameter("clubNum");
+        int activityNum = Integer.parseInt(req.getParameter("activityNum"));
+        int userNum = Integer.parseInt(req.getParameter("userNum"));
+        int clubNum = Integer.parseInt(req.getParameter("clubNum"));
+        System.out.println("acNum: " + activityNum);
+        System.out.println("userNum :"+userNum);
+        System.out.println("clubNum : "+ clubNum);
         ActivityMemberVO activityMemberVO = new ActivityMemberVO();
         ActivityMemberDAO activityMemberDAO = new ActivityMemberDAOImpl();
 
-        activityMemberVO.setActivityNum(Integer.parseInt(activityNum));
-        activityMemberVO.setUserNum(Integer.parseInt(userNum));
-        activityMemberVO.setClubNum(Integer.parseInt(clubNum));
+        activityMemberVO.setActivityNum(activityNum);
+        activityMemberVO.setUserNum(userNum);
+        activityMemberVO.setClubNum(clubNum);
 
         // Checking Number, input nothing
-        if (activityMemberDAO.findUserByActivityNum(activityMemberVO).getActivityNum() != 0) {
-            activityMemberResultMsg = "이미 가입된 액티비티야";
-        } else {
+        if (activityMemberDAO.findUserByActivityNum(activityMemberVO).getActivityNum() == 0 && activityMemberDAO.findUserByActivityNum(activityMemberVO).getUserNum() == 0) {
             // init VO, DAO
             activityMemberDAO = new ActivityMemberDAOImpl();
             activityMemberVO = new ActivityMemberVO();
-            activityMemberVO.setActivityNum(Integer.parseInt(activityNum));
-            activityMemberVO.setClubNum(Integer.parseInt(clubNum));
-            activityMemberVO.setUserNum(Integer.parseInt(userNum));
+            activityMemberVO.setActivityNum(activityNum);
+            activityMemberVO.setClubNum(clubNum);
+            activityMemberVO.setUserNum(userNum);
             activityMemberDAO.insertActivityMember(activityMemberVO);
             activityMemberResultMsg = "가입완료..";
+        } else {
+            activityMemberResultMsg = "이미 가입된 액티비티야";
         }
         System.out.println(activityMemberResultMsg);
-
+        req.setAttribute("userNum", userNum);
         req.setAttribute("activityMemberResultMsg", activityMemberResultMsg);
-        req.getRequestDispatcher("zxcvzxcv").forward(req, resp);
+        req.getRequestDispatcher("/club.jsp").forward(req, resp);
     }
 }

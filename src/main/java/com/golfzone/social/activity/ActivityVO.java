@@ -3,6 +3,16 @@ package com.golfzone.social.activity;
 public class ActivityVO {
 
     private int activityNum;
+    private int clubNum;
+
+    public int getClubNum() {
+        return clubNum;
+    }
+
+    public void setClubNum(int clubNum) {
+        this.clubNum = clubNum;
+    }
+
     private String activityTitle;
     private String activityDescription;
 
@@ -34,6 +44,7 @@ public class ActivityVO {
     public String toString() {
         return "ActivityVO{" +
                 "activityNum=" + activityNum +
+                ", clubNum=" + clubNum +
                 ", activityTitle='" + activityTitle + '\'' +
                 ", activityDescription='" + activityDescription + '\'' +
                 '}';
