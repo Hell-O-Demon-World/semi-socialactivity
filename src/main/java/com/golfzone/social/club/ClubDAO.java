@@ -7,5 +7,6 @@ public interface ClubDAO {
     ClubVO findByClubNum(ClubVO clubVO);
     ClubVO findByClubName(ClubVO clubVO);
     ClubVO findByClubPassword(ClubVO clubVO);
+    ClubVO countClubMember(int ClubNum);
     List<ClubVO> selectAll();
 }

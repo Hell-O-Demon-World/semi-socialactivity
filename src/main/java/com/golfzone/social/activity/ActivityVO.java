@@ -4,19 +4,20 @@ public class ActivityVO {
 
     private int activityNum;
     private int clubNum;
+    private int activityMemberCount;
     private String activityTitle;
     private String activityDescription;
+
+    public int getActivityNum() {
+        return activityNum;
+    }
 
     public int getClubNum() {
         return clubNum;
     }
 
-    public void setClubNum(int clubNum) {
-        this.clubNum = clubNum;
-    }
-
-    public int getActivityNum() {
-        return activityNum;
+    public int getActivityMemberCount() {
+        return activityMemberCount;
     }
 
     public String getActivityTitle() {
@@ -29,6 +30,14 @@ public class ActivityVO {
 
     public void setActivityNum(int activityNum) {
         this.activityNum = activityNum;
+    }
+
+    public void setClubNum(int clubNum) {
+        this.clubNum = clubNum;
+    }
+
+    public void setActivityMemberCount(int activityMemberCount) {
+        this.activityMemberCount = activityMemberCount;
     }
 
     public void setActivityTitle(String activityTitle) {
@@ -44,6 +53,7 @@ public class ActivityVO {
         return "ActivityVO{" +
                 "activityNum=" + activityNum +
                 ", clubNum=" + clubNum +
+                ", activityMemberCount=" + activityMemberCount +
                 ", activityTitle='" + activityTitle + '\'' +
                 ", activityDescription='" + activityDescription + '\'' +
                 '}';

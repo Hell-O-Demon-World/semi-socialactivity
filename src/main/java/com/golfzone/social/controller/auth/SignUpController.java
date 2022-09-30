@@ -69,8 +69,8 @@ public class SignUpController extends HttpServlet {
                 userDAO.insertUser(userVO);
                 signupResultMsg = "회원 가입 완료";
             }
-            System.out.println(signupResultMsg);
         }
+        System.out.println(signupResultMsg);
         req.setAttribute("signupResultMsg", signupResultMsg);
         req.getRequestDispatcher("/main.jsp").forward(req, resp);
     }

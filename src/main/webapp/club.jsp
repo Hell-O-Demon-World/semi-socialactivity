@@ -140,7 +140,7 @@
                             <form action="/joinclub" method="post">
                                 <img src="${pageContext.request.contextPath}/img/<%=clubVOS.get(i).getClubEmblemPath()%>" alt="no-emblem-img"/>
                                 <p>모임명 : <%=clubVOS.get(i).getClubName()%></p>
-                                <p>인원 : ? / <%=clubVOS.get(i).getClubMaxCount()%></p>
+                                <p>인원 : <%=clubDAO.countClubMember(clubVOS.get(i).getClubNum()).getClubMemberCount()%> / <%=clubVOS.get(i).getClubMaxCount()%></p>
                                 <p>지역 : <%=clubVOS.get(i).getClubLocation()%></p>
                                 <input type="hidden" value="<%=userVO.getUserNum()%>" name = "userNum"/>
                                 <input type="hidden" value="<%=i%>" name = "clubNum"/>
@@ -161,7 +161,7 @@
                                 <img src="${pageContext.request.contextPath}/img/<%=clubVOS.get(i).getClubEmblemPath()%>" alt="no-emblem-img"/>
                                 <p>모임명 : <%=clubVOS.get(i).getClubName()%>
                                 </p>
-                                <p>인원 : ? / <%=clubVOS.get(i).getClubMaxCount()%>
+                                <p>인원 : <%=clubDAO.countClubMember(clubVOS.get(i).getClubNum()).getClubMemberCount()%> / <%=clubVOS.get(i).getClubMaxCount()%>
                                 </p>
                                 <p>지역 : <%=clubVOS.get(i).getClubLocation()%>
                                 </p>
@@ -181,7 +181,7 @@
                         <form action="/joinactivity" method="post">
                             <p>액티비티명 : <%=activityVOS.get(i).getActivityTitle()%>
                             </p>
-                            <p>인원 : ? / 4 명</p>
+                            <p>인원 : <%=activityDAO.countActivityMember(activityVOS.get(i).getActivityNum()).getActivityMemberCount()%> / 4 명</p>
                             <p>소개 : <%=activityVOS.get(i).getActivityDescription()%>
                             </p>
                             <input type="hidden" value="<%=activityVOS.get(i).getActivityNum()%>" name = "activityNum"/>

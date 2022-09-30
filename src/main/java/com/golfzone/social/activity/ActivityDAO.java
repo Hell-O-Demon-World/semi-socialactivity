@@ -12,4 +12,6 @@ public interface ActivityDAO {
     ActivityVO findByActivityNum(ActivityVO activityVO);
 
     List<ActivityVO> selectAllByClubNum(ClubVO clubVO);
+
+    ActivityVO countActivityMember(int ActivityNum);
 }

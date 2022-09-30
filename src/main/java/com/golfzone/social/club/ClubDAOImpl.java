@@ -233,6 +233,47 @@ public class ClubDAOImpl implements ClubDAO {
     }
 
     @Override
+    public ClubVO countClubMember(int ClubNum) {
+        ClubVO vo = new ClubVO();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("countClubMember: conn success");
+            String sql = MariaDB.COUNT_CLUB_MEMBER;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, ClubNum);
+            rs = pstmt.executeQuery();
+            while(rs.next()) {
+                vo.setClubMemberCount(rs.getInt("COUNT"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vo;
+    }
+
+    @Override
     public List<ClubVO> selectAll() {
         List<ClubVO> vos = new ArrayList<>();
         try {
@@ -245,6 +286,7 @@ public class ClubDAOImpl implements ClubDAO {
 
             while (rs.next()) {
                 ClubVO vo = new ClubVO();
+                vo.setClubNum(rs.getInt("CLUB_NUM"));
                 vo.setClubEmblemPath(rs.getString("CLUB_EMBLEMPATH"));
                 vo.setClubName(rs.getString("CLUB_NAME"));
                 vo.setClubLocation(rs.getString("CLUB_LOCATION"));
