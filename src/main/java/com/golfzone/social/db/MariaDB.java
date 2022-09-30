@@ -24,7 +24,7 @@ public interface MariaDB {
     String INSERT_ACTIVITY = "insert into activity(club_num, activity_title, activity_description) values(?, ?, ?)";
     String INSERT_ACTIVITY_MEMBER = "insert into activity_member(activity_num, club_num, user_num) values(?, ?, ?)";
     String INSERT_ALBUM = "insert into album(image_name, image_path) values(?, ?)";
-    String INSERT_BOARD = "insert into board(board_title, club_num, board_content, board_writer) values(?, ?, ?, ?)";
+    String INSERT_BOARD = "insert into board(club_num, board_title, board_content, board_writer) values(?, ?, ?, ?)";
     String INSERT_COMMENT = "insert into comment(board_num, club_num, comment_content, comment_writer) values(?, ?, ?, ?)";
     String INSERT_CLUB = "insert into club(club_name, club_maxcount, club_age, club_location, club_tier, club_description, club_emblempath, club_sex, club_pw) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
     String INSERT_CLUB_MEMBER = "insert into club_member(role_num, club_num, user_num) values(?, ?, ?)";
@@ -52,4 +52,5 @@ public interface MariaDB {
     String SEARCH_ALL_CLUB = "select * from club";
     String SEARCH_CLUB_BY_CONDITION = "select * from club where";
     String BOARD_FIND_BY_CLUB_NUM = "select * from board where club_num = ?";
+    String BOARD_FIND_BY_BOARD_NUM = "select * from board where board_num = ?";
 }

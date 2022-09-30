@@ -128,7 +128,7 @@
           <div class="board-info">
             <div class="board-number">
               <div>게시글 번호</div>
-              <div class="text"><%=boardVOS.get(i).getBoardNum()%></div>
+              <div class="text"><%=i+1%></div>
             </div>
             <div class="board-creator">
               <div>게시글 작성자</div>
@@ -146,9 +146,14 @@
           </div>
           <div class="button-container">
             <div class="button-delete">
-              <input type="submit" value="삭제" name="deleteBoard" />
+              <form id="deleteToBoardPage<%=i%>" method="post" action="/deleteboard">
+                <input type="hidden" value="<%=clubVO.getClubNum()%>" name="clubNum" />
+                <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum" />
+                <input type="hidden" value="<%=boardVOS.get(i).getBoardNum()%>" name="boardNum" />
+                <input type="submit" value="삭제" name="deleteBoard" />
+              </form>
             </div>
-            <div class="button-details">자세히</div>
+            <div class="button-details" >자세히</div>
           </div>
           <div class="line"></div>
         </div>
@@ -178,13 +183,16 @@
       <div id="comment">
         <h1>comment</h1>
         <div class="commentInput">
-          <form action="" method="">
+          <form method="post" action="/insertcomment">
                 <textarea
                         name="activity-description"
                         cols="30"
                         rows="10"
                         placeholder="write comment"
                 ></textarea>
+            <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum">
+            <input type="hidden" value="<%=clubVO.getClubNum()%>" name="clubNum">
+            <input type="hidden" value="<%=clubVO.getClubNum()%>" name="commentWriter">
             <input type="submit" value="comment" id="submitComment" />
           </form>
         </div>
@@ -204,20 +212,6 @@
               </div>
               <div class="comment-delete">X</div>
             </div>
-            <div class="swiper-slide">slide1</div>
-            <div class="swiper-slide">slide1</div>
-            <div class="swiper-slide">slide1</div>
-            <div class="swiper-slide">slide1</div>
-            <div class="swiper-slide">slide1</div>
-            <div class="swiper-slide">slide1</div>
-            <div class="swiper-slide">slide1</div>
-            <div class="swiper-slide">slide1</div>
-            <div class="swiper-slide">slide1</div>
-            <div class="swiper-slide">slide1</div>
-            <div class="swiper-slide">slide1</div>
-            <div class="swiper-slide">slide1</div>
-            <div class="swiper-slide">slide1</div>
-            <div class="swiper-slide">slide1</div>
           </div>
           <div class="swiper-scrollbar"></div>
         </div>

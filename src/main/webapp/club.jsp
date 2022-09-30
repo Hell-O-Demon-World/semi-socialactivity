@@ -278,7 +278,7 @@
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/main.js"></script>
-<script src="js/juso.js"></script>
+<script src="js/adress.js"></script>
 <script src="js/createclub.js"></script>
 <script src="./js/recommend.js" charset="UTF-8"></script>
 <script

@@ -9,4 +9,6 @@ public interface BoardDAO {
     int insertBoard(BoardVO boardVO);
     List<BoardVO> selectAllByClubNum(ClubVO clubVO);
     int deleteBoard(int boardNum);
+
+    BoardVO findByBoardNum(BoardVO boardVO);
 }

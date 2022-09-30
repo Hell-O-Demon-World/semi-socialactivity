@@ -35,9 +35,10 @@ public class BoardDAOImpl implements BoardDAO {
             System.out.println("insertBoard: conn success");
             String sql = MariaDB.INSERT_BOARD;
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, boardVO.getBoardTitle());
-            pstmt.setString(2, boardVO.getBoardContent());
-            pstmt.setString(3, boardVO.getBoardWriter());
+            pstmt.setInt(1, boardVO.getClubNum());
+            pstmt.setString(2, boardVO.getBoardTitle());
+            pstmt.setString(3, boardVO.getBoardContent());
+            pstmt.setString(4, boardVO.getBoardWriter());
             flag = pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -151,5 +152,53 @@ public class BoardDAOImpl implements BoardDAO {
         }
         return flag;
     }
+    }
+
+    @Override
+    public BoardVO findByBoardNum(BoardVO boardVO) {
+        BoardVO vo = new BoardVO();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("Activity selectAll: conn success");
+
+            String sql = MariaDB.BOARD_FIND_BY_BOARD_NUM;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, boardVO.getBoardNum());
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                vo.setBoardNum(rs.getInt("BOARD_NUM"));
+                vo.setBoardTitle(rs.getString("BOARD_TITLE"));
+                vo.setBoardContent(rs.getString("BOARD_CONTENT"));
+                vo.setBoardWriter(rs.getString("BOARD_WRITER"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vo;
     }
 }

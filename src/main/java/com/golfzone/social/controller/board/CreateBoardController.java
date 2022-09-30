@@ -34,6 +34,7 @@ public class CreateBoardController extends HttpServlet {
             // init VO, DAO
             BoardDAO boardDAO = new BoardDAOImpl();
             BoardVO boardVO = new BoardVO();
+            boardVO.setClubNum(clubNum);
             boardVO.setBoardTitle(boardTitle);
             boardVO.setBoardContent(boardContent);
             boardVO.setBoardWriter(boardWriter);

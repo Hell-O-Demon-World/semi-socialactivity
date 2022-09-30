@@ -109,6 +109,14 @@
         <url-pattern>/quituser</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>boardinfo</servlet-name>
+        <servlet-class>com.golfzone.social.controller.board.InfoBoardController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>boardinfo</servlet-name>
+        <url-pattern>/boardinfo</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>createboard</servlet-name>
         <servlet-class>com.golfzone.social.controller.board.CreateBoardController</servlet-class>
     </servlet>

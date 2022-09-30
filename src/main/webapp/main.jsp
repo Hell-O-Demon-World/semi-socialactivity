@@ -248,7 +248,7 @@
     </section>
 </div>
 <script src="./js/main.js " charset="UTF-8"></script>
-<script src="./js/juso.js" charset="UTF-8"></script>
+<script src="js/adress.js" charset="UTF-8"></script>
 <script src="./js/login.js" charset="UTF-8"></script>
 <script src="./js/arrow.js" charset="UTF-8"></script>
 <script src="./js/recommend.js" charset="UTF-8"></script>

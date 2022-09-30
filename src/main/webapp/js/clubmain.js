@@ -152,13 +152,14 @@ const showDetail = (e) => {
   detailsWriter.innerText = creator;
   const detailsContent = document.querySelector(".board-content-details");
   detailsContent.innerText = content;
+  console.log(e.target);
 };
 for (const $button of detailsBoard) {
   $button.addEventListener("click", showDetail);
 }
 
-const boardButton = document.getElementById("submitBoard");
-boardButton.addEventListener("click", removeForm);
+// const boardButton = document.getElementById("submitBoard");
+// boardButton.addEventListener("click", removeForm);
 /** comment 추가
  *
  * @param {Event} e 이벤트 객체 추가
