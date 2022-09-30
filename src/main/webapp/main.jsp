@@ -89,7 +89,7 @@
                         <option value selected>시/도 선택</option>
                     </select>
                     <b>/</b>
-                    <select name="state" id="state">
+                    <select name="state" class="state">
                         <option selected>군/구 선택</option>
                     </select>
                     <input
@@ -218,7 +218,7 @@
                                 <option value selected>시/도 선택</option>
                             </select>
                             <b>/</b>
-                            <select name="state2" id="state2">
+                            <select name="state2" class="state">
                                 <option selected>군/구 선택</option>
                             </select>
                         </div>
@@ -247,8 +247,8 @@
         </div>
     </section>
 </div>
-<script src="./js/main.js " charset="UTF-8"></script>
-<script src="js/adress.js" charset="UTF-8"></script>
+<script src="./js/select.js " charset="UTF-8"></script>
+<script src="js/address.js" charset="UTF-8"></script>
 <script src="./js/login.js" charset="UTF-8"></script>
 <script src="./js/arrow.js" charset="UTF-8"></script>
 <script src="./js/recommend.js" charset="UTF-8"></script>
