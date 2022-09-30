@@ -34,6 +34,9 @@ public class CreateClubController extends HttpServlet {
         clubVO.setClubName(clubName);
         clubVO.setClubMaxCount(Integer.parseInt(clubMaxCount));
         clubVO.setClubAge(Integer.parseInt(clubAge));
+        if (clubLocation.equals("0")) {
+            clubLocation = "전국";
+        }
         clubVO.setClubLocation(clubLocation);
 
         if (Integer.parseInt(clubTier) == 6) {
