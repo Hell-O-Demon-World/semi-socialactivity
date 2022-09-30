@@ -5,4 +5,6 @@ import java.util.List;
 public interface CommentDAO {
     List<CommentVO> selectAll();
     int insertComment(CommentVO commentVO);
+
+    int deleteComment(CommentVO commentVO);
 }

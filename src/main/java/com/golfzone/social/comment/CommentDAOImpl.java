@@ -34,8 +34,41 @@ public class CommentDAOImpl implements CommentDAO {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
             String sql = MariaDB.INSERT_COMMENT;
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, commentVO.getCommentContext());
-            pstmt.setString(2, commentVO.getCommentWriter());
+            pstmt.setInt(1, commentVO.getBoardNum());
+            pstmt.setInt(2, commentVO.getClubNum());
+            pstmt.setString(3, commentVO.getCommentContext());
+            pstmt.setString(4, commentVO.getCommentWriter());
+            flag = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return flag;
+        }
+    }
+
+    @Override
+    public int deleteComment(CommentVO commentVO) {
+
+        int flag = 0;
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            String sql = MariaDB.DELETE_COMMENT;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, commentVO.getCommentNum());
             flag = pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

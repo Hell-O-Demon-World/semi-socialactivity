@@ -10,15 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class CommentController extends HttpServlet {
+public class InsertCommentController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         String commentResultMsg = "";
         // init get parameter
+        String boardNum = req.getParameter("boardNum");
+        String clubNum = req.getParameter("clubNum");
         String commentContext = req.getParameter("commentContext");
         String commentWriter = req.getParameter("commentWriter");
+
 
         // Checking length, input nothing
         if ((commentWriter.length() > 46 || commentWriter.length() < 1)) {
@@ -29,6 +32,8 @@ public class CommentController extends HttpServlet {
             // init VO, DAO`
             CommentDAO commentDAO = new CommentDAOImpl();
             CommentVO commentVO = new CommentVO();
+            commentVO.setBoardNum(Integer.parseInt(boardNum));
+            commentVO.setClubNum(Integer.parseInt(clubNum));
             commentVO.setCommentContext(commentContext);
             commentVO.setCommentWriter(commentWriter);
             commentDAO.insertComment(commentVO);
