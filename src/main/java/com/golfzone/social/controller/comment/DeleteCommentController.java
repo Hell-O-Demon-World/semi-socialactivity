@@ -14,7 +14,7 @@ public class DeleteCommentController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        String quitResultMsg = "댓글 삭제 실패 ";
+        String commentResultMsg = "댓글 삭제 실패";
         // init get parameter
         String commentNum = req.getParameter("commentNum");
 
@@ -24,10 +24,10 @@ public class DeleteCommentController extends HttpServlet {
 
         int flag = commentDAO.deleteComment(commentVO);
         if (flag == 1) {
-            quitResultMsg = "댓글삭제완료..";
+            commentResultMsg = "댓글삭제완료..";
         }
-        System.out.println(quitResultMsg);
-        req.setAttribute("quitResultMsg", quitResultMsg);
+        System.out.println(commentResultMsg);
+        req.setAttribute("commentResultMsg: ", commentResultMsg);
         req.getRequestDispatcher("/").forward(req, resp);
 
     }

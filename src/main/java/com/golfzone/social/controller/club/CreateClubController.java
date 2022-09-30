@@ -72,7 +72,7 @@ public class CreateClubController extends HttpServlet {
         }
         System.out.println(clubResultMsg);
         req.setAttribute("resultMsg", clubResultMsg);
-        req.setAttribute("userNum", userNum);
+        req.setAttribute("userNum: ", userNum);
         req.getRequestDispatcher("/club.jsp").forward(req, resp);
     }
 }

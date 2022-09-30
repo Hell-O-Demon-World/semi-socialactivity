@@ -15,6 +15,8 @@ public interface MariaDB {
 
     String DELETE_USER_FROM_ACTIVITY_MEMBER = "delete from activity_member where activity_member_num = ?";
     String DELETE_USER_FROM_USER = "delete from user where user_num = ?";
+    String DELETE_BOARD = "delete from board where board_num = ?";
+    String DELETE_COMMENT = "delete from comment where comment_num = ?";
 
     String INSERT_ACTIVITY = "insert into activity(club_num, activity_title, activity_description) values(?, ?, ?)";
     String INSERT_ACTIVITY_MEMBER = "insert into activity_member(activity_num, club_num, user_num) values(?, ?, ?)";
@@ -42,5 +44,4 @@ public interface MariaDB {
 
     String SEARCH_ALL_CLUB = "select * from club";
     String SEARCH_CLUB_BY_CONDITION = "select * from club where";
-    String DELETE_COMMENT = "delete from comment where comment_num = ?";
 }

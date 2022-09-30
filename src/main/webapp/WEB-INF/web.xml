@@ -118,6 +118,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>deleteboard</servlet-name>
+        <servlet-class>com.golfzone.social.controller.board.DeleteBoardController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteboard</servlet-name>
+        <url-pattern>/deleteboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>deletecomment</servlet-name>
         <servlet-class>com.golfzone.social.controller.comment.DeleteCommentController</servlet-class>
     </servlet>
