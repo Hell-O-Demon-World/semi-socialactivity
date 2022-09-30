@@ -13,6 +13,9 @@ const clubSwiper = new Swiper(".club-container", {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+  lazy: {
+    loadPrevNext: true, // 이전, 다음 이미지는 미리 로딩
+  },
 });
 
 const activitySwiper = new Swiper(".activity-container", {
