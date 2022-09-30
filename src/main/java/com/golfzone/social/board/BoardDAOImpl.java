@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoardDAOImpl implements BoardDAO{
+public class BoardDAOImpl implements BoardDAO {
     private Connection conn;
     private PreparedStatement pstmt;
     private ResultSet rs;
@@ -115,5 +115,41 @@ public class BoardDAOImpl implements BoardDAO{
             }
         } // end finally
         return vos;
+    }
+    public int deleteBoard(int boardNum) {
+        int flag = 0;
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("deleteBoard: conn success");
+            String sql = MariaDB.DELETE_BOARD;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, boardNum);
+            flag = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+    } finally {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (pstmt != null) {
+            try {
+                pstmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return flag;
+    }
     }
 }

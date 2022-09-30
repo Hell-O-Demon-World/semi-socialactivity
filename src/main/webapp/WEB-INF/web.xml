@@ -116,4 +116,31 @@
         <servlet-name>createboard</servlet-name>
         <url-pattern>/createboard</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteboard</servlet-name>
+        <servlet-class>com.golfzone.social.controller.board.DeleteBoardController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteboard</servlet-name>
+        <url-pattern>/deleteboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deletecomment</servlet-name>
+        <servlet-class>com.golfzone.social.controller.comment.DeleteCommentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deletecomment</servlet-name>
+        <url-pattern>/deletecomment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>insertcomment</servlet-name>
+        <servlet-class>com.golfzone.social.controller.comment.InsertCommentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>insertcomment</servlet-name>
+        <url-pattern>/insertcomment</url-pattern>
+    </servlet-mapping>
 </web-app>

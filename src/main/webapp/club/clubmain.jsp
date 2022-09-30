@@ -1,24 +1,18 @@
 <%@ page import="com.golfzone.social.user.UserVO" %>
 <%@ page import="com.golfzone.social.user.UserDAO" %>
 <%@ page import="com.golfzone.social.user.UserDAOImpl" %>
-<%@ page import="com.golfzone.social.clubmember.ClubMemberDAO" %>
-<%@ page import="com.golfzone.social.clubmember.ClubMemberDAOImpl" %>
-<%@ page import="com.golfzone.social.clubmember.ClubMemberVO" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.golfzone.social.activitymember.ActivityMemberDAO" %>
-<%@ page import="com.golfzone.social.activitymember.ActivityMemberDAOImpl" %>
-<%@ page import="com.golfzone.social.activitymember.ActivityMemberVO" %>
 <%@ page import="com.golfzone.social.activity.ActivityDAO" %>
 <%@ page import="com.golfzone.social.activity.ActivityDAOImpl" %>
 <%@ page import="com.golfzone.social.activity.ActivityVO" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="com.golfzone.social.club.ClubVO" %>
 <%@ page import="com.golfzone.social.club.ClubDAO" %>
 <%@ page import="com.golfzone.social.club.ClubDAOImpl" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="com.golfzone.social.board.BoardDAO" %>
 <%@ page import="com.golfzone.social.board.BoardDAOImpl" %>
-<%@ page import="com.golfzone.social.board.BoardVO" %><%--
+<%@ page import="com.golfzone.social.board.BoardVO" %>
+<%--
   Created by IntelliJ IDEA.
   User: org
   Date: 2022/09/28

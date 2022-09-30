@@ -4,6 +4,8 @@ public class ActivityVO {
 
     private int activityNum;
     private int clubNum;
+    private String activityTitle;
+    private String activityDescription;
 
     public int getClubNum() {
         return clubNum;
@@ -12,9 +14,6 @@ public class ActivityVO {
     public void setClubNum(int clubNum) {
         this.clubNum = clubNum;
     }
-
-    private String activityTitle;
-    private String activityDescription;
 
     public int getActivityNum() {
         return activityNum;

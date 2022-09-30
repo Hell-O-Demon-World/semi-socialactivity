@@ -29,7 +29,6 @@ public class CreateClubController extends HttpServlet {
         String clubSex = req.getParameter("sex");
         String clubPw = req.getParameter("pw");
 
-
         ClubDAO clubDAO = new ClubDAOImpl();
         ClubVO clubVO = new ClubVO();
         clubVO.setClubName(clubName);
@@ -47,11 +46,16 @@ public class CreateClubController extends HttpServlet {
             clubVO.setClubTier("silver");
         } else if (Integer.parseInt(clubTier) == 10) {
             clubVO.setClubTier("bronze");
-        } else if (Integer.parseInt(clubTier) == 11) {
+        } else {
             clubVO.setClubTier("unrank");
         }
         clubVO.setClubDescription(clubDescription);
         clubVO.setClubEmblemPath(clubEmblemPath);
+
+        if (clubSex == null) {
+            clubSex = String.valueOf(2);
+        }
+
         clubVO.setClubSex(Integer.parseInt(clubSex));
         clubVO.setClubPw(clubPw);
         if (clubDAO.findByClubName(clubVO).getClubName() != null) {
@@ -68,7 +72,7 @@ public class CreateClubController extends HttpServlet {
         }
         System.out.println(clubResultMsg);
         req.setAttribute("resultMsg", clubResultMsg);
-        req.setAttribute("userNum", userNum);
+        req.setAttribute("userNum: ", userNum);
         req.getRequestDispatcher("/club.jsp").forward(req, resp);
     }
 }

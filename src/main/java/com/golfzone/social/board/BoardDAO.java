@@ -8,4 +8,5 @@ public interface BoardDAO {
     List<BoardVO> selectAll();
     int insertBoard(BoardVO boardVO);
     List<BoardVO> selectAllByClubNum(ClubVO clubVO);
+    int deleteBoard(int boardNum);
 }
