@@ -47,6 +47,7 @@ public interface MariaDB {
 
     /* COUNT */
     String COUNT_CLUB_MEMBER = "select count(*) as count from club_member where club_num = ?";
+    String COUNT_ACTIVITY_MEMBER = "select count(*) as count from activity_member where activity_num = ?";
 
     /* SEARCH */
     String SEARCH_ALL_CLUB = "select * from club";

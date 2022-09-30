@@ -204,4 +204,46 @@ public class ActivityDAOImpl implements ActivityDAO {
         } // end finally
         return vos;
     }
+
+    @Override
+    public ActivityVO countActivityMember(int ActivityNum) {
+        ActivityVO vo = new ActivityVO();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("countActivityMember: conn success");
+            String sql = MariaDB.COUNT_ACTIVITY_MEMBER;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, ActivityNum);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                vo.setActivityMemberCount(rs.getInt("COUNT"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vo;
+    }
 }
+

@@ -154,7 +154,7 @@
                     <form action="#" method="post">
                         <p>액티비티명 : <%=activityVOS.get(i).getActivityTitle()%>
                         </p>
-                        <p>인원 : ? / 4 명</p>
+                        <p>인원 : <%=activityDAO.countActivityMember(activityVOS.get(i).getActivityNum()).getActivityMemberCount()%> / 4 명</p>
                         <p>소개 : <%=activityVOS.get(i).getActivityDescription()%>
                         </p>
                         <input id="joinActivityBtn" type="submit" value="가입하기"/>

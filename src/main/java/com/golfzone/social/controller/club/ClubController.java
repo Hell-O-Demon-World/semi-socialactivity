@@ -13,7 +13,7 @@ public class ClubController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         /* get params from club.jsp */
         int userNum = Integer.parseInt(req.getParameter("userNum"));
-        System.out.println("userNum in mypage : "+userNum);
+        System.out.println("userNum in mypage : " + userNum);
 
         req.setAttribute("userNum", userNum);
         req.getRequestDispatcher("/club.jsp").forward(req, resp);
