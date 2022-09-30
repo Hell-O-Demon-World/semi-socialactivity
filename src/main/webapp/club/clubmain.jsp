@@ -15,7 +15,10 @@
 <%@ page import="com.golfzone.social.club.ClubVO" %>
 <%@ page import="com.golfzone.social.club.ClubDAO" %>
 <%@ page import="com.golfzone.social.club.ClubDAOImpl" %>
-<%@ page import="java.util.Arrays" %><%--
+<%@ page import="java.util.Arrays" %>
+<%@ page import="com.golfzone.social.board.BoardDAO" %>
+<%@ page import="com.golfzone.social.board.BoardDAOImpl" %>
+<%@ page import="com.golfzone.social.board.BoardVO" %><%--
   Created by IntelliJ IDEA.
   User: org
   Date: 2022/09/28
@@ -57,6 +60,9 @@
   ActivityDAO activityDAO = new ActivityDAOImpl();
   List<ActivityVO> activityVOS = activityDAO.selectAllByClubNum(clubVO);
 
+  /* get board list */
+  BoardDAO boardDAO = new BoardDAOImpl();
+  List<BoardVO> boardVOS = boardDAO.selectAllByClubNum(clubVO);
 %>
 <div class="navigation">
   <div class="toggle">
@@ -123,27 +129,25 @@
   <div id="left">
     <div class="swiper board-container">
       <div class="swiper-wrapper">
+        <%for (int i = 0; i < boardVOS.size(); i++) {%>
         <div class="swiper-slide">
           <div class="board-info">
             <div class="board-number">
               <div>게시글 번호</div>
-              <div class="text">번호</div>
+              <div class="text"><%=boardVOS.get(i).getBoardNum()%></div>
             </div>
             <div class="board-creator">
               <div>게시글 작성자</div>
-              <div class="text">작성자명</div>
+              <div class="text"><%=boardVOS.get(i).getBoardWriter()%></div>
             </div>
           </div>
           <div class="board-content">
             <div class="board-title">
               <div>게시글 제목</div>
-              <div class="text">NO.1 JSP, Servlet</div>
+              <div class="text"><%=boardVOS.get(i).getBoardTitle()%></div>
             </div>
             <p class="board-description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Amet, quis ad. Ea corporis accusamus possimus aperiam sapiente
-              id, ipsam dolorem non voluptates quidem eaque accusantium
-              facilis odit quibusdam, soluta sequi repellendus similique
+              <%=boardVOS.get(i).getBoardContent()%>
             </p>
           </div>
           <div class="button-container">
@@ -154,6 +158,7 @@
           </div>
           <div class="line"></div>
         </div>
+        <%}%>
       </div>
       <div class="swiper-scrollbar"></div>
     </div>
@@ -230,27 +235,33 @@
   <h1>Create Board</h1>
   <div id="boardForm">
     <div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
-    <form action="" method="">
+    <form method="post" action="/createboard">
       <div>
         <div class="title">
           <label for="boardTitle">Title</label>
-          <input type="text" id="boardTitle" name="title" />
+          <input type="text" id="boardTitle" name="boardTitle" minlength="1" required/>
         </div>
         <div class="creator">
           <div>creator</div>
-          <div class="creator-name">작성자 이름</div>
+          <div class="creator-name"><%=userVO.getUserName()%></div>
         </div>
       </div>
       <div class="content">
         <label for="boardContent">내용 작성</label>
         <textarea
-                name="content"
+                name="boardContent"
                 id="boardContent"
                 cols="30"
                 rows="10"
+                minlength="10"
+                maxlength="100"
+                required
         ></textarea>
       </div>
-      <input type="submit" value="board" id="submitBoard" />
+      <input type="hidden" value="<%=userVO.getUserName()%>" name="boardWriter">
+      <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum"/>
+      <input type="hidden" value="<%=clubVO.getClubNum()%>" name="clubNum"/>
+      <input type="submit" value="board"/>
     </form>
   </div>
 </section>
@@ -306,7 +317,7 @@
 <section id="createActivity">
   <div class="container">
     <div class="close-activity">X</div>
-    <form method="post" action="/createactivity" onsubmit="return false;">
+    <form method="post" action="/createactivity">
       <div>
         <label for="activityName">Activity Name</label>
         <input type="text" id="activityName" name="activityTitle" minlength="1" required/>

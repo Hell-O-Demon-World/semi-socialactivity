@@ -17,6 +17,8 @@ public class CreateBoardController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String boardResultMsg = "";
         // init get parameter
+        int clubNum = Integer.parseInt(req.getParameter("clubNum"));
+        int userNum = Integer.parseInt(req.getParameter("userNum"));
         String boardTitle = req.getParameter("boardTitle");
         String boardContent = req.getParameter("boardContent");
         String boardWriter = req.getParameter("boardWriter");
@@ -38,7 +40,10 @@ public class CreateBoardController extends HttpServlet {
             boardDAO.insertBoard(boardVO);
             System.out.println(boardResultMsg);
         }
+
+        req.setAttribute("userNum", userNum);
+        req.setAttribute("clubNum", clubNum);
         req.setAttribute("boardResultMsg", boardResultMsg);
-        req.getRequestDispatcher("/board.jsp").forward(req, resp);
+        req.getRequestDispatcher("/club/clubmain.jsp").forward(req, resp);
     }
 }

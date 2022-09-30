@@ -1,8 +1,11 @@
 package com.golfzone.social.board;
 
+import com.golfzone.social.activity.ActivityVO;
+import com.golfzone.social.club.ClubVO;
 import com.golfzone.social.db.MariaDB;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BoardDAOImpl implements BoardDAO{
@@ -62,5 +65,55 @@ public class BoardDAOImpl implements BoardDAO{
             }
         } // end finally
         return flag;
+    }
+
+    @Override
+    public List<BoardVO> selectAllByClubNum(ClubVO clubVO) {
+        List<BoardVO> vos = new ArrayList<>();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            System.out.println("Activity selectAll: conn success");
+
+            String sql = MariaDB.BOARD_FIND_BY_CLUB_NUM;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, clubVO.getClubNum());
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                BoardVO vo = new BoardVO();
+                vo.setBoardNum(rs.getInt("BOARD_NUM"));
+                vo.setBoardTitle(rs.getString("BOARD_TITLE"));
+                vo.setBoardContent(rs.getString("BOARD_CONTENT"));
+                vo.setBoardWriter(rs.getString("BOARD_WRITER"));
+                vos.add(vo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } // end finally
+        return vos;
     }
 }
