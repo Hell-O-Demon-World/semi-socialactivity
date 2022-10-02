@@ -14,11 +14,7 @@ public class ClubMemberDAOImpl implements ClubMemberDAO {
     private ResultSet rs;
 
     public ClubMemberDAOImpl() {
-        try {
-            Class.forName(MariaDB.DRIVER_NAME);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException();
-        }
+        dbCon.DAOImpl();
     }
 
     @Override

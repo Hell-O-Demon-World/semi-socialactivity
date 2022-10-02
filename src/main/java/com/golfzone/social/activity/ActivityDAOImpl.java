@@ -14,11 +14,7 @@ public class ActivityDAOImpl implements ActivityDAO {
     private ResultSet rs;
 
     public ActivityDAOImpl() {
-        try {
-            Class.forName(MariaDB.DRIVER_NAME);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        dbCon.DAOImpl();
     }
 
     @Override

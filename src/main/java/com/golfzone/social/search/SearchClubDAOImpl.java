@@ -14,11 +14,7 @@ public class SearchClubDAOImpl implements SearchClubDAO {
     private ResultSet rs;
 
     public SearchClubDAOImpl() {
-        try {
-            Class.forName(MariaDB.DRIVER_NAME);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException();
-        }
+        dbCon.DAOImpl();
     }
 
     @Override
@@ -26,7 +22,7 @@ public class SearchClubDAOImpl implements SearchClubDAO {
         List<ClubVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("searchAllClub: 연결됐다 ㅅㅂ");
+            System.out.println("searchAllClub: connection success");
 
             String sql = MariaDB.SEARCH_ALL_CLUB;
             pstmt = conn.prepareStatement(sql);

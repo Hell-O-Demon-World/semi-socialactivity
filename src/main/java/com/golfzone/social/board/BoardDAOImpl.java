@@ -14,11 +14,7 @@ public class BoardDAOImpl implements BoardDAO {
     private ResultSet rs;
 
     public BoardDAOImpl() {
-        try {
-            Class.forName(MariaDB.DRIVER_NAME);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        dbCon.DAOImpl();
     }
 
     @Override
