@@ -15,11 +15,7 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
     private ResultSet rs;
 
     public ActivityMemberDAOImpl() {
-        try {
-            Class.forName(MariaDB.DRIVER_NAME);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        dbCon.DAOImpl();
     }
 
     @Override

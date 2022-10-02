@@ -13,11 +13,7 @@ public class AlbumDAOImpl implements AlbumDAO {
     private ResultSet rs;
 
     public AlbumDAOImpl() {
-        try {
-            Class.forName(MariaDB.DRIVER_NAME);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        dbCon.DAOImpl();
     }
 
     @Override

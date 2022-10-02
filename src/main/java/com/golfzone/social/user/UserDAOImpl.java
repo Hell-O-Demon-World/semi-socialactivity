@@ -13,11 +13,7 @@ public class UserDAOImpl implements UserDAO {
     private ResultSet rs;
 
     public UserDAOImpl() {
-        try {
-            Class.forName(MariaDB.DRIVER_NAME);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException();
-        }
+        dbCon.DAOImpl();
     }
 
     @Override
