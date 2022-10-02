@@ -68,9 +68,7 @@ public class UserDAOImpl implements UserDAO {
             pstmt.setInt(8, userVO.getUserScore());
             flag = pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
             dbCon.dbConClose(rs, pstmt, conn);
         }
@@ -87,30 +85,10 @@ public class UserDAOImpl implements UserDAO {
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, userNum);
             flag = pstmt.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            dbCon.dbConClose(rs, pstmt, conn);
         }
         return flag;
     }
@@ -139,31 +117,9 @@ public class UserDAOImpl implements UserDAO {
                 vo.setUserScore(rs.getInt("USER_SCORE"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            dbCon.dbConClose(rs, pstmt, conn);
         }
         return vo;
     }
@@ -192,31 +148,9 @@ public class UserDAOImpl implements UserDAO {
                 vo.setUserScore(rs.getInt("USER_SCORE"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            dbCon.dbConClose(rs, pstmt, conn);
         }
         return vo;
     }
