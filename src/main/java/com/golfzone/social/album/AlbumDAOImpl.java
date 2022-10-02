@@ -1,6 +1,7 @@
 package com.golfzone.social.album;
 
 import com.golfzone.social.db.MariaDB;
+import com.golfzone.social.db.dbCon;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -40,38 +41,16 @@ public class AlbumDAOImpl implements AlbumDAO {
                 vos.add(vo);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        } 
         return vos;
     }
 
     @Override
     public int insertAlbum(AlbumVO albumVO) {
-        int flag = 0;
+        int flag;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
             System.out.println("insertAlbum: conn success");
@@ -81,30 +60,10 @@ public class AlbumDAOImpl implements AlbumDAO {
             pstmt.setString(2, albumVO.getImagePath());
             flag = pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        } 
         return flag;
     }
 }

@@ -1,6 +1,7 @@
 package com.golfzone.social.user;
 
 import com.golfzone.social.db.MariaDB;
+import com.golfzone.social.db.dbCon;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class UserDAOImpl implements UserDAO {
         try {
             Class.forName(MariaDB.DRIVER_NAME);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 
@@ -42,29 +43,9 @@ public class UserDAOImpl implements UserDAO {
                 vos.add(vo);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+            dbCon.dbConClose(rs, pstmt, conn);
         }
         return vos;
     }
@@ -91,28 +72,8 @@ public class UserDAOImpl implements UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        }
         return flag;
     }
 
@@ -150,7 +111,7 @@ public class UserDAOImpl implements UserDAO {
                     e.printStackTrace();
                 }
             }
-        } // end finally
+        }
         return flag;
     }
 
@@ -203,7 +164,7 @@ public class UserDAOImpl implements UserDAO {
                     e.printStackTrace();
                 }
             }
-        } // end finally
+        }
         return vo;
     }
 
@@ -256,7 +217,7 @@ public class UserDAOImpl implements UserDAO {
                     e.printStackTrace();
                 }
             }
-        } // end finally
+        }
         return vo;
     }
 }

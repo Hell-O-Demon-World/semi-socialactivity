@@ -2,6 +2,7 @@ package com.golfzone.social.activity;
 
 import com.golfzone.social.club.ClubVO;
 import com.golfzone.social.db.MariaDB;
+import com.golfzone.social.db.dbCon;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class ActivityDAOImpl implements ActivityDAO {
 
     @Override
     public int insertActivity(ActivityVO activityVO) {
-        int flag = 0;
+        int flag;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
             System.out.println("insertActivity: conn success");
@@ -36,27 +37,10 @@ public class ActivityDAOImpl implements ActivityDAO {
             flag = pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        }
         return flag;
     }
 
@@ -79,32 +63,10 @@ public class ActivityDAOImpl implements ActivityDAO {
                 vos.add(vo);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        } 
         return vos;
     }
 
@@ -127,32 +89,10 @@ public class ActivityDAOImpl implements ActivityDAO {
                 vo.setActivityDescription(rs.getString("ACTIVITY_DESCRIPTION"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        } 
         return vo;
     }
 
@@ -176,32 +116,10 @@ public class ActivityDAOImpl implements ActivityDAO {
                 vos.add(vo);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        } 
         return vos;
     }
 
@@ -219,30 +137,10 @@ public class ActivityDAOImpl implements ActivityDAO {
                 vo.setActivityMemberCount(rs.getInt("COUNT"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        } 
         return vo;
     }
 }

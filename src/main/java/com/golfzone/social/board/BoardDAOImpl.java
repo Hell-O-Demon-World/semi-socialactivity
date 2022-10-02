@@ -1,8 +1,8 @@
 package com.golfzone.social.board;
 
-import com.golfzone.social.activity.ActivityVO;
 import com.golfzone.social.club.ClubVO;
 import com.golfzone.social.db.MariaDB;
+import com.golfzone.social.db.dbCon;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class BoardDAOImpl implements BoardDAO {
 
     @Override
     public int insertBoard(BoardVO boardVO) {
-        int flag = 0;
+        int flag;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
             System.out.println("insertBoard: conn success");
@@ -41,30 +41,10 @@ public class BoardDAOImpl implements BoardDAO {
             pstmt.setString(4, boardVO.getBoardWriter());
             flag = pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        } 
         return flag;
     }
 
@@ -89,36 +69,15 @@ public class BoardDAOImpl implements BoardDAO {
                 vos.add(vo);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        }
         return vos;
     }
+
     public int deleteBoard(int boardNum) {
-        int flag = 0;
+        int flag;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
             System.out.println("deleteBoard: conn success");
@@ -127,31 +86,11 @@ public class BoardDAOImpl implements BoardDAO {
             pstmt.setInt(1, boardNum);
             flag = pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
-    } finally {
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        if (pstmt != null) {
-            try {
-                pstmt.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            throw new RuntimeException();
+        } finally {
+            dbCon.dbConClose(rs, pstmt, conn);
         }
         return flag;
-    }
     }
 
     @Override
@@ -173,32 +112,10 @@ public class BoardDAOImpl implements BoardDAO {
                 vo.setBoardWriter(rs.getString("BOARD_WRITER"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        }
         return vo;
     }
 }

@@ -2,6 +2,7 @@ package com.golfzone.social.comment;
 
 import com.golfzone.social.board.BoardVO;
 import com.golfzone.social.db.MariaDB;
+import com.golfzone.social.db.dbCon;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class CommentDAOImpl implements CommentDAO {
 
     @Override
     public int insertComment(CommentVO commentVO) {
-        int flag = 0;
+        int flag;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
             String sql = MariaDB.INSERT_COMMENT;
@@ -42,30 +43,17 @@ public class CommentDAOImpl implements CommentDAO {
             pstmt.setString(4, commentVO.getCommentWriter());
             flag = pstmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException();
         } finally {
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            return flag;
+            dbCon.dbConClose(rs, pstmt, conn);
         }
+        return flag;
     }
 
     @Override
     public int deleteComment(CommentVO commentVO) {
 
-        int flag = 0;
+        int flag;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
             String sql = MariaDB.DELETE_COMMENT;
@@ -73,24 +61,11 @@ public class CommentDAOImpl implements CommentDAO {
             pstmt.setInt(1, commentVO.getCommentNum());
             flag = pstmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException();
         } finally {
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            return flag;
+            dbCon.dbConClose(rs, pstmt, conn);
         }
+        return flag;
     }
 
     @Override
@@ -115,32 +90,10 @@ public class CommentDAOImpl implements CommentDAO {
                 vos.add(vo);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        }
         return vos;
     }
 }

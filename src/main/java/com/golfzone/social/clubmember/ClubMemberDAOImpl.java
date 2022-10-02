@@ -1,6 +1,7 @@
 package com.golfzone.social.clubmember;
 
 import com.golfzone.social.db.MariaDB;
+import com.golfzone.social.db.dbCon;
 import com.golfzone.social.user.UserVO;
 
 import java.sql.*;
@@ -15,16 +16,14 @@ public class ClubMemberDAOImpl implements ClubMemberDAO {
     public ClubMemberDAOImpl() {
         try {
             Class.forName(MariaDB.DRIVER_NAME);
-//			jdbcConnectionTest();
-
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 
     @Override
     public int insertClubMember(ClubMemberVO clubMemberVO) {
-        int flag = 0;
+        int flag;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
             System.out.println("insertClubMember: conn success");
@@ -35,32 +34,10 @@ public class ClubMemberDAOImpl implements ClubMemberDAO {
             pstmt.setInt(3, clubMemberVO.getUserNum());
             flag = pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        }
         return flag;
     }
 
@@ -83,32 +60,10 @@ public class ClubMemberDAOImpl implements ClubMemberDAO {
                 vo.setUserNum(rs.getInt("USER_NUM"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        }
         return vo;
     }
 
@@ -132,32 +87,10 @@ public class ClubMemberDAOImpl implements ClubMemberDAO {
                 vo.setUserNum(rs.getInt("USER_NUM"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        }
         return vo;
     }
 
@@ -182,32 +115,10 @@ public class ClubMemberDAOImpl implements ClubMemberDAO {
                 vos.add(vo);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        }
         return vos;
     }
 
@@ -231,32 +142,10 @@ public class ClubMemberDAOImpl implements ClubMemberDAO {
                 vos.add(vo);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } // end finally
+            dbCon.dbConClose(rs, pstmt, conn);
+        }
         return vos;
     }
 }

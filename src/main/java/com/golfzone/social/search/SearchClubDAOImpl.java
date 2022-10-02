@@ -2,6 +2,7 @@ package com.golfzone.social.search;
 
 import com.golfzone.social.club.ClubVO;
 import com.golfzone.social.db.MariaDB;
+import com.golfzone.social.db.dbCon;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,10 +16,8 @@ public class SearchClubDAOImpl implements SearchClubDAO {
     public SearchClubDAOImpl() {
         try {
             Class.forName(MariaDB.DRIVER_NAME);
-//			jdbcConnectionTest();
-
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 
@@ -46,21 +45,20 @@ public class SearchClubDAOImpl implements SearchClubDAO {
                 vo2.setClubPw(rs.getString("CLUB_PW"));
                 vos.add(vo2);
             }
-
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException();
+        } finally {
+            dbCon.dbConClose(rs, pstmt, conn);
         }
         return vos;
     }
 
     @Override
     public List<ClubVO> searchByCondition(SearchClubVO searchClubVO) {
-        SearchClubVO vo = new SearchClubVO();
         List<ClubVO> vos = new ArrayList<>();
-
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("searchByClubTitle: 연결됐다 ㅅㅂ");
+            System.out.println("searchByClubTitle: conn success");
 
             String sql = MariaDB.SEARCH_CLUB_BY_CONDITION;
 
@@ -241,9 +239,10 @@ public class SearchClubDAOImpl implements SearchClubDAO {
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException();
+        } finally {
+            dbCon.dbConClose(rs, pstmt, conn);
         }
-
         return vos;
     }
 }
