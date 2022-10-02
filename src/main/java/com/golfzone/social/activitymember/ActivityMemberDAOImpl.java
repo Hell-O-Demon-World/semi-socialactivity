@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityMemberDAOImpl implements ActivityMemberDAO {
-
     private Connection conn;
     private PreparedStatement pstmt;
     private ResultSet rs;

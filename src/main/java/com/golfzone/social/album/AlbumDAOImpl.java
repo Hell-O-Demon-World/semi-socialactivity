@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlbumDAOImpl implements AlbumDAO {
-
     private Connection conn;
     private PreparedStatement pstmt;
     private ResultSet rs;

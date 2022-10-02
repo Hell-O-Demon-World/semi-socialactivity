@@ -9,13 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommentDAOImpl implements CommentDAO {
-
     private Connection conn;
-
     private PreparedStatement pstmt;
-
     private ResultSet rs;
-
 
     public CommentDAOImpl() {
         try {
