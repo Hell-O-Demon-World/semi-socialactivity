@@ -1,19 +1,19 @@
-const location1 = [...document.getElementsByClassName("location-select")];
+const locationSelect = [...document.getElementsByClassName("location-select")];
 
-let locationList = ["강원", "경기", "경남", "경북", "광주", "대구", "대전", "부산", "서울", "울산", "인천", "전남", "전북", "제주", "충남", "충북"];
+const locationList = ["강원", "경기", "경남", "경북", "광주", "대구", "대전", "부산", "서울", "울산", "인천", "전남", "전북", "제주", "충남", "충북"];
 const addLocation = (loc) => {
     locationList.forEach(elem=>{
-    loc.innerHTML+=`<option value=${elem}>${elem}</option>`;
+        loc.innerHTML+=`<option value=${elem}>${elem}</option>`;
     });
 }
-location1.forEach(elem=>{
+/* 지역 선택 select에 locationList 추가 */
+locationSelect.forEach(elem=>{
     addLocation(elem);
 })
 
 
 function categoryChange(e) {
-    const state = document.getElementById("state");
-    const state2 = document.getElementById("state2");
+    const state = [...document.querySelectorAll('.state')];
     const gangwon = ["강릉시", "동해시", "삼척시", "속초시", "원주시", "춘천시", "태백시", "고성군", "양구군", "양양군", "영월군", "인제군", "정선군", "철원군", "평창군", "홍천군", "화천군", "횡성군"];
     const gyeonggi = ["고양시", "과천시", "광명시", "광주시", "구리시", "군포시", "김포시", "남양주시", "동두천시", "부천시", "성남시", "수원시", "시흥시", "안산시", "안성시", "안양시", "양주시", "오산시", "용인시", "의왕시", "의정부시", "이천시", "파주시", "평택시", "포천시", "하남시", "화성시", "가평군", "양평군", "여주군", "연천군"];
     const gyeongsangnam = ["거제시", "김해시", "마산시", "밀양시", "사천시", "양산시", "진주시", "진해시", "창원시", "통영시", "거창군", "고성군", "남해군", "산청군", "의령군", "창녕군", "하동군", "함안군", "함양군", "합천군"];
@@ -31,32 +31,26 @@ function categoryChange(e) {
     const chungnam = ["공주시", "논산시", "보령시", "서산시", "아산시", "천안시", "금산군", "당진군", "부여군", "서천군", "연기군", "예산군", "청양군", "태안군", "홍성군",];
     const chungbuk = ["제천시", "청주시", "충주시", "괴산군", "단양군", "보은군", "영동군", "옥천군", "음성군", "증평군", "진천군", "청원군"];
     const states = [gangwon, gyeonggi, gyeongsangnam, gyeongsangbuk, gwangju, daegu, daejeon, busan, seoul, ulsan, incheon, jeonnam, jeonbuk, jeju, chungnam, chungbuk];
-    if(state !== null){
-        state.options.length = 1;
-    }
-    if(state2 !== null){
-        state2.options.length = 1;
-    }
-
+    /* location-select 변경시 state를 초기화 */
+    state.forEach(elem=>{
+        if(elem!=null){
+            elem.options.length = 1;
+        }
+    })
 
     const selectStateNum = locationList.indexOf(e.value);
     const selectState = states[selectStateNum];
-    // 군/구 갯수;
-    if (e.id === 'location') {
-        for (let property in selectState) {
-            let opt = document.createElement("option");
-            opt.value = selectState[property];
-            opt.innerHTML = selectState[property];
-            state.appendChild(opt);
+    const updateOption = (locationNum)=>{
+        for (let elem in selectState) {
+            let opt = `<option value = ${selectState[elem]}>${selectState[elem]}</option>`;
+            state[locationNum].innerHTML+=opt;
         }
     }
-    if (e.id === 'location2') {
-        for (let property in selectState) {
-            let opt = document.createElement("option");
-            opt.value = selectState[property];
-            opt.innerHTML = selectState[property];
-            state2.appendChild(opt);
-        }
+    if (e.id === 'location') { // 검색창 location
+        updateOption(0);
     }
-  }
+    if (e.id === 'location2') { // 회원 가입 location
+        updateOption(1);
+    }
+}
 
