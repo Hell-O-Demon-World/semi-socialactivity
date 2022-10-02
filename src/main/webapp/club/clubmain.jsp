@@ -12,6 +12,9 @@
 <%@ page import="com.golfzone.social.board.BoardDAO" %>
 <%@ page import="com.golfzone.social.board.BoardDAOImpl" %>
 <%@ page import="com.golfzone.social.board.BoardVO" %>
+<%@ page import="com.golfzone.social.comment.CommentVO" %>
+<%@ page import="com.golfzone.social.comment.CommentDAO" %>
+<%@ page import="com.golfzone.social.comment.CommentDAOImpl" %>
 <%--
   Created by IntelliJ IDEA.
   User: org
@@ -50,13 +53,24 @@
     clubVO.setClubNum(clubNum);
     clubVO = clubDAO.findByClubNum(clubVO);
   }
-  /* get activity list */
+  BoardVO boardVO = new BoardVO();
+  BoardDAO boardDAO = new BoardDAOImpl();
+  if (request.getAttribute("boardNum") != null) {
+    Integer boardNum = (Integer) request.getAttribute("boardNum");
+    boardVO.setBoardNum(boardNum);
+    boardVO = boardDAO.findByBoardNum(boardVO);
+    System.out.println(boardVO.getBoardNum());
+  }
+  /* get activity list by club */
   ActivityDAO activityDAO = new ActivityDAOImpl();
   List<ActivityVO> activityVOS = activityDAO.selectAllByClubNum(clubVO);
 
-  /* get board list */
-  BoardDAO boardDAO = new BoardDAOImpl();
+  /* get board list by club */
   List<BoardVO> boardVOS = boardDAO.selectAllByClubNum(clubVO);
+
+  /* get comment list by board_num */
+  CommentDAO commentDAO = new CommentDAOImpl();
+  List<CommentVO> commentVOS = commentDAO.selectAllByBoardNum(boardVO);
 %>
 <div class="navigation">
   <div class="toggle">
@@ -153,7 +167,12 @@
                 <input type="submit" value="삭제" name="deleteBoard" />
               </form>
             </div>
-            <div class="button-details" >자세히</div>
+            <form id="infoCommentPage<%=i%>" method="post" action="/commentinfo">
+              <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum">
+              <input type="hidden" value="<%=clubVO.getClubNum()%>" name="clubNum">
+              <input type="hidden" value="" name="boardViewNum" class="boardViewNum" disabled>
+            </form>
+            <div <%--onclick="document.getElementById('infoCommentPage<%=i%>').submit();"--%> class="button-details" id = "detail<%=i%>" >자세히</div>
           </div>
           <div class="line"></div>
         </div>
@@ -185,15 +204,21 @@
         <div class="commentInput">
           <form method="post" action="/insertcomment">
                 <textarea
-                        name="activity-description"
+                        id = "commentContext"
+                        name="commentContext"
                         cols="30"
                         rows="10"
                         placeholder="write comment"
+                        minlength="1"
+                        maxlength="46"
+                        required
+                        disabled
                 ></textarea>
             <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum">
             <input type="hidden" value="<%=clubVO.getClubNum()%>" name="clubNum">
-            <input type="hidden" value="<%=clubVO.getClubNum()%>" name="commentWriter">
-            <input type="submit" value="comment" id="submitComment" />
+            <input type="hidden" value="<%=userVO.getUserName()%>" name="commentWriter">
+            <input type="hidden" value="" id="boardViewNum" name="boardViewNum">
+            <input type="submit" value="comment" id="submitComment" disabled/>
           </form>
         </div>
         <div id="commentHeader">
@@ -203,15 +228,23 @@
         </div>
         <div class="swiper comment-container">
           <div class="swiper-wrapper">
+          <%if (boardVO.getBoardTitle() != ""){%>
+            <%for (int i = 0; i < commentVOS.size(); i++) {%>
             <div class="swiper-slide">
-              <div class="comment-writer">작성자</div>
+              <div class="comment-writer"><%=commentVOS.get(i).getCommentWriter()%></div>
               <div class="comment-content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Explicabo illo cupiditate consequatur quisquam quaerat
-                quibusdam omnis eveniet voluptas reprehenderit consequuntur.
+                <%=commentVOS.get(i).getCommentContext()%>
               </div>
-              <div class="comment-delete">X</div>
+              <form id="deleteCommentForm<%=i%>" method="post" action="/deletecomment">
+                <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum">
+                <input type="hidden" value="<%=clubVO.getClubNum()%>" name="clubNum">
+                <input type="hidden" value="<%=commentVOS.get(i).getBoardNum()%>" name="boardNum">
+                <input type="hidden" value="<%=commentVOS.get(i).getCommentNum()%>" name="commentNum">
+              </form>
+              <div class="comment-delete" onclick="document.getElementById('deleteCommentForm<%=i%>').submit();">X</div>
             </div>
+            <%}%>
+          <%}%>
           </div>
           <div class="swiper-scrollbar"></div>
         </div>

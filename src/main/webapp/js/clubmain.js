@@ -96,6 +96,7 @@ const detailsBoard = document.getElementsByClassName("button-details");
  *
  * @param {Event} e 이벤트 객체 전달
  */
+let boardNum;
 const showDetail = (e) => {
   const detail = e.target.parentNode.parentNode;
   const title = detail.querySelector(".board-title .text").innerText;
@@ -107,10 +108,24 @@ const showDetail = (e) => {
   detailsWriter.innerText = creator;
   const detailsContent = document.querySelector(".board-content-details");
   detailsContent.innerText = content;
-  console.log(e.target);
+
+  // const commentInput = document.getElementsByClassName("boardViewNum");
+  // boardNum = Number(e.target.id.substring(e.target.id.length - 1,e.target.id.length));
+  // commentInput[boardNum].value = boardNum + 1;
+  // console.log(boardNum + 1);
+  const commentInput = document.getElementById("boardViewNum");
+  boardNum = Number(e.target.id.substring(e.target.id.length - 1,e.target.id.length));
+  commentInput.value = boardNum +1;
+  commentInput.disabled = false;
+  const submitComment = document.getElementById("submitComment");
+  submitComment.disabled = false;
+  const commentContext = document.getElementById("commentContext");
+  commentContext.disabled = false;
+  // commentInput.value = boardNumber;
 };
 for (const $button of detailsBoard) {
   $button.addEventListener("click", showDetail);
+
 }
 
 /** comment 추가

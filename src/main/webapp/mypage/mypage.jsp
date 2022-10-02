@@ -67,7 +67,6 @@
         activityVO.setActivityNum(activityMemberVOS.get(i).getActivityNum());
         activityVOS.add(activityDAO.findByActivityNum(activityVO));
     }
-
 %>
 <section id="navBar">
     <nav id="mainNav">

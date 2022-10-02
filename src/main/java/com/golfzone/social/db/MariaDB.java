@@ -44,6 +44,9 @@ public interface MariaDB {
     String ACTIVITY_MEMBER_FIND_BY_USER_NUM = "select * from activity_member where user_num = ?";
     String ACTIVITY_MEMBER_FIND_BY_CLUB_NUM = "select * from activity_member where club_num = ?";
     String ACTIVITY_FIND_BY_CLUB_NUM = "select * from activity where club_num = ?";
+    String BOARD_FIND_BY_CLUB_NUM = "select * from board where club_num = ?";
+    String BOARD_FIND_BY_BOARD_NUM = "select * from board where board_num = ?";
+    String COMMENT_FIND_BY_BOARD_NUM = "select * from comment where board_num = ?";
 
     /* COUNT */
     String COUNT_CLUB_MEMBER = "select count(*) as count from club_member where club_num = ?";
@@ -52,6 +55,5 @@ public interface MariaDB {
     /* SEARCH */
     String SEARCH_ALL_CLUB = "select * from club";
     String SEARCH_CLUB_BY_CONDITION = "select * from club where";
-    String BOARD_FIND_BY_CLUB_NUM = "select * from board where club_num = ?";
-    String BOARD_FIND_BY_BOARD_NUM = "select * from board where board_num = ?";
+
 }

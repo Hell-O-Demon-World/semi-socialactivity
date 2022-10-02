@@ -151,4 +151,12 @@
         <servlet-name>insertcomment</servlet-name>
         <url-pattern>/insertcomment</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>commentinfo</servlet-name>
+        <servlet-class>com.golfzone.social.controller.comment.InfoCommentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>commentinfo</servlet-name>
+        <url-pattern>/commentinfo</url-pattern>
+    </servlet-mapping>
 </web-app>

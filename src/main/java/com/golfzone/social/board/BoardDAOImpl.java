@@ -159,7 +159,7 @@ public class BoardDAOImpl implements BoardDAO {
         BoardVO vo = new BoardVO();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("Activity selectAll: conn success");
+            System.out.println("findByBoardNum: conn success");
 
             String sql = MariaDB.BOARD_FIND_BY_BOARD_NUM;
             pstmt = conn.prepareStatement(sql);

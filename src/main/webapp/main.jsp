@@ -247,7 +247,11 @@
         </div>
     </section>
 </div>
+<<<<<<< Updated upstream
 <script src="./js/select.js " charset="UTF-8"></script>
+=======
+<script src="js/select.js " charset="UTF-8"></script>
+>>>>>>> Stashed changes
 <script src="js/address.js" charset="UTF-8"></script>
 <script src="./js/login.js" charset="UTF-8"></script>
 <script src="./js/arrow.js" charset="UTF-8"></script>
