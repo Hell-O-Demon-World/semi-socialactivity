@@ -4,12 +4,12 @@
 <%@ page import="com.golfzone.social.club.ClubDAOImpl" %>
 <%@ page import="com.golfzone.social.activity.ActivityVO" %>
 <%@ page import="com.golfzone.social.club.ClubVO" %>
-<%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.golfzone.social.user.UserVO" %>
 <%@ page import="com.golfzone.social.activitymember.ActivityMemberVO" %>
 <%@ page import="com.golfzone.social.activitymember.ActivityMemberDAO" %>
-<%@ page import="com.golfzone.social.activitymember.ActivityMemberDAOImpl" %><%--
+<%@ page import="com.golfzone.social.activitymember.ActivityMemberDAOImpl" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: org
   Date: 2022/09/23

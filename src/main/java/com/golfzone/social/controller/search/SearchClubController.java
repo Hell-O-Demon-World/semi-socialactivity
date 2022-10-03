@@ -1,5 +1,10 @@
 package com.golfzone.social.controller.search;
 
+import com.golfzone.social.club.ClubVO;
+import com.golfzone.social.search.SearchClubDAO;
+import com.golfzone.social.search.SearchClubDAOImpl;
+import com.golfzone.social.search.SearchClubVO;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
