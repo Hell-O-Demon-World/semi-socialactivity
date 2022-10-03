@@ -57,21 +57,21 @@ public class SearchClubDAOImpl implements SearchClubDAO {
 
             String sql = MariaDB.SEARCH_CLUB_BY_CONDITION;
 
-            if (searchClubVO.getSearchTitle() != null) {
+            if (!searchClubVO.getSearchTitle().equals("0")) {
                 sql += " club_name like '%" + searchClubVO.getSearchTitle() + "%'";
             }
 
-            if ((!(sql.endsWith("where"))) && (searchClubVO.getSearchMinAge() != null)) {
+            if ((!(sql.endsWith("where"))) && !(searchClubVO.getSearchMinAge().equals("0"))) {
                 sql += " and club_age >= " + searchClubVO.getSearchMinAge();
-            } else if ((sql.endsWith("where")) && (searchClubVO.getSearchMinAge() != null)) {
+            } else if ((sql.endsWith("where")) && !(searchClubVO.getSearchMinAge().equals("0"))) {
                 sql += " club_age >= " + Integer.parseInt(searchClubVO.getSearchMinAge());
             }
 
-            if ((!(sql.endsWith("where"))) && (searchClubVO.getSearchMinAge() != null) && (searchClubVO.getSearchMaxAge() != null)) {
+            if ((!(sql.endsWith("where"))) && !(searchClubVO.getSearchMinAge().equals("0")) && !(searchClubVO.getSearchMaxAge().equals("0"))) {
                 sql += " and club_age <= " + searchClubVO.getSearchMaxAge();
-            } else if ((!(sql.endsWith("where"))) && (searchClubVO.getSearchMinAge() == null) && (searchClubVO.getSearchMaxAge() != null)) {
+            } else if ((!(sql.endsWith("where"))) && !(searchClubVO.getSearchMinAge().equals("0")) && !(searchClubVO.getSearchMaxAge().equals("0"))) {
                 sql += " and club_age <= " + Integer.parseInt(searchClubVO.getSearchMaxAge());
-            } else if ((sql.endsWith("where")) && (searchClubVO.getSearchMinAge() != null) && (searchClubVO.getSearchMaxAge() != null)) {
+            } else if ((sql.endsWith("where")) && !(searchClubVO.getSearchMinAge().equals("0")) && !(searchClubVO.getSearchMaxAge().equals("0"))) {
                 sql += " and club_age <= " + Integer.parseInt(searchClubVO.getSearchMaxAge());
             }
 
@@ -210,9 +210,9 @@ public class SearchClubDAOImpl implements SearchClubDAO {
                 }
             }
 
-            if ((!(sql.endsWith("where"))) && (searchClubVO.getSearchLocation() != null)) {
+            if ((!(sql.endsWith("where"))) && !(searchClubVO.getSearchLocation().equals("0"))) {
                 sql += " and club_location like '%" + searchClubVO.getSearchLocation() + "%'";
-            } else if ((sql.endsWith("where")) && (searchClubVO.getSearchLocation() != null)) {
+            } else if ((sql.endsWith("where")) && !(searchClubVO.getSearchLocation().equals("0"))) {
                 sql += " club_location like '%" + searchClubVO.getSearchLocation() + "%'";
             }
             pstmt = conn.prepareStatement(sql);
