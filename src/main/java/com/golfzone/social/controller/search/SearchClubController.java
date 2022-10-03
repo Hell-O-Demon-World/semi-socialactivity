@@ -68,6 +68,13 @@ public class SearchClubController extends HttpServlet {
         req.setAttribute("searchMinScore", searchMinScore);
         req.setAttribute("searchMaxScore", searchMaxScore);
 
+        req.setAttribute("clubName", searchTitle);
+        req.setAttribute("ageLow", searchMinAge);
+        req.setAttribute("ageHigh", searchMaxAge);
+        req.setAttribute("tierLow", searchMinScore);
+        req.setAttribute("tierHigh", searchMaxScore);
+        req.setAttribute("location", searchLocation);
+
         req.setAttribute("resultMsg", clubSearchResultMsg);
         req.getRequestDispatcher("/search/search.jsp").forward(req, resp);
     }

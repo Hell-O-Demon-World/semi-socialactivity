@@ -51,6 +51,12 @@
     <nav id="mainNav">
         <form id="clubInfoPage" method="post" action="/searchclub">
             <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum">
+            <input type="hidden" value="<%=searchClubVO.getSearchLocation()%>" name="location">
+            <input type="hidden" value="<%=searchClubVO.getSearchTitle()%>" name="clubName">
+            <input type="hidden" value="<%=searchClubVO.getSearchMinAge()%>" name="ageLow">
+            <input type="hidden" value="<%=searchClubVO.getSearchMaxAge()%>" name="ageHigh">
+            <input type="hidden" value="<%=searchClubVO.getSearchMinScore()%>" name="tierLow">
+            <input type="hidden" value="<%=searchClubVO.getSearchMaxScore()%>" name="tierHigh">
         </form>
         <a onclick="document.getElementById('clubInfoPage').submit();" class="logo">Logo</a>
         <ul>
