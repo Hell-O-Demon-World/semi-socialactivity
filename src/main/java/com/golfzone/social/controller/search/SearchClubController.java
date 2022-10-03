@@ -1,6 +1,5 @@
 package com.golfzone.social.controller.search;
 
-import com.golfzone.social.club.ClubVO;
 import com.golfzone.social.search.SearchClubDAO;
 import com.golfzone.social.search.SearchClubDAOImpl;
 import com.golfzone.social.search.SearchClubVO;
