@@ -19,9 +19,6 @@ public class JoinActivityController extends HttpServlet {
         int activityNum = Integer.parseInt(req.getParameter("activityNum"));
         int userNum = Integer.parseInt(req.getParameter("userNum"));
         int clubNum = Integer.parseInt(req.getParameter("clubNum"));
-        System.out.println("acNum: " + activityNum);
-        System.out.println("userNum :"+userNum);
-        System.out.println("clubNum : "+ clubNum);
         ActivityMemberVO activityMemberVO = new ActivityMemberVO();
         ActivityMemberDAO activityMemberDAO = new ActivityMemberDAOImpl();
 
@@ -40,9 +37,8 @@ public class JoinActivityController extends HttpServlet {
             activityMemberDAO.insertActivityMember(activityMemberVO);
             activityMemberResultMsg = "가입완료..";
         } else {
-            activityMemberResultMsg = "이미 가입된 액티비티야";
+            activityMemberResultMsg = "이미 가입된 액티비티입니다";
         }
-        System.out.println(activityMemberResultMsg);
         req.setAttribute("userNum", userNum);
         req.setAttribute("activityMemberResultMsg", activityMemberResultMsg);
         req.getRequestDispatcher("/club.jsp").forward(req, resp);

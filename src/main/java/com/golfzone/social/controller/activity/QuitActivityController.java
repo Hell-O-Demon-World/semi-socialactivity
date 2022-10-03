@@ -22,11 +22,6 @@ public class QuitActivityController extends HttpServlet {
         int userNum = Integer.parseInt(req.getParameter("userNum"));
         int clubNum = Integer.parseInt(req.getParameter("clubNum"));
 
-        System.out.println("activityMemberNum : "+activityMemberNum);
-        System.out.println("activityNum : "+activityNum);
-        System.out.println("userNum : "+userNum);
-        System.out.println("clubNum : "+clubNum);
-
         ActivityMemberVO activityMemberVO = new ActivityMemberVO();
         ActivityMemberDAO activityMemberDAO = new ActivityMemberDAOImpl();
 
@@ -43,7 +38,6 @@ public class QuitActivityController extends HttpServlet {
             activityMemberDAO.deleteActivityMember(activityMemberVO);
             activityMemberResultMsg = "탈퇴완료...";
         }
-        System.out.println(activityMemberResultMsg);
         req.setAttribute("userNum", userNum);
         req.setAttribute("activityMemberResultMsg", activityMemberResultMsg);
         req.getRequestDispatcher("/mypage/mypage.jsp").forward(req, resp);

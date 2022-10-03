@@ -15,8 +15,6 @@ public class InfoBoardController extends HttpServlet {
         int clubNum = Integer.parseInt(req.getParameter("clubNum"));
         int userNum = Integer.parseInt(req.getParameter("userNum"));
         int boardNum = Integer.parseInt(req.getParameter("boardNum"));
-        System.out.println("boardNum : "+boardNum);
-        System.out.println(boardResultMsg);
         req.setAttribute("userNum", userNum);
         req.setAttribute("clubNum", clubNum);
         req.setAttribute("boardNum", boardNum);

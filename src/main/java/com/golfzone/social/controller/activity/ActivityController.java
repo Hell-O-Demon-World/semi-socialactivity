@@ -34,7 +34,6 @@ public class ActivityController extends HttpServlet {
             activityVO.setActivityTitle(activityTitle);
             activityVO.setActivityDescription(activityDescription);
             activityDAO.insertActivity(activityVO);
-            System.out.println(activityResultMsg);
         }
         req.setAttribute("activityResultMsg", activityResultMsg);
         req.getRequestDispatcher("").forward(req, resp);

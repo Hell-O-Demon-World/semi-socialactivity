@@ -73,7 +73,6 @@ public class CreateClubController extends HttpServlet {
             /* 클럽 멤버에 추가 역할은 방장 */
             clubResultMsg = "클럽 생성 완료!";
         }
-        System.out.println(clubResultMsg);
         req.setAttribute("resultMsg", clubResultMsg);
         req.setAttribute("userNum: ", userNum);
         req.getRequestDispatcher("/club.jsp").forward(req, resp);

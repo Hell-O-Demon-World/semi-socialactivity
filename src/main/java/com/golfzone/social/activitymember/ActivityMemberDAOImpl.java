@@ -23,8 +23,6 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
         List<ActivityMemberVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("ActivityMember selectAll: conn success");
-
             String sql = MariaDB.ACTIVITY_MEMBER_SELECT_ALL;
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -49,8 +47,6 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
         ActivityMemberVO vo = new ActivityMemberVO();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("find user activity conn success");
-
             String sql = MariaDB.USER_FIND_BY_ACTIVITY_MEMBER;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, activityMemberVO.getUserNum());
@@ -77,8 +73,6 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
         ActivityMemberVO vo = new ActivityMemberVO();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("find user activity conn success");
-
             String sql = MariaDB.ACTIVITY_MEMBER_FIND_BY_ACTIVITY_NUM_USER_NUM;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, activityMemberVO.getActivityNum());
@@ -105,8 +99,6 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
         ActivityMemberVO vo = new ActivityMemberVO();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("find user activity conn success");
-
             String sql = MariaDB.ACTIVITY_MEMBER_FIND_BY_USER_NUM;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, userVO.getUserNum());
@@ -130,7 +122,6 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
         int flag;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("insertActivityMember: conn success");
             String sql = MariaDB.INSERT_ACTIVITY_MEMBER;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, activityMemberVO.getActivityNum());
@@ -150,7 +141,6 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
         int flag;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("deleteActivityMember: conn success");
             String sql = MariaDB.DELETE_USER_FROM_ACTIVITY_MEMBER;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, activityMemberVO.getActivityMemberNum());
@@ -168,8 +158,6 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
         List<ActivityMemberVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("find user activity conn success");
-
             String sql = MariaDB.ACTIVITY_MEMBER_FIND_BY_USER_NUM;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, userVO.getUserNum());
@@ -195,8 +183,6 @@ public class ActivityMemberDAOImpl implements ActivityMemberDAO {
         List<ActivityMemberVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("find user activity conn success");
-
             String sql = MariaDB.ACTIVITY_MEMBER_FIND_BY_CLUB_NUM;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, clubVO.getClubNum());

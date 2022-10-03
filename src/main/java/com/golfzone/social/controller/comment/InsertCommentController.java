@@ -47,7 +47,6 @@ public class InsertCommentController extends HttpServlet {
             commentVO.setCommentContext(commentContext);
             commentVO.setCommentWriter(commentWriter);
             commentDAO.insertComment(commentVO);
-            System.out.println(commentResultMsg);
         }
         req.setAttribute("commentResultMsg", commentResultMsg);
         req.setAttribute("userNum", userNum);

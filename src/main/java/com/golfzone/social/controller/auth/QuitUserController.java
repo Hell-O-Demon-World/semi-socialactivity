@@ -23,7 +23,6 @@ public class QuitUserController extends HttpServlet {
         if (flag == 1) {
             quitResultMsg = "회원 탈퇴 완료...";
         }
-        System.out.println(quitResultMsg);
         req.setAttribute("quitResultMsg", quitResultMsg);
         req.getRequestDispatcher("/main.jsp").forward(req, resp);
     }

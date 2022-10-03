@@ -45,7 +45,6 @@ public class CreateActivityController extends HttpServlet {
         activityMemberDAO.insertActivityMember(activityMemberVO);
         activityResultMsg = "액티비티 생성 완료...";
 
-        System.out.println(activityResultMsg);
         req.setAttribute("userNum", userNum);
         req.setAttribute("clubNum", clubNum);
         req.setAttribute("activityMemberResultMsg", activityResultMsg);

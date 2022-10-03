@@ -36,7 +36,6 @@ public class DeleteCommentController extends HttpServlet {
         if (flag == 1) {
             commentResultMsg = "댓글삭제완료..";
         }
-        System.out.println(commentResultMsg);
         req.setAttribute("commentResultMsg: ", commentResultMsg);
         req.setAttribute("userNum", userNum);
         req.setAttribute("clubNum", clubNum);

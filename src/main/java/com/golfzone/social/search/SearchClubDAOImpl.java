@@ -22,7 +22,6 @@ public class SearchClubDAOImpl implements SearchClubDAO {
         List<ClubVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-
             String sql = MariaDB.SEARCH_ALL_CLUB;
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -53,8 +52,6 @@ public class SearchClubDAOImpl implements SearchClubDAO {
         List<ClubVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("searchByClubTitle: conn success");
-
             String sql = MariaDB.SEARCH_CLUB_BY_CONDITION;
 
             if (searchClubVO.getSearchTitle() != null) {
@@ -216,7 +213,6 @@ public class SearchClubDAOImpl implements SearchClubDAO {
                 sql += " club_location like '%" + searchClubVO.getSearchLocation() + "%'";
             }
             pstmt = conn.prepareStatement(sql);
-            System.out.println(sql);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {

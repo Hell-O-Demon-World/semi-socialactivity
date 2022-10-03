@@ -22,7 +22,6 @@ public class ActivityDAOImpl implements ActivityDAO {
         int flag;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("insertActivity: conn success");
             String sql = MariaDB.INSERT_ACTIVITY;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, activityVO.getClubNum());
@@ -43,8 +42,6 @@ public class ActivityDAOImpl implements ActivityDAO {
         List<ActivityVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("Activity selectAll: conn success");
-
             String sql = MariaDB.ACTIVITY_SELECT_ALL;
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -69,8 +66,6 @@ public class ActivityDAOImpl implements ActivityDAO {
         ActivityVO vo = new ActivityVO();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("Activity selectAll: conn success");
-
             String sql = MariaDB.ACTIVITY_FIND_BY_ACTIVITY_NUM;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, activityVO.getActivityNum());
@@ -95,8 +90,6 @@ public class ActivityDAOImpl implements ActivityDAO {
         List<ActivityVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("Activity selectAll: conn success");
-
             String sql = MariaDB.ACTIVITY_FIND_BY_CLUB_NUM;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, clubVO.getClubNum());
@@ -122,7 +115,6 @@ public class ActivityDAOImpl implements ActivityDAO {
         ActivityVO vo = new ActivityVO();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("countActivityMember: conn success");
             String sql = MariaDB.COUNT_ACTIVITY_MEMBER;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, ActivityNum);
