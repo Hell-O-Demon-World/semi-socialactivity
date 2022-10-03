@@ -57,22 +57,8 @@ public class SearchClubController extends HttpServlet {
         }
 
         /* 클럽 멤버에 추가 역할은 방장 */
-        clubSearchResultMsg = "검색스완료!";
-//        System.out.println(searchClubVO);
-//        if (searchClubVO.getSearchTitle().equals("") &&
-//                searchClubVO.getSearchMinAge().equals("0") &&
-//                searchClubVO.getSearchMaxAge().equals("0") &&
-//                searchClubVO.getSearchMinScore().equals("0") &&
-//                searchClubVO.getSearchMaxScore().equals("0") &&
-//                searchClubVO.getSearchLocation().equals("")) {
-//            for (ClubVO vo : searchClubDAO.searchAllClub(searchClubVO)) {
-//                System.out.println(vo);
-//            }
-//        } else {
-//            for (ClubVO vo : searchClubDAO.searchByCondition(searchClubVO)) {
-//                System.out.println(vo);
-//            }
-//        }
+        clubSearchResultMsg = "검색완료!";
+
         req.setAttribute("userNum", userNum);
 
         req.setAttribute("searchLocation", searchLocation);
