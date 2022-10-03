@@ -363,7 +363,7 @@
 </section>
 <section id="addImage">
   <div class="container">
-    <form action="" method="">
+    <form action="/createalbum" method="post">
       <div class="input-box">
         <div class="close-image">X</div>
         <span class="details">Image Name</span>

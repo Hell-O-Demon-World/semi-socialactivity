@@ -85,12 +85,12 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>searchclub</servlet-name>
-        <servlet-class>com.golfzone.social.controller.search.SearchClubController</servlet-class>
+        <servlet-name>createsearchclub</servlet-name>
+        <servlet-class>com.golfzone.social.controller.search.CreateSearchClubController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>searchclub</servlet-name>
-        <url-pattern>/searchclub</url-pattern>
+        <servlet-name>createsearchclub</servlet-name>
+        <url-pattern>/createsearchclub</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>createactivity</servlet-name>
@@ -158,5 +158,21 @@
     <servlet-mapping>
         <servlet-name>commentinfo</servlet-name>
         <url-pattern>/commentinfo</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>createalbum</servlet-name>
+        <servlet-class>com.golfzone.social.controller.album.AlbumController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createalbum</servlet-name>
+        <url-pattern>/createalbum</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>searchclub</servlet-name>
+        <servlet-class>com.golfzone.social.controller.search.SearchClubController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>searchclub</servlet-name>
+        <url-pattern>/searchclub</url-pattern>
     </servlet-mapping>
 </web-app>

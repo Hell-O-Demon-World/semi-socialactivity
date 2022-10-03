@@ -57,7 +57,8 @@
         </ul>
     </nav>
     <div id="dropDown">
-        <form action="" method="post" class="search-form">
+        <form action="/searchclub" method="post" class="search-form">
+            <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum">
             <div class="search-name">
                 <ion-icon class="search-icon" name="search-outline"></ion-icon>
                 <input
