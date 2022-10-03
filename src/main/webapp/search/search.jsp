@@ -6,7 +6,10 @@
 <%@ page import="com.golfzone.social.club.ClubDAOImpl" %>
 <%@ page import="com.golfzone.social.board.BoardVO" %>
 <%@ page import="com.golfzone.social.board.BoardDAO" %>
-<%@ page import="com.golfzone.social.board.BoardDAOImpl" %><%--
+<%@ page import="com.golfzone.social.board.BoardDAOImpl" %>
+<%@ page import="com.golfzone.social.search.SearchClubVO" %>
+<%@ page import="com.golfzone.social.search.SearchClubDAO" %>
+<%@ page import="com.golfzone.social.search.SearchClubDAOImpl" %><%--
   Created by IntelliJ IDEA.
   User: org
   Date: 2022/10/03
@@ -37,13 +40,32 @@
         Integer userNum = (Integer) request.getAttribute("userNum");
         userVO = userDAO.findByUserNum(userNum);
     }
-    ClubVO clubVO = new ClubVO();
-    ClubDAO clubDAO = new ClubDAOImpl();
-    if (request.getAttribute("clubNum") != null) {
-        Integer clubNum = (Integer) request.getAttribute("clubNum");
-        clubVO.setClubNum(clubNum);
-        clubVO = clubDAO.findByClubNum(clubVO);
+
+    SearchClubVO searchClubVO = new SearchClubVO();
+    SearchClubDAO searchClubDAO = new SearchClubDAOImpl();
+
+    searchClubVO.setSearchLocation(request.getAttribute("searchLocation").toString());
+    searchClubVO.setSearchTitle(request.getAttribute("searchTitle").toString());
+    searchClubVO.setSearchMinAge(request.getAttribute("searchMinAge").toString());
+    searchClubVO.setSearchMaxAge(request.getAttribute("searchMaxAge").toString());
+    searchClubVO.setSearchMinScore(request.getAttribute("searchMinScore").toString());
+    searchClubVO.setSearchMaxScore(request.getAttribute("searchMaxScore").toString());
+
+    if (searchClubVO.getSearchTitle().equals("") &&
+            searchClubVO.getSearchMinAge().equals("0") &&
+            searchClubVO.getSearchMaxAge().equals("0") &&
+            searchClubVO.getSearchMinScore().equals("0") &&
+            searchClubVO.getSearchMaxScore().equals("0") &&
+            searchClubVO.getSearchLocation().equals("")) {
+        for (ClubVO vo : searchClubDAO.searchAllClub(searchClubVO)) {
+            System.out.println(vo);
+        }
+    } else {
+        for (ClubVO vo : searchClubDAO.searchByCondition(searchClubVO)) {
+            System.out.println(vo);
+        }
     }
+
 %>
 <section id="navBar">
     <nav id="mainNav">
