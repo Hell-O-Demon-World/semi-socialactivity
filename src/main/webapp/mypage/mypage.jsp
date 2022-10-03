@@ -186,7 +186,10 @@
                 </div>
             </div>
         </div>
-        <input id="exitUser" type="submit" value="탈퇴"/>
+        <form method="post" action="/quituser">
+            <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum">
+            <input id="exitUser" type="submit" value="탈퇴"/>
+        </form>
     </section>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>

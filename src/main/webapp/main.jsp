@@ -186,8 +186,8 @@
                 <div class="form sign-in-form">
                     <form action="/login" method="post">
                         <h3>Sign In</h3>
-                        <input type="text" placeholder="userID" name="userID"/>
-                        <input type="password" placeholder="Password" name="password"/>
+                        <input type="text" placeholder="userID" name="userID" minlength="5" maxlength="11" required/>
+                        <input type="password" placeholder="Password" name="password" minlength="5" maxlength="11" required/>
                         <input type="submit" value="Login"/>
                         <a href="#" class="forgot">Forgot Password</a>
                         <%if (msg == "회원가입이 필요합니다.") {%>
@@ -203,12 +203,18 @@
                                 type="text"
                                 name="userName"
                                 placeholder="user NickName(11자리)"
+                                minlength="5"
+                                maxlength="11"
+                                required
                         />
-                        <input type="text" name="userID" placeholder="user ID(11자리)"/>
+                        <input type="text" name="userID" placeholder="user ID(11자리)" minlength="5" maxlength="11" required/>
                         <input
                                 type="password"
                                 name="userPW"
                                 placeholder="userPW(11자리)"
+                                minlength="5"
+                                maxlength="11"
+                                required
                         />
                         <div class="location">
                             <select
