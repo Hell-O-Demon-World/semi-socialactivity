@@ -21,7 +21,6 @@ public class UserDAOImpl implements UserDAO {
         List<UserVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("User selectAll: conn success");
             String sql = MariaDB.USER_SELECT_ALL;
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -51,7 +50,6 @@ public class UserDAOImpl implements UserDAO {
         int flag = 0;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("insertUser: conn success");
             String sql = MariaDB.INSERT_USER;
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userVO.getUserName());
@@ -76,7 +74,6 @@ public class UserDAOImpl implements UserDAO {
         int flag = 0;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("deleteUserByUserNum: conn success");
             String sql = MariaDB.DELETE_USER_FROM_USER;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, userNum);
@@ -94,8 +91,6 @@ public class UserDAOImpl implements UserDAO {
         UserVO vo = new UserVO();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("findByUser: conn success");
-
             String sql = MariaDB.USER_FIND_BY_USER_NUM;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, userNum);
@@ -125,8 +120,6 @@ public class UserDAOImpl implements UserDAO {
         UserVO vo = new UserVO();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("findByUser: conn success");
-
             String sql = MariaDB.USER_FIND_BY_USER;
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userId);

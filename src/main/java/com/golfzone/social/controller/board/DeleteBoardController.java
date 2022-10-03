@@ -18,15 +18,12 @@ public class DeleteBoardController extends HttpServlet {
         int clubNum = Integer.parseInt(req.getParameter("clubNum"));
         int userNum = Integer.parseInt(req.getParameter("userNum"));
         int boardNum = Integer.parseInt(req.getParameter("boardNum"));
-        System.out.println("boardNum : "+boardNum);
-
         BoardDAO boardDAO = new BoardDAOImpl();
 
         int flag = boardDAO.deleteBoard(boardNum);
         if (flag == 1) {
             boardResultMsg = "게시글 삭제 완료..";
         }
-        System.out.println(boardResultMsg);
         req.setAttribute("userNum", userNum);
         req.setAttribute("clubNum", clubNum);
         req.setAttribute("boardNum", boardNum);

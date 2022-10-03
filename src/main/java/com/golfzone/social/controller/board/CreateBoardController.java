@@ -39,7 +39,6 @@ public class CreateBoardController extends HttpServlet {
             boardVO.setBoardContent(boardContent);
             boardVO.setBoardWriter(boardWriter);
             boardDAO.insertBoard(boardVO);
-            System.out.println(boardResultMsg);
         }
 
         req.setAttribute("userNum", userNum);

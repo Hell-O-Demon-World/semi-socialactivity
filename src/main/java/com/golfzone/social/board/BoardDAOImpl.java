@@ -27,7 +27,6 @@ public class BoardDAOImpl implements BoardDAO {
         int flag;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("insertBoard: conn success");
             String sql = MariaDB.INSERT_BOARD;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, boardVO.getClubNum());
@@ -48,8 +47,6 @@ public class BoardDAOImpl implements BoardDAO {
         List<BoardVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("Activity selectAll: conn success");
-
             String sql = MariaDB.BOARD_FIND_BY_CLUB_NUM;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, clubVO.getClubNum());
@@ -75,7 +72,6 @@ public class BoardDAOImpl implements BoardDAO {
         int flag;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("deleteBoard: conn success");
             String sql = MariaDB.DELETE_BOARD;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, boardNum);
@@ -93,8 +89,6 @@ public class BoardDAOImpl implements BoardDAO {
         BoardVO vo = new BoardVO();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("findByBoardNum: conn success");
-
             String sql = MariaDB.BOARD_FIND_BY_BOARD_NUM;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, boardVO.getBoardNum());

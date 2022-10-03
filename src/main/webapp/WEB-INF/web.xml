@@ -85,14 +85,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>createsearchclub</servlet-name>
-        <servlet-class>com.golfzone.social.controller.search.CreateSearchClubController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>createsearchclub</servlet-name>
-        <url-pattern>/createsearchclub</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>createactivity</servlet-name>
         <servlet-class>com.golfzone.social.controller.activity.CreateActivityController</servlet-class>
     </servlet>

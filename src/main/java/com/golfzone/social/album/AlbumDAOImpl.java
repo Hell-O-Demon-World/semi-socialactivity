@@ -22,8 +22,6 @@ public class AlbumDAOImpl implements AlbumDAO {
         List<AlbumVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("Album selectAll: conn success");
-
             String sql = MariaDB.ALBUM_SELECT_ALL;
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -48,7 +46,6 @@ public class AlbumDAOImpl implements AlbumDAO {
         int flag;
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("insertAlbum: conn success");
             String sql = MariaDB.INSERT_ALBUM;
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, albumVO.getImageName());

@@ -65,8 +65,6 @@ public class CommentDAOImpl implements CommentDAO {
         List<CommentVO> vos = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
-            System.out.println("Activity selectAll: conn success");
-
             String sql = MariaDB.COMMENT_FIND_BY_BOARD_NUM;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, boardVO.getBoardNum());
