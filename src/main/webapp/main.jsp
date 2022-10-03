@@ -106,25 +106,24 @@
     <div class="list-container">
         <section id="clubIntro">
             <h1>모임(광고)</h1>
-            <div class="slide">
-                <div class="left-button" onclick="showLeftItem()"><p>
-                    <div class="arrow-left" id="leftArrow"></div>
-                    </p>
-                </div>
-                <div class="promotion-club-container">
-                    <div class="promotion-club-item">
+
+            <div class="swiper recommendSwiper">
+                <div class="swiper-wrapper">
+                    <%for (int i = 0; i < clubVOS.size(); i++) {%>
+                    <div class="swiper-slide">
                         <form action="#" method="post">
-                            <img src="${pageContext.request.contextPath}/img/test-emblem-logo.png" alt="no-emblem-img"/>
-                            <p>모임명</p>
-                            <p>인원</p>
-                            <p>지역</p>
-                            <input id="joinClubBtn" type="submit" value="가입하기"/>
+                            <img src="${pageContext.request.contextPath}/img/<%=clubVOS.get(i).getClubEmblemPath()%>" alt="no-emblem-img"/>
+                            <p>모임명 : <%=clubVOS.get(i).getClubName()%></p>
+                            <p>인원 : <%=clubDAO.countClubMember(clubVOS.get(i).getClubNum()).getClubMemberCount()%> / <%=clubVOS.get(i).getClubMaxCount()%></p>
+                            <p>지역 : <%=clubVOS.get(i).getClubLocation()%></p>
+                            <input type="hidden" value="<%=i%>" name = "clubNum"/>
+                            <input class="join-club-button" type="submit" value="가입하기" />
                         </form>
                     </div>
+                    <%}%>
                 </div>
-                <div class="right-button" onclick="showRightItem">
-                    <div class="arrow-right" id="rightArrow"></div>
-                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </section>
         <section id="recommendClub">
@@ -247,11 +246,9 @@
         </div>
     </section>
 </div>
-
 <script src="js/select.js " charset="UTF-8"></script>
 <script src="js/address.js" charset="UTF-8"></script>
 <script src="./js/login.js" charset="UTF-8"></script>
-<script src="./js/arrow.js" charset="UTF-8"></script>
 <script src="./js/recommend.js" charset="UTF-8"></script>
 <script
         type="module"
@@ -261,6 +258,8 @@
         nomodule
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
 ></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script src="./js/swiper.js" charset="UTF-8"></script>
 </body>
 </html>
 

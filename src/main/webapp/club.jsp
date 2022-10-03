@@ -152,6 +152,7 @@
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
+                </div>
             </section>
             <section id="recommendClub">
                 <h1>추천 모임</h1>
