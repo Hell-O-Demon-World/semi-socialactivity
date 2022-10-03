@@ -4,7 +4,9 @@
 <%@ page import="com.golfzone.social.club.ClubVO" %>
 <%@ page import="com.golfzone.social.search.SearchClubVO" %>
 <%@ page import="com.golfzone.social.search.SearchClubDAO" %>
-<%@ page import="com.golfzone.social.search.SearchClubDAOImpl" %><%--
+<%@ page import="com.golfzone.social.search.SearchClubDAOImpl" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: org
   Date: 2022/10/03Ò
@@ -32,11 +34,11 @@
 <%
     UserVO userVO = new UserVO();
     UserDAO userDAO = new UserDAOImpl();
+    System.out.println(request.getAttribute("userNum"));
     if (request.getAttribute("userNum") != null) {
         Integer userNum = (Integer) request.getAttribute("userNum");
         userVO = userDAO.findByUserNum(userNum);
     }
-
     SearchClubVO searchClubVO = new SearchClubVO();
     SearchClubDAO searchClubDAO = new SearchClubDAOImpl();
 
@@ -46,6 +48,8 @@
     searchClubVO.setSearchMaxAge(request.getAttribute("searchMaxAge").toString());
     searchClubVO.setSearchMinScore(request.getAttribute("searchMinScore").toString());
     searchClubVO.setSearchMaxScore(request.getAttribute("searchMaxScore").toString());
+
+    List<ClubVO> clubVOS = searchClubDAO.searchAllClub(searchClubVO);
 %>
 <section id="navBar">
     <nav id="mainNav">
@@ -60,15 +64,22 @@
         </form>
         <a onclick="document.getElementById('clubInfoPage').submit();" class="logo">Logo</a>
         <ul>
+            <%if (userVO.getUserNum() != 0){%>
             <form id="mainPage" method="post" action="/club">
                 <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum">
             </form>
             <form id="myPage" method="post" action="/mypage">
                 <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum">
             </form>
+            <%}else {%>
+            <form id="mainPage" method="post" action="/main">
+            </form>
+            <%}%>
             <li><a onclick="document.getElementById('mainPage').submit();" class="linkText">Home</a></li>
+            <%if (userVO.getUserNum() != 0){%>
             <li><a onclick="document.getElementById('myPage').submit();" class="linkText">MyPage</a></li>
             <li><a href="/">Logout</a></li>
+            <%}%>
         </ul>
     </nav>
 </section>
@@ -82,25 +93,45 @@
             searchClubVO.getSearchMinScore().equals("0") &&
             searchClubVO.getSearchMaxScore().equals("0") &&
             searchClubVO.getSearchLocation().equals("")) { %>
-            <%for (ClubVO vo : searchClubDAO.searchAllClub(searchClubVO)) {%>
+            <%for (int i = 0; i < clubVOS.size(); i++) {%>
             <!-- activity slide start -->
             <div class="swiper-slide">
-                <div class="activity-name"><%=vo.getClubName()%>
+                <div class="activity-name">
+                    <p><%=clubVOS.get(i).getClubName()%></p>
                 </div>
                 <div class="activity-description">
-                    <%=vo.getClubDescription()%>
+                    <p><%=clubVOS.get(i).getClubDescription()%></p>
                 </div>
+                <%if (userVO.getUserNum() != 0) {%>
+                    <div class="link">
+                        <form action="/joinclub" method="post">
+                            <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum"/>
+                            <input type="hidden" value="<%=i+1%>" name="clubNum"/>
+                            <input type="submit" value="가입하기"/>
+                        </form>
+                    </div>
+                <%}%>
             </div>
             <!-- activity slide end -->
             <% }
             } else {
-            %><%for (ClubVO vo : searchClubDAO.searchByCondition(searchClubVO)) { %>
+            %><%for (int i = 0; i < clubVOS.size(); i++) { %>
             <div class="swiper-slide">
-                <div class="activity-name"><%=vo.getClubName()%>
+                <div class="activity-name">
+                    <p><%=clubVOS.get(i).getClubName()%></p>
                 </div>
                 <div class="activity-description">
-                    <%=vo.getClubDescription()%>
+                    <p><%=clubVOS.get(i).getClubDescription()%></p>
                 </div>
+                <%if (userVO.getUserNum() != 0) {%>
+                    <div class="link">
+                        <form action="/joinclub" method="post">
+                            <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum"/>
+                            <input type="hidden" value="<%=i+1%>" name="clubNum"/>
+                            <input type="submit" value="가입하기"/>
+                        </form>
+                    </div>
+                <%}%>
             </div>
             <% }
             }

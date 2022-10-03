@@ -159,7 +159,7 @@
                 <div class="recommend-club-container" id="recommendClubContainer">
                     <%for (int i = 0; i < clubVOS.size(); i++) {%>
                         <div class="recommend-club-item">
-                            <form action="/club/joinclub" method="post">
+                            <form action="/joinclub" method="post">
                                 <img src="${pageContext.request.contextPath}/img/<%=clubVOS.get(i).getClubEmblemPath()%>" alt="no-emblem-img"/>
                                 <p>모임명 : <%=clubVOS.get(i).getClubName()%>
                                 </p>
@@ -168,7 +168,7 @@
                                 <p>지역 : <%=clubVOS.get(i).getClubLocation()%>
                                 </p>
                                 <input type="hidden" value="<%=userVO.getUserNum()%>" name = "userNum"/>
-                                <input type="hidden" value="<%=i%>" name = "clubNum"/>
+                                <input type="hidden" value="<%=i+1%>" name = "clubNum"/>
                                 <input class="join-club-button" type="submit" value="가입하기" />
                             </form>
                         </div>

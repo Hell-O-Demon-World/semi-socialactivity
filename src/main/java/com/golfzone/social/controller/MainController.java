@@ -14,10 +14,7 @@ import java.util.List;
 
 public class MainController extends HttpServlet{
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        ClubDAO clubDAO = new ClubDAOImpl();
-//        List<ClubVO> clubVOS = new ArrayList<>();
-//        clubVOS = clubDAO.selectAll();
-//        req.setAttribute("clubVOS", clubVOS);
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/main.jsp").forward(req, resp);
     }
 }

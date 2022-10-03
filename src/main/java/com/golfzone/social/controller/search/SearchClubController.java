@@ -18,7 +18,7 @@ public class SearchClubController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         /* get params */
         String clubSearchResultMsg = "resultMsg";
-        int userNum = -1;
+        int userNum = 0;
         if (req.getParameter("userNum") != null) {
             userNum = Integer.parseInt(req.getParameter("userNum"));
         }

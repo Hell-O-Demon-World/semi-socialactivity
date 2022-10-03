@@ -20,8 +20,9 @@ public class JoinClubController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String clubResultMsg = "resultMsg";
         /* get params from club.jsp */
-        int clubNum = Integer.parseInt(req.getParameter("clubNum")) + 1;
+        int clubNum = Integer.parseInt(req.getParameter("clubNum"));
         int userNum = Integer.parseInt(req.getParameter("userNum"));
+
         /* init */
         ClubDAO clubDAO = new ClubDAOImpl();
         ClubVO clubVO = new ClubVO();

@@ -57,7 +57,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>joinclub</servlet-name>
-        <url-pattern>/club/joinclub</url-pattern>
+        <url-pattern>/joinclub</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>joinactivity</servlet-name>
@@ -166,5 +166,13 @@
     <servlet-mapping>
         <servlet-name>searchclub</servlet-name>
         <url-pattern>/searchclub</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>main</servlet-name>
+        <servlet-class>com.golfzone.social.controller.MainController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/main</url-pattern>
     </servlet-mapping>
 </web-app>
