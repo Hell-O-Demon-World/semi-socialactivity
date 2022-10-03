@@ -33,7 +33,7 @@
         </ul>
     </nav>
     <div id="dropDown">
-        <form action="#" method="post" class="search-form">
+        <form action="/searchclub" method="post" class="search-form">
             <div class="search-name">
                 <ion-icon class="search-icon" name="search-outline"></ion-icon>
                 <input
@@ -247,11 +247,8 @@
         </div>
     </section>
 </div>
-<<<<<<< Updated upstream
-<script src="./js/select.js " charset="UTF-8"></script>
-=======
+
 <script src="js/select.js " charset="UTF-8"></script>
->>>>>>> Stashed changes
 <script src="js/address.js" charset="UTF-8"></script>
 <script src="./js/login.js" charset="UTF-8"></script>
 <script src="./js/arrow.js" charset="UTF-8"></script>
