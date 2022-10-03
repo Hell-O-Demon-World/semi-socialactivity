@@ -59,7 +59,6 @@
     Integer boardNum = (Integer) request.getAttribute("boardNum");
     boardVO.setBoardNum(boardNum);
     boardVO = boardDAO.findByBoardNum(boardVO);
-    System.out.println(boardVO.getBoardNum());
   }
   /* get activity list by club */
   ActivityDAO activityDAO = new ActivityDAOImpl();

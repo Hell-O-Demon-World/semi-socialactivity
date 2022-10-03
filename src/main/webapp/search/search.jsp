@@ -34,7 +34,6 @@
 <%
     UserVO userVO = new UserVO();
     UserDAO userDAO = new UserDAOImpl();
-    System.out.println(request.getAttribute("userNum"));
     if (request.getAttribute("userNum") != null) {
         Integer userNum = (Integer) request.getAttribute("userNum");
         userVO = userDAO.findByUserNum(userNum);
