@@ -4,11 +4,7 @@
 <%@ page import="com.golfzone.social.club.ClubDAOImpl" %>
 <%@ page import="com.golfzone.social.activity.ActivityVO" %>
 <%@ page import="com.golfzone.social.club.ClubVO" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="com.golfzone.social.user.UserVO" %>
-<%@ page import="com.golfzone.social.activitymember.ActivityMemberVO" %>
-<%@ page import="com.golfzone.social.activitymember.ActivityMemberDAO" %>
-<%@ page import="com.golfzone.social.activitymember.ActivityMemberDAOImpl" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: org
@@ -144,7 +140,7 @@
                                 <p>인원 : <%=clubDAO.countClubMember(clubVOS.get(i).getClubNum()).getClubMemberCount()%> / <%=clubVOS.get(i).getClubMaxCount()%></p>
                                 <p>지역 : <%=clubVOS.get(i).getClubLocation()%></p>
                                 <input type="hidden" value="<%=userVO.getUserNum()%>" name = "userNum"/>
-                                <input type="hidden" value="<%=i%>" name = "clubNum"/>
+                                <input type="hidden" value="<%=i+1%>" name = "clubNum"/>
                                 <input class="join-club-button" type="submit" value="가입하기" />
                             </form>
                         </div>
