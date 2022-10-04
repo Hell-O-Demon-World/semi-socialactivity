@@ -208,6 +208,7 @@
   float: left;
   height: 40%;
   width: 100%;
+  display: none;
 }
 #board-details .details-info {
   display: flex;
@@ -228,7 +229,9 @@
 .details-content .text {
   margin-bottom: 20px;
 }
-
+.board-description-hidden{
+  display : none;
+}
 /* comment */
 #comment {
   float: right;

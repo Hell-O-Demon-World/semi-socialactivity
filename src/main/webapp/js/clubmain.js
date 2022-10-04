@@ -2,9 +2,9 @@ const swiperPrev = document.querySelector("#activity .swiper-button-prev");
 const swiperNext = document.querySelector("#activity .swiper-button-next");
 const slideCount = document.querySelectorAll("#activity .swiper-slide").length;
 const pageCount = // 슬라이드 페이지 개수
-  slideCount % 4
-    ? slideCount - (slideCount % 4)
-    : slideCount - (slideCount % 4) - 4;
+    slideCount % 4
+        ? slideCount - (slideCount % 4)
+        : slideCount - (slideCount % 4) - 4;
 
 const swiper = new Swiper(".mySwiper", {
   slidesPerView: 4, // 한 번에 보여질 element의 개수
@@ -78,7 +78,7 @@ const boardSwiper = new Swiper(".board-container", {
 /* comment swiper */
 const commentSwiper = new Swiper(".comment-container", {
   direction: "vertical",
-  height: 350,
+  height: 200,
   slidesPerView: 4,
   freeMode: true,
   scrollbar: {
@@ -97,17 +97,21 @@ const detailsBoard = document.getElementsByClassName("button-details");
  * @param {Event} e 이벤트 객체 전달
  */
 let boardNum;
+
+const commentInfo = document.getElementById('info');
+const commentHeader = document.getElementById('commentHeader');
 const showDetail = (e) => {
   const detail = e.target.parentNode.parentNode;
   const title = detail.querySelector(".board-title .text").innerText;
   const creator = detail.querySelector(".board-creator .text").innerText;
-  const content = detail.querySelector(".board-content p").innerText;
+  const content = detail.querySelector(".board-content .board-description-hidden").innerText;
   const detailsTitle = document.querySelector(".details-title .text");
   detailsTitle.innerText = title;
   const detailsWriter = document.querySelector(".details-writer .text");
   detailsWriter.innerText = creator;
   const detailsContent = document.querySelector(".board-content-details");
   detailsContent.innerText = content;
+  commentHeader.style.display = 'none';
 
   // const commentInput = document.getElementsByClassName("boardViewNum");
   // boardNum = Number(e.target.id.substring(e.target.id.length - 1,e.target.id.length));
@@ -122,7 +126,14 @@ const showDetail = (e) => {
   const commentContext = document.getElementById("commentContext");
   commentContext.disabled = false;
   // commentInput.value = boardNumber;
+  const commentContainer = document.querySelector('.comment-container .swiper-wrapper');
+  commentContainer.innerHTML ='';
+  commentInfo.style.display='block';
+
 };
+
+
+
 for (const $button of detailsBoard) {
   $button.addEventListener("click", showDetail);
 
@@ -157,20 +168,19 @@ imageName.addEventListener("keyup", countText);
 /* Comment 글자수 자르기 */
 
 const comments = document.getElementsByClassName("board-description");
-console.log(comments);
+
 Array.prototype.forEach.call(comments, (elem) => {
-  elem.innerText = `${elem.innerText.substring(0, 50)} ...`;
+  elem.innerText = `${elem.innerText.substring(0, 20)} ...`;
 });
 
 /* comment 자세히 보기 */
 const commentDetailList = document.getElementsByClassName("comment-details");
 const showCommentDetails = (e) => {
   console.log(
-    e.target.parentNode.parentNode.parentNode.querySelector(".display-none")
-      .innerText
+      e.target.parentNode.parentNode.parentNode.querySelector(".display-none")
+          .innerText
   );
 };
 Array.prototype.forEach.call(commentDetailList, (elem) => {
   elem.addEventListener("click", showCommentDetails);
 });
-showCommentDetails;

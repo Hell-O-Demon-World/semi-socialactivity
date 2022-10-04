@@ -156,6 +156,9 @@
             <p class="board-description">
               <%=boardVOS.get(i).getBoardContent()%>
             </p>
+            <p class="board-description-hidden">
+              <%=boardVOS.get(i).getBoardContent()%>
+            </p>
           </div>
           <div class="button-container">
             <div class="button-delete">
@@ -259,7 +262,7 @@
       <div>
         <div class="title">
           <label for="boardTitle">Title</label>
-          <input type="text" id="boardTitle" name="boardTitle" minlength="1" required/>
+          <input type="text" id="boardTitle" name="boardTitle" minlength="1" maxlength="11" required/>
         </div>
         <div class="creator">
           <div>creator</div>
@@ -273,8 +276,8 @@
                 id="boardContent"
                 cols="30"
                 rows="10"
-                minlength="10"
-                maxlength="100"
+                minlength="1"
+                maxlength="46"
                 required
         ></textarea>
       </div>
