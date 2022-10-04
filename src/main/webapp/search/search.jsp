@@ -48,6 +48,8 @@
     searchClubVO.setSearchMaxScore(request.getAttribute("searchMaxScore").toString());
 
     List<ClubVO> clubVOS = searchClubDAO.searchByCondition(searchClubVO);
+    System.out.println("userNum: "+userVO.getUserNum());
+
 %>
 <section id="navBar">
     <nav id="mainNav">
