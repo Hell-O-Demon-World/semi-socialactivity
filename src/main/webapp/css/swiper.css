@@ -1,3 +1,6 @@
+.swiper-wrapper{
+    background-color: #1b9bff;
+}
 
 #clubIntro .swiper.recommendSwiper {
     width: 100%;
@@ -7,7 +10,7 @@
 #clubIntro .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    background-color: white;
 
     /* Center slide text vertically */
     display: -webkit-box;
