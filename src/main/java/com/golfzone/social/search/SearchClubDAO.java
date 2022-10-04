@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface SearchClubDAO {
 
-    List<ClubVO> searchAllClub(SearchClubVO searchClubVO);
-
     List<ClubVO> searchByCondition(SearchClubVO searchClubVO);
 
 
