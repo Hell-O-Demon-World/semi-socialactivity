@@ -129,7 +129,6 @@
         <div class="list-container">
             <section id="clubIntro">
                 <h1>모임(광고)</h1>
-
                 <div class="swiper recommendSwiper">
                     <div class="swiper-wrapper">
                         <%for (int i = 0; i < clubVOS.size(); i++) {%>
