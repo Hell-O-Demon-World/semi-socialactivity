@@ -137,8 +137,8 @@
                 <div class="swiper recommendSwiper">
                     <div class="swiper-wrapper">
                         <%for (int i = 0; i < clubVOS.size(); i++) {%>
-                        <div class="swiper-slide">
-                            <form action="/club/joinclub" method="post">
+                        <div class="swiper-slide" class="promotion-club-item">
+                            <form action="/joinclub" method="post">
                                 <img src="${pageContext.request.contextPath}/img/<%=clubVOS.get(i).getClubEmblemPath()%>" alt="no-emblem-img"/>
                                 <p>모임명 : <%=clubVOS.get(i).getClubName()%></p>
                                 <p>인원 : <%=clubDAO.countClubMember(clubVOS.get(i).getClubNum()).getClubMemberCount()%> / <%=clubVOS.get(i).getClubMaxCount()%></p>

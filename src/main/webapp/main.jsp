@@ -1,12 +1,11 @@
-<%@ page import="com.golfzone.social.user.UserVO" %>
 <%@ page import="com.golfzone.social.club.ClubDAO" %>
 <%@ page import="com.golfzone.social.club.ClubDAOImpl" %>
 <%@ page import="com.golfzone.social.club.ClubVO" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="com.golfzone.social.activity.ActivityDAO" %>
 <%@ page import="com.golfzone.social.activity.ActivityDAOImpl" %>
 <%@ page import="com.golfzone.social.activity.ActivityVO" %>
+<%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <head>
@@ -113,14 +112,14 @@
             <div class="swiper recommendSwiper">
                 <div class="swiper-wrapper">
                     <%for (int i = 0; i < clubVOS.size(); i++) {%>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" class="promotion-club-item">
                         <form action="#" method="post">
                             <img src="${pageContext.request.contextPath}/img/<%=clubVOS.get(i).getClubEmblemPath()%>" alt="no-emblem-img"/>
                             <p>모임명 : <%=clubVOS.get(i).getClubName()%></p>
                             <p>인원 : <%=clubDAO.countClubMember(clubVOS.get(i).getClubNum()).getClubMemberCount()%> / <%=clubVOS.get(i).getClubMaxCount()%></p>
                             <p>지역 : <%=clubVOS.get(i).getClubLocation()%></p>
                             <input type="hidden" value="<%=i%>" name = "clubNum"/>
-                            <input class="join-club-button" type="submit" value="가입하기" />
+                            <input class="join-club-button" id="joinRecommendClubBtn" type="submit" value="가입하기" />
                         </form>
                     </div>
                     <%}%>
@@ -135,7 +134,7 @@
                 <%for (int i = 0; i < clubVOS.size(); i++) {%>
                 <div class="recommend-club-item">
                     <form action="#" method="post">
-                        <img src=<%=clubVOS.get(i).getClubEmblemPath()%> alt="no-emblem-img"/>
+                        <img src="${pageContext.request.contextPath}/img/<%=clubVOS.get(i).getClubEmblemPath()%>" alt="no-emblem-img"/>
                         <p>모임명 : <%=clubVOS.get(i).getClubName()%>
                         </p>
                         <p>인원 : <%=clubVOS.get(i).getClubMaxCount()%>
@@ -190,7 +189,7 @@
                         <input type="password" placeholder="Password" name="password" minlength="5" maxlength="11" required/>
                         <input type="submit" value="Login"/>
                         <a href="#" class="forgot">Forgot Password</a>
-                        <%if (msg == "회원가입이 필요합니다.") {%>
+                        <%if (Objects.equals(msg, "회원가입이 필요합니다.")) {%>
                         <p><%=msg%>
                         </p>
                         <%}%>
