@@ -3,6 +3,9 @@ package com.golfzone.social.controller.club;
 import com.golfzone.social.club.ClubDAO;
 import com.golfzone.social.club.ClubDAOImpl;
 import com.golfzone.social.club.ClubVO;
+import com.golfzone.social.clubmember.ClubMemberDAO;
+import com.golfzone.social.clubmember.ClubMemberDAOImpl;
+import com.golfzone.social.clubmember.ClubMemberVO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -69,8 +72,15 @@ public class CreateClubController extends HttpServlet {
                 clubVO.setClubPw("");
             }
             clubDAO.insertClub(clubVO);
-            /* 클럽 멤버에 추가 역할은 방장 */
             clubResultMsg = "클럽 생성 완료!";
+            int clubNum = clubDAO.selectAllDesc().get(0).getClubNum();
+            /* 클럽 멤버에 추가 역할은 방장 */
+            ClubMemberVO clubMemberVO = new ClubMemberVO();
+            clubMemberVO.setUserNum(userNum);
+            clubMemberVO.setRoleNum(1); // role : reader
+            clubMemberVO.setClubNum(clubNum);
+            ClubMemberDAO clubMemberDAO = new ClubMemberDAOImpl();
+            clubMemberDAO.insertClubMember(clubMemberVO);
         }
         req.setAttribute("resultMsg", clubResultMsg);
         req.setAttribute("userNum", userNum);

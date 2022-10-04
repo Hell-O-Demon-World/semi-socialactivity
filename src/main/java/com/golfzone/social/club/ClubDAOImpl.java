@@ -152,6 +152,32 @@ public class ClubDAOImpl implements ClubDAO {
     }
 
     @Override
+    public List<ClubVO> selectAllDesc() {
+        List<ClubVO> vos = new ArrayList<>();
+        try {
+            conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
+            String sql = MariaDB.CLUB_SELECT_ALL_DESC;
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                ClubVO vo = new ClubVO();
+                vo.setClubNum(rs.getInt("CLUB_NUM"));
+                vo.setClubEmblemPath(rs.getString("CLUB_EMBLEMPATH"));
+                vo.setClubName(rs.getString("CLUB_NAME"));
+                vo.setClubLocation(rs.getString("CLUB_LOCATION"));
+                vo.setClubMaxCount(rs.getInt("CLUB_MAXCOUNT"));
+                vos.add(vo);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        } finally {
+            dbCon.dbConClose(rs, pstmt, conn);
+        }
+        return vos;
+    }
+
+    @Override
     public List<ClubVO> selectAll() {
         List<ClubVO> vos = new ArrayList<>();
         try {

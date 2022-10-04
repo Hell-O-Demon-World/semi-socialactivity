@@ -13,7 +13,7 @@ public interface MariaDB {
     String CLUB_SELECT_ALL = "select * from club";
     String CLUB_MEMBER_SELECT_ALL = "select * from club_member";
     String USER_SELECT_ALL = "select * from user";
-
+    String CLUB_SELECT_ALL_DESC = "select * from club order by club_num desc";
     /* DELETE */
     String DELETE_USER_FROM_ACTIVITY_MEMBER = "delete from activity_member where activity_member_num = ?";
     String DELETE_USER_FROM_USER = "delete from user where user_num = ?";
