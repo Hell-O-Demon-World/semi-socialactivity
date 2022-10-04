@@ -48,7 +48,7 @@
     searchClubVO.setSearchMinScore(request.getAttribute("searchMinScore").toString());
     searchClubVO.setSearchMaxScore(request.getAttribute("searchMaxScore").toString());
 
-    List<ClubVO> clubVOS = searchClubDAO.searchAllClub(searchClubVO);
+    List<ClubVO> clubVOS = searchClubDAO.searchByCondition(searchClubVO);
 %>
 <section id="navBar">
     <nav id="mainNav">
@@ -86,35 +86,7 @@
     <h1>Search Result List</h1>
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-        <%if (searchClubVO.getSearchTitle().equals("") &&
-            searchClubVO.getSearchMinAge().equals("0") &&
-            searchClubVO.getSearchMaxAge().equals("0") &&
-            searchClubVO.getSearchMinScore().equals("0") &&
-            searchClubVO.getSearchMaxScore().equals("0") &&
-            searchClubVO.getSearchLocation().equals("")) { %>
-            <%for (int i = 0; i < clubVOS.size(); i++) {%>
-            <!-- activity slide start -->
-            <div class="swiper-slide">
-                <div class="activity-name">
-                    <p><%=clubVOS.get(i).getClubName()%></p>
-                </div>
-                <div class="activity-description">
-                    <p><%=clubVOS.get(i).getClubDescription()%></p>
-                </div>
-                <%if (userVO.getUserNum() != 0) {%>
-                    <div class="link">
-                        <form action="/joinclub" method="post">
-                            <input type="hidden" value="<%=userVO.getUserNum()%>" name="userNum"/>
-                            <input type="hidden" value="<%=i+1%>" name="clubNum"/>
-                            <input type="submit" value="가입하기"/>
-                        </form>
-                    </div>
-                <%}%>
-            </div>
-            <!-- activity slide end -->
-            <% }
-            } else {
-            %><%for (int i = 0; i < clubVOS.size(); i++) { %>
+            <%for (int i = 0; i < clubVOS.size(); i++) { %>
             <div class="swiper-slide">
                 <div class="activity-name">
                     <p><%=clubVOS.get(i).getClubName()%></p>
@@ -133,7 +105,6 @@
                 <%}%>
             </div>
             <% }
-            }
             %>
         </div>
         <div class="swiper-button-next"></div>
