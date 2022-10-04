@@ -5,7 +5,6 @@
 <%@ page import="com.golfzone.social.search.SearchClubVO" %>
 <%@ page import="com.golfzone.social.search.SearchClubDAO" %>
 <%@ page import="com.golfzone.social.search.SearchClubDAOImpl" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: org

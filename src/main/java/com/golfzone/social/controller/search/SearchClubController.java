@@ -28,7 +28,6 @@ public class SearchClubController extends HttpServlet {
         String searchMaxScore = req.getParameter("tierHigh");
         String searchLocation = req.getParameter("location");
 
-        SearchClubDAO searchClubDAO = new SearchClubDAOImpl();
         SearchClubVO searchClubVO = new SearchClubVO();
 
         if (searchTitle != null) {

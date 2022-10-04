@@ -64,9 +64,9 @@ public class SearchClubDAOImpl implements SearchClubDAO {
                 sql += " club_age >= " + Integer.parseInt(searchClubVO.getSearchMinAge());
             }
 
-            if ((!(sql.endsWith("where"))) && !(searchClubVO.getSearchMinAge().equals("0")) && !(searchClubVO.getSearchMaxAge().equals("0"))) {
+            if (!(sql.endsWith("where")) && !(searchClubVO.getSearchMinAge().equals("0")) && !(searchClubVO.getSearchMaxAge().equals("0"))) {
                 sql += " and club_age <= " + searchClubVO.getSearchMaxAge();
-            } else if ((!(sql.endsWith("where"))) && !(searchClubVO.getSearchMinAge().equals("0")) && !(searchClubVO.getSearchMaxAge().equals("0"))) {
+            } else if (!(sql.endsWith("where")) && !(searchClubVO.getSearchMinAge().equals("0")) && !(searchClubVO.getSearchMaxAge().equals("0"))) {
                 sql += " and club_age <= " + Integer.parseInt(searchClubVO.getSearchMaxAge());
             } else if ((sql.endsWith("where")) && !(searchClubVO.getSearchMinAge().equals("0")) && !(searchClubVO.getSearchMaxAge().equals("0"))) {
                 sql += " and club_age <= " + Integer.parseInt(searchClubVO.getSearchMaxAge());
