@@ -37,7 +37,6 @@
         Integer userNum = (Integer) request.getAttribute("userNum");
         userVO.setUserNum(userNum);
     }
-    System.out.println("클럽페이지 userNum: "+userVO.getUserNum());
 %>
 <section id="navBar">
     <nav id="mainNav">

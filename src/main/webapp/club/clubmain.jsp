@@ -70,8 +70,6 @@
   /* get comment list by board_num */
   CommentDAO commentDAO = new CommentDAOImpl();
   List<CommentVO> commentVOS = commentDAO.selectAllByBoardNum(boardVO);
-  System.out.println("클럽 메인 userNum: "+userVO.getUserNum());
-
 %>
 <div class="navigation">
   <div class="toggle">
