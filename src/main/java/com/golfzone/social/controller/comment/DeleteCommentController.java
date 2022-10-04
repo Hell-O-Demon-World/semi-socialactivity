@@ -30,7 +30,7 @@ public class DeleteCommentController extends HttpServlet {
 
         int flag = commentDAO.deleteComment(commentVO);
         if (flag == 1) {
-            commentResultMsg = "댓글삭제완료..";
+            commentResultMsg = "댓글이 삭제되었습니다.";
         }
         req.setAttribute("commentResultMsg: ", commentResultMsg);
         req.setAttribute("userNum", userNum);

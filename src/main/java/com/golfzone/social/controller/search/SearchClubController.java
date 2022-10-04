@@ -56,7 +56,7 @@ public class SearchClubController extends HttpServlet {
         }
 
         /* 클럽 멤버에 추가 역할은 방장 */
-        clubSearchResultMsg = "검색완료!";
+        clubSearchResultMsg = "Search Complete";
 
         req.setAttribute("userNum", userNum);
 

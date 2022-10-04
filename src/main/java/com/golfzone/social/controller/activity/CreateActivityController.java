@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CreateActivityController extends HttpServlet {
@@ -43,7 +42,7 @@ public class CreateActivityController extends HttpServlet {
         activityMemberVO.setClubNum(clubNum);
 
         activityMemberDAO.insertActivityMember(activityMemberVO);
-        activityResultMsg = "액티비티 생성 완료...";
+        activityResultMsg = "액티비티가 생성되었습니다.";
 
         req.setAttribute("userNum", userNum);
         req.setAttribute("clubNum", clubNum);
