@@ -35,9 +35,9 @@ public class JoinActivityController extends HttpServlet {
             activityMemberVO.setClubNum(clubNum);
             activityMemberVO.setUserNum(userNum);
             activityMemberDAO.insertActivityMember(activityMemberVO);
-            activityMemberResultMsg = "가입완료..";
+            activityMemberResultMsg = "Join Success";
         } else {
-            activityMemberResultMsg = "이미 가입된 액티비티입니다";
+            activityMemberResultMsg = "Already joined";
         }
         req.setAttribute("userNum", userNum);
         req.setAttribute("activityMemberResultMsg", activityMemberResultMsg);

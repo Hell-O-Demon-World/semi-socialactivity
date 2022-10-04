@@ -1,8 +1,5 @@
 package com.golfzone.social.controller.comment;
 
-import com.golfzone.social.board.BoardDAO;
-import com.golfzone.social.board.BoardDAOImpl;
-import com.golfzone.social.board.BoardVO;
 import com.golfzone.social.club.ClubVO;
 import com.golfzone.social.comment.CommentDAO;
 import com.golfzone.social.comment.CommentDAOImpl;
@@ -13,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 public class DeleteCommentController extends HttpServlet {
     @Override
@@ -34,7 +30,7 @@ public class DeleteCommentController extends HttpServlet {
 
         int flag = commentDAO.deleteComment(commentVO);
         if (flag == 1) {
-            commentResultMsg = "댓글삭제완료..";
+            commentResultMsg = "댓글이 삭제되었습니다.";
         }
         req.setAttribute("commentResultMsg: ", commentResultMsg);
         req.setAttribute("userNum", userNum);

@@ -1,6 +1,5 @@
 package com.golfzone.social.controller.search;
 
-import com.golfzone.social.club.ClubVO;
 import com.golfzone.social.search.SearchClubDAO;
 import com.golfzone.social.search.SearchClubDAOImpl;
 import com.golfzone.social.search.SearchClubVO;
@@ -57,7 +56,7 @@ public class SearchClubController extends HttpServlet {
         }
 
         /* 클럽 멤버에 추가 역할은 방장 */
-        clubSearchResultMsg = "검색완료!";
+        clubSearchResultMsg = "Search Complete";
 
         req.setAttribute("userNum", userNum);
 

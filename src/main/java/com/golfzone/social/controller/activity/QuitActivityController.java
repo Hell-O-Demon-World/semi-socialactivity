@@ -36,7 +36,7 @@ public class QuitActivityController extends HttpServlet {
         } else {
             // init VO, DAO
             activityMemberDAO.deleteActivityMember(activityMemberVO);
-            activityMemberResultMsg = "탈퇴완료...";
+            activityMemberResultMsg = "탈퇴되었습니다.";
         }
         req.setAttribute("userNum", userNum);
         req.setAttribute("activityMemberResultMsg", activityMemberResultMsg);

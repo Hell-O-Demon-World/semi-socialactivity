@@ -21,7 +21,7 @@ public class QuitUserController extends HttpServlet {
 
         int flag = userDAO.deleteUserByUserNum(Integer.parseInt(userNum));
         if (flag == 1) {
-            quitResultMsg = "회원 탈퇴 완료...";
+            quitResultMsg = "탈퇴되었습니다.";
         }
         req.setAttribute("quitResultMsg", quitResultMsg);
         req.getRequestDispatcher("/main.jsp").forward(req, resp);

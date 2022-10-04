@@ -1,6 +1,5 @@
 package com.golfzone.social.clubmember;
 
-import com.golfzone.social.club.ClubVO;
 import com.golfzone.social.user.UserVO;
 
 import java.util.List;
