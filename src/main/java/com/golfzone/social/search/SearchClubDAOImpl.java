@@ -24,7 +24,12 @@ public class SearchClubDAOImpl implements SearchClubDAO {
             conn = DriverManager.getConnection(MariaDB.URL, MariaDB.USER, MariaDB.PASSWORD);
             String sql = MariaDB.SEARCH_CLUB_BY_CONDITION;
 
-            if ((!(searchClubVO.getSearchTitle().equals(""))) || (!(searchClubVO.getSearchMinAge().equals("0"))) || (!(searchClubVO.getSearchMaxAge().equals("0"))) || (!(searchClubVO.getSearchMinScore().equals("0"))) || (!(searchClubVO.getSearchMaxScore().equals("0"))) || (!(searchClubVO.getSearchLocation().equals("")))) {
+            if ((!(searchClubVO.getSearchTitle().equals(""))) ||
+                    (!(searchClubVO.getSearchMinAge().equals("0"))) ||
+                    (!(searchClubVO.getSearchMaxAge().equals("0"))) ||
+                    (!(searchClubVO.getSearchMinScore().equals("0"))) ||
+                    (!(searchClubVO.getSearchMaxScore().equals("0"))) ||
+                    (!(searchClubVO.getSearchLocation().equals("")))) {
                 sql += " where";
             }
 
