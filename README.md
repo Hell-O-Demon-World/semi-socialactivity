@@ -7,4 +7,4 @@
 ### https://golfzon-tech1.notion.site/b0addf275ae34c8897f772c7bd96ac86
 --------------------------------
 ## 발표 자료
-### https://github.com/Hell-O-Demon-World/socialactivity/blob/main/ppt/socialactivity%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pptx
+### https://github.com/Hell-O-Demon-World/socialactivity/raw/main/ppt/socialactivity%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pptx
