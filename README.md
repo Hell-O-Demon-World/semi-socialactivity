@@ -6,8 +6,6 @@
 ## 개발기간 
 ### 2022-09-19 ~ 2022-10-03
  --------------------------------
-## 개발문서 노션 링크
-### https://silver-cloth-8dc.notion.site/1-93c07f7083d6487d8c80cadd9483698e
+## [개발문서 노션 링크](https://gtasemi1.notion.site/1-93c07f7083d6487d8c80cadd9483698e)
 --------------------------------
-## 발표 자료
-### https://github.com/Hell-O-Demon-World/socialactivity/raw/main/ppt/socialactivity%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pptx
+## [발표 자료](https://github.com/Hell-O-Demon-World/socialactivity/raw/main/ppt/socialactivity%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pptx)
